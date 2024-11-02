@@ -8,3 +8,5 @@ langchain_community
 pymupdf
 langchain_ollama
 langchain_chroma
+deepeval
+nltk
