@@ -1,0 +1,10 @@
+pypdf
+langchain
+chromadb # Vector storage
+pytest
+boto3
+fastapi
+langchain_community
+pymupdf
+langchain_ollama
+langchain_chroma
