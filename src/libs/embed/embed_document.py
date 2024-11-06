@@ -6,7 +6,7 @@ from langchain_chroma import Chroma
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-from ..llm.init_embedding_function import init_embedding_function
+from libs.llm.init_llm import init_embedding_function
 
 CHROMA_PATH = "chroma"
 DATA_PATH = "data"

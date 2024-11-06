@@ -5,7 +5,7 @@ from misc.mock_data import input_output_pairs
 from misc.rag_eval_metrics import evaluation_metrics
 
 # Importing the RAG application
-from src.libs.generate.generate import (
+from libs.generate.retrieve_from_rag import (
     generate_response_from_context,
     get_context,
     get_context_list,

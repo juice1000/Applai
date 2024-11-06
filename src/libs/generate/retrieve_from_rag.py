@@ -1,20 +1,10 @@
 from langchain.prompts import ChatPromptTemplate
 from langchain_chroma import Chroma
-from langchain_ollama import OllamaLLM
 
-from ..llm.init_embedding_function import init_embedding_function
+from libs.llm.init_llm import init_completion_function, init_embedding_function
+from libs.llm.prompts import rag_retrieval_prompt, rag_retrieval_prompt_experimental
 
 CHROMA_PATH = "chroma"
-
-PROMPT_TEMPLATE = """
-Answer the question based only on the following context:
-
-{context}
-
----
-
-Answer the question based on the above context: {question}
-"""
 
 
 def search_docs(query_text: str):
@@ -42,18 +32,39 @@ def get_context(db_results):
     return context_text
 
 
-def generate_response_from_context(query_text: str, context_text: str):
+def retrieve_rag_response_from_context(
+    query_text: str, context_text: str, experimental=False
+):
     # Prepare the prompt for the LLM.
-    prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
-    prompt = prompt_template.format(context=context_text, question=query_text)
+    if experimental:
+        prompt_template = ChatPromptTemplate.from_template(
+            rag_retrieval_prompt_experimental
+        )
+    else:
+        prompt_template = ChatPromptTemplate.from_template(rag_retrieval_prompt)
 
-    model = OllamaLLM(model="llama3.2")
+    prompt = prompt_template.format(context=context_text, description=query_text)
+
+    model = init_completion_function()
     response_text = model.invoke(prompt)
 
     return response_text
 
 
-def generate_response(query_text: str):
+def retrieve_from_rag(query_text: str):
+    # Search the DB for the query text
+    db_results = search_docs(query_text)
+
+    # Get the sources and context from the DB results.
+    sources = get_sources(db_results)
+    context_text = get_context(db_results)
+
+    # Prompt the LLM.
+    response_text = retrieve_rag_response_from_context(query_text, context_text)
+    return response_text
+
+
+def retrieve_from_rag_experimental(query_text: str):
     # Search the DB for the query text
     db_results = search_docs(query_text)
 
@@ -62,7 +73,9 @@ def generate_response(query_text: str):
     context_text = get_context(db_results)
 
     # Prepare the prompt for the LLM.
-    response_text = generate_response_from_context(query_text, context_text)
+    response_text = retrieve_rag_response_from_context(
+        query_text, context_text, experimental=True
+    )
 
     formatted_response = f"Response: {response_text}\nSources: {sources}"
     print(formatted_response)
