@@ -10,3 +10,6 @@ langchain_ollama
 langchain_chroma
 deepeval
 nltk
+llama-index-llms-ollama
+llama-index
+llama-index-embeddings-ollama

@@ -59,7 +59,7 @@ def generate_response(query_text: str):
 
     # Get the sources and context from the DB results.
     sources = get_sources(db_results)
-    context_text = get_context_text(db_results)
+    context_text = get_context(db_results)
 
     # Prepare the prompt for the LLM.
     response_text = generate_response_from_context(query_text, context_text)

@@ -25,7 +25,7 @@ answer_relevancy = AnswerRelevancyMetric(threshold=0.5)
 # Specify evaluation metrics to use ###
 #######################################
 evaluation_metrics = [
-    # bias,
+    bias,
     # contextual_precision,
     # contextual_recall,
     # faithfulness,

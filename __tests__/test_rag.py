@@ -32,7 +32,6 @@ def test_llamaindex(input_output_pair: dict):
     retrieval_context_list = get_context_list(db_results)
     retrieval_context = get_context(db_results)
     actual_output = generate_response_from_context(input, retrieval_context)
-
     test_case = LLMTestCase(
         input=input,
         actual_output=actual_output,
@@ -40,4 +39,5 @@ def test_llamaindex(input_output_pair: dict):
         expected_output=expected_output,
     )
     # assert test case
+    # print("test_case", test_case)
     assert_test(test_case, evaluation_metrics)
