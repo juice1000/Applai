@@ -4,3 +4,5 @@ venv/
 backup
 chroma
 .deepeval*
+.env
+jobs.db

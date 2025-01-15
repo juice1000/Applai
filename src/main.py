@@ -1,14 +1,14 @@
 import uvicorn
 from fastapi import FastAPI
 
-from libs.db.init_db import Job, initialize_db
-from libs.db.write_job import write_job
+from apply import apply_from_files
+from custom_types import PromptRequest
+from libs.db.get_job import get_all_jobs
+from libs.db.init_db import initialize_db
 from libs.embed.embed_document import embed_document
-from libs.generate.generate_application import generate_application
-from libs.generate.retrieve_from_rag import (
-    retrieve_from_rag,
-    retrieve_from_rag_experimental,
-)
+from libs.generate.retrieve_from_rag import retrieve_from_rag_experimental
+from libs.logger.init_logger import logger
+from libs.scrape_and_drive.scraper import scrape_jobs_fmap
 
 app = FastAPI()
 
@@ -24,35 +24,31 @@ def embed_sources():
     return {"message": "Document loaded"}
 
 
-@app.post("/retrieve/")
-def generate(req: dict):
+@app.post("/prompt/")
+def generate(req: PromptRequest):
     # generate the application from job description
-    prompt = req["prompt"]
+    prompt = req.prompt
     response = retrieve_from_rag_experimental(prompt)
-
     return {"message": response}
 
 
-@app.post("/apply/")
-def apply_to_job(req: dict):
+@app.get("/apply_from_files/")
+def apply_to_job():
     # generate the application from job description
+    apply_from_files()
 
-    job_description = req["job_description"]
-    rag_retrieval_context = retrieve_from_rag(job_description)
-    print(rag_retrieval_context)
-    # we write a fake job application in the DB
-    job = Job(
-        title="Software Engineer",
-        description=job_description,
-        date_applied="2022-01-01",
-        url="https://www.example.com",
-        resume_context=rag_retrieval_context,
-    )
-    application_letter = generate_application(job)
-    print(application_letter)
-    job.application_letter = application_letter
-    write_job(job)
-    return {"message": job.application_letter}
+
+@app.get("/scrape/")
+def scrape_jobs():
+    scrape_jobs_fmap()
+    return {"message": "Job links scraped"}
+
+
+@app.get("/jobs/")
+def get_jobs():
+    # generate the application from job description
+    jobs = get_all_jobs()
+    return jobs
 
 
 if __name__ == "__main__":

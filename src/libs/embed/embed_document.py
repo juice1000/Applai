@@ -7,6 +7,7 @@ from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from libs.llm.init_llm import init_embedding_function
+from libs.logger.init_logger import logger
 
 CHROMA_PATH = "chroma"
 DATA_PATH = "data"
@@ -107,6 +108,7 @@ def clear_database():
 
 
 def embed_document():
+    logger.info("Embedding document...")
     clear_database()
     documents = load_document()
     chunks = split_documents(documents)

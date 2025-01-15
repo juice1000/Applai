@@ -3,6 +3,7 @@ from langchain_chroma import Chroma
 
 from libs.llm.init_llm import init_completion_function, init_embedding_function
 from libs.llm.prompts import rag_retrieval_prompt, rag_retrieval_prompt_experimental
+from libs.logger.init_logger import logger
 
 CHROMA_PATH = "chroma"
 
@@ -55,8 +56,7 @@ def retrieve_from_rag(query_text: str):
     # Search the DB for the query text
     db_results = search_docs(query_text)
 
-    # Get the sources and context from the DB results.
-    sources = get_sources(db_results)
+    # Get the context from the DB results.
     context_text = get_context(db_results)
 
     # Prompt the LLM.
@@ -65,6 +65,7 @@ def retrieve_from_rag(query_text: str):
 
 
 def retrieve_from_rag_experimental(query_text: str):
+    logger.info(f"Retrieving response for query: {query_text}")
     # Search the DB for the query text
     db_results = search_docs(query_text)
 
@@ -77,6 +78,6 @@ def retrieve_from_rag_experimental(query_text: str):
         query_text, context_text, experimental=True
     )
 
-    formatted_response = f"Response: {response_text}\nSources: {sources}"
+    formatted_response = f"Response: {response_text}\nSources: {sources}\n\n"
     print(formatted_response)
     return response_text

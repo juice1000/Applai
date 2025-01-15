@@ -13,3 +13,8 @@ nltk
 llama-index-llms-ollama
 llama-index
 llama-index-embeddings-ollama
+bs4 # scraper
+selenium #  webdriver
+webdriver-manager
+sqlmodel
+python-dotenv
