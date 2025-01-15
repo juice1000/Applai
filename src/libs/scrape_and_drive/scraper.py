@@ -51,7 +51,6 @@ def scrape_job_links():
         driver = get_driver()
         # Navigate to the base URL
         accept_cookies()
-
         login(driver)
 
         # Navigate to projects page
@@ -130,12 +129,9 @@ def scrape_jobs_fmap():
     """
     logger.info("Starting scrape_jobs_fmap...")
     links = scrape_job_links()
-    count = 2
-    idx = 0
-    for link in links:
+
+    for idx, link in enumerate(links):
         job = scrape_job_details(link)
         write_or_update_job(job)
-        idx += 1
         logger.info(f"Scraped {idx} jobs out of {len(links)}.")
-        if idx >= count:
-            break
+        idx += 1

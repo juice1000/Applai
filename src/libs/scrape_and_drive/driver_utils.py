@@ -81,6 +81,7 @@ def input_text(
         text (str): The text to input.
     """
     element: WebElement = wait_for_element(root, by, value)
+    scroll_to_view(root, element)
     element.send_keys(input)
     wait_for_page()
 
@@ -107,6 +108,22 @@ def scroll_and_click(root: WebElement | webdriver.Chrome, element: WebElement):
     else:
         root = get_driver()
         ActionChains(root).move_to_element(element).click().perform()
+    wait_for_page()
+
+
+def scroll_to_view(root: WebElement | webdriver.Chrome, element: WebElement):
+    """
+    Scroll to an element.
+
+    Args:
+        root (webdriver.Chrome | WebElement): The Chrome WebDriver instance or the parent element.
+        element (WebElement): The element to scroll to.
+    """
+    if isinstance(root, webdriver.Chrome):
+        ActionChains(root).move_to_element(element).perform()
+    else:
+        root = get_driver()
+        ActionChains(root).move_to_element(element).perform()
     wait_for_page()
 
 

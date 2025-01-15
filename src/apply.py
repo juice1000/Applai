@@ -1,4 +1,8 @@
-from libs.db.get_job import get_all_jobs, get_job_files, get_jobs_without_application
+from libs.db.get_job import (
+    get_all_jobs,
+    get_job_files,
+    get_jobs_without_application_letter,
+)
 from libs.db.init_db import Job
 from libs.db.write_job import update_job
 from libs.generate.generate_application import generate_application
@@ -35,7 +39,7 @@ def write_job_applications(update: bool = False):
 
     if not update:
         # retrieve all jobs without applications
-        jobs = get_jobs_without_application()
+        jobs = get_jobs_without_application_letter()
     else:
         jobs = get_all_jobs()
 

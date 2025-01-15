@@ -49,7 +49,24 @@ def get_all_jobs():
         return jobs
 
 
-def get_jobs_without_application():
+def get_jobs_with_pending_application():
+    logger.info("Retrieving all jobs with pending applications from DB...")
+    """
+    Get all jobs from the database that have a pending application.
+
+    Returns:
+        list: A list of jobs with pending applications.
+    """
+    if not engine:
+        raise Exception("No Engine for DB found")
+    with Session(engine) as session:
+        statement = select(Job).where(Job.date_applied.is_(None))
+        jobs = session.exec(statement).all()
+        logger.info(f"Number of Jobs with pending applications retrieved: {len(jobs)}")
+        return jobs
+
+
+def get_jobs_without_application_letter():
     logger.info("Retrieving all jobs without applications from DB...")
     """
     Get all jobs from the database that don't have an application yet.

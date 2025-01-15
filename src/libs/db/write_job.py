@@ -27,12 +27,14 @@ def write_or_update_job(job: Job):
             return job
 
 
-def update_job(job: Job):
-    logger.info(f"Writing job {job.title} to DB...")
+def update_job(job: Job, **kwargs):
+    logger.info(f"Updating job {job.title} in DB with additional fields...")
     if not engine:
         raise Exception("No Engine for DB found")
     with Session(engine) as session:
+        for key, value in kwargs.items():
+            setattr(job, key, value)
         session.add(job)
         session.commit()
-        logger.info("Job record saved.")
+        logger.info("Job record updated.")
         return job

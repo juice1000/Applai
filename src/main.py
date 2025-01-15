@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import uvicorn
 from fastapi import FastAPI
 
@@ -5,9 +7,11 @@ from apply import apply_from_files, write_job_applications
 from custom_types import PromptRequest
 from libs.db.get_job import get_all_jobs
 from libs.db.init_db import initialize_db
+from libs.db.write_job import update_job
 from libs.embed.embed_document import embed_document
 from libs.generate.retrieve_from_rag import retrieve_from_rag_experimental
 from libs.logger.init_logger import logger
+from libs.scrape_and_drive.application_driver import apply_from_db
 from libs.scrape_and_drive.scraper import scrape_jobs_fmap
 
 app = FastAPI()
@@ -43,6 +47,13 @@ def write_applications(update: bool = False):
 def apply_to_job():
     # generate the application from job description
     apply_from_files()
+
+
+@app.get("/apply/")
+def apply():
+    # run scraper to apply from jobs that haven't been applied to
+    apply_from_db()
+    return {"message": "Job applications sent"}
 
 
 @app.get("/scrape/")
