@@ -41,7 +41,7 @@ def write_job_applications(update: bool = False):
 
     for job in jobs:
         # retrieve the context from the resume in regards to the job description
-        rag_retrieval_context = retrieve_from_rag(job.description)
+        rag_retrieval_context = retrieve_from_rag(job.description, job.keywords)
         job.resume_context = rag_retrieval_context
 
         # generate the application from job description

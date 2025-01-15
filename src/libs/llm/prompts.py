@@ -11,10 +11,15 @@ Use my resume content to make the response highly relevant and targeted, includi
 
 ---
 
+Here are keywords related to the job description:
+
+{keywords}
+
+---
+
 Here is the job description:
 
 {description}
-
 ---
 
 Here is the context from my resume:
@@ -29,7 +34,17 @@ rag_retrieval_prompt = """Answer the question based only on the following contex
 
 ---
 
-The question is: "What relevant project experience do I have based on the following job description?" Provide a list of the two most relevant jobs with detailed information. Return only the project details, the description and the used technology. Omit any introductory or contextual sentences. Here is the job description:
+The question is: "What relevant project experience do I have based on the following job description?" Provide a list of the two most relevant jobs with detailed information. Return only the project details, the description and the used technology. Omit any introductory or contextual sentences. 
+
+---
+
+Here are keywords related to the job description:
+
+{keywords}
+
+---
+
+Here is the job description:
 
 {description}
 

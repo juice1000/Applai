@@ -34,7 +34,7 @@ def get_context(db_results):
 
 
 def retrieve_rag_response_from_context(
-    query_text: str, context_text: str, experimental=False
+    query_text: str, context_text: str, keywords: str = "", experimental=False
 ):
     # Prepare the prompt for the LLM.
     if experimental:
@@ -44,7 +44,9 @@ def retrieve_rag_response_from_context(
     else:
         prompt_template = ChatPromptTemplate.from_template(rag_retrieval_prompt)
 
-    prompt = prompt_template.format(context=context_text, description=query_text)
+    prompt = prompt_template.format(
+        context=context_text, description=query_text, keywords=keywords
+    )
 
     model = init_completion_function()
     response_text = model.invoke(prompt)
@@ -52,7 +54,7 @@ def retrieve_rag_response_from_context(
     return response_text
 
 
-def retrieve_from_rag(query_text: str):
+def retrieve_from_rag(query_text: str, keywords: str = ""):
     logger.info(f"Retrieving from RAG for query: {query_text[50]}")
     # Search the DB for the query text
     db_results = search_docs(query_text)
@@ -61,7 +63,9 @@ def retrieve_from_rag(query_text: str):
     context_text = get_context(db_results)
 
     # Prompt the LLM.
-    response_text = retrieve_rag_response_from_context(query_text, context_text)
+    response_text = retrieve_rag_response_from_context(
+        query_text, context_text, keywords
+    )
     logger.info(response_text[50])
     return response_text
 
