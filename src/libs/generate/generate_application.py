@@ -8,7 +8,7 @@ from libs.logger.init_logger import logger
 
 
 def generate_application(job: Job):
-    logger.info(f"Generating application for job {job.url}...")
+    logger.info(f"Generating application for job {job.title}...")
     # Extract the job description
     job_description = job.description
     # Extract the context

@@ -53,6 +53,7 @@ def retrieve_rag_response_from_context(
 
 
 def retrieve_from_rag(query_text: str):
+    logger.info(f"Retrieving from RAG for query: {query_text[50]}")
     # Search the DB for the query text
     db_results = search_docs(query_text)
 
@@ -61,11 +62,12 @@ def retrieve_from_rag(query_text: str):
 
     # Prompt the LLM.
     response_text = retrieve_rag_response_from_context(query_text, context_text)
+    logger.info(response_text[50])
     return response_text
 
 
 def retrieve_from_rag_experimental(query_text: str):
-    logger.info(f"Retrieving response for query: {query_text}")
+    logger.info(f"Retrieving response for query: {query_text[50]}")
     # Search the DB for the query text
     db_results = search_docs(query_text)
 
@@ -79,5 +81,5 @@ def retrieve_from_rag_experimental(query_text: str):
     )
 
     formatted_response = f"Response: {response_text}\nSources: {sources}\n\n"
-    print(formatted_response)
+    logger.info(formatted_response[50])
     return response_text

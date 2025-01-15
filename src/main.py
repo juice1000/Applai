@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 
-from apply import apply_from_files
+from apply import apply_from_files, write_job_applications
 from custom_types import PromptRequest
 from libs.db.get_job import get_all_jobs
 from libs.db.init_db import initialize_db
@@ -30,6 +30,13 @@ def generate(req: PromptRequest):
     prompt = req.prompt
     response = retrieve_from_rag_experimental(prompt)
     return {"message": response}
+
+
+@app.get("/write_applications/")
+def write_applications(update: bool = False):
+    # generate the application from job description
+    number_of_jobs = write_job_applications(update)
+    return {"message": f"Job applications generated for {number_of_jobs} jobs"}
 
 
 @app.get("/apply_from_files/")
