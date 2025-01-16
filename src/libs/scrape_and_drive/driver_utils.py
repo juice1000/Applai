@@ -166,4 +166,4 @@ def check_box(
         ActionChains(root).move_to_element(element).click().perform()
 
     # TODO: Not optimal, we should check if the checkbox is clickable rn or if the content has loaded after filter was applied
-    time.sleep(3)
+    time.sleep(4)

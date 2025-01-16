@@ -134,4 +134,3 @@ def scrape_jobs_fmap():
         job = scrape_job_details(link)
         write_or_update_job(job)
         logger.info(f"Scraped {idx} jobs out of {len(links)}.")
-        idx += 1
