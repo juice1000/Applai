@@ -1,55 +1,105 @@
-import { Card, CardContent, Typography, Grid } from '@mui/material';
+import { Typography, Box } from '@mui/material';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { useState, useEffect } from 'react';
+import { fetchJobs, Job } from '../libs/api';
 
-const dummyData = [
+const getStatusColor = (status: string) => {
+  switch (status.toLowerCase()) {
+    case 'pending':
+      return '#fff3e0'; // Light orange
+    case 'applied':
+      return '#e8f5e9'; // Light green
+    case 'rejected':
+      return '#ffebee'; // Light red
+    default:
+      return 'transparent';
+  }
+};
+
+// Add table data
+const columns: GridColDef[] = [
+  { field: 'id', headerName: 'ID', width: 70 },
+  { field: 'title', headerName: 'Job Title', width: 200 },
   {
-    title: 'Project Management',
-    description: 'Streamline your workflow with our intuitive project management tools. Track progress, assign tasks, and meet deadlines effectively.',
+    field: 'status',
+    headerName: 'Status',
+    width: 100,
+    renderCell: (params) => (
+      <Box
+        sx={{
+          backgroundColor: getStatusColor(params.value as string),
+          padding: '4px 8px',
+          borderRadius: '4px',
+          width: '100%',
+          textAlign: 'center',
+        }}
+      >
+        {params.value}
+      </Box>
+    ),
   },
-  {
-    title: 'Data Analytics',
-    description: 'Transform raw data into actionable insights. Our powerful analytics dashboard helps you make informed decisions.',
-  },
-  {
-    title: 'Team Collaboration',
-    description: 'Foster teamwork and communication with our collaborative features. Share resources and stay connected in real-time.',
-  },
-  {
-    title: 'Resource Planning',
-    description: 'Optimize resource allocation and capacity planning. Ensure your team operates at peak efficiency.',
-  },
-  {
-    title: 'Performance Metrics',
-    description: 'Monitor key performance indicators and track success metrics. Stay on top of your business goals.',
-  },
-  {
-    title: 'Customer Feedback',
-    description: 'Gather and analyze customer feedback to improve your products and services. Build better customer relationships.',
-  },
+  { field: 'keywords', headerName: 'Keywords', width: 200 },
+  { field: 'description', headerName: 'Description', width: 200 },
+  { field: 'dateApplied', headerName: 'Date Applied', width: 130 },
 ];
 
 const Dashboard = () => {
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadJobs = async () => {
+      try {
+        const data = await fetchJobs();
+        setJobs(data);
+      } catch (error) {
+        console.error('Failed to fetch jobs:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadJobs();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <Box sx={{ width: '100%', py: 4 }}>
+      <Typography variant="h4">This is a full-width component</Typography>
       <Typography variant="h3" className="mb-6 text-gray-800">
         Dashboard
       </Typography>
-      <Grid container spacing={4}>
-        {dummyData.map((card, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card className="hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="min-h-[200px]">
-                <Typography variant="h5" component="h2" className="mb-4 text-gray-900">
-                  {card.title}
-                </Typography>
-                <Typography variant="body1" color="text.secondary">
-                  {card.description}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </div>
+
+      {/* Jobs Table Section */}
+      <div className="bg-white rounded-lg p-4">
+        <Typography variant="h5" className="mb-4">
+          Job Applications
+        </Typography>
+        <Box sx={{ width: '100%', height: 400 }}>
+          <DataGrid
+            rows={jobs}
+            columns={columns}
+            loading={loading}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 5 },
+              },
+            }}
+            pageSizeOptions={[5, 10]}
+            sx={{
+              backgroundColor: 'white',
+              '& .MuiDataGrid-root': {
+                width: '100%',
+              },
+              '& .MuiDataGrid-row': {
+                '&:hover': {
+                  backgroundColor: '#f5f5f5',
+                },
+              },
+            }}
+          />
+        </Box>
+      </div>
+    </Box>
   );
 };
 

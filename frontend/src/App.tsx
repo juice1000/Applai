@@ -1,5 +1,6 @@
-import { ThemeProvider, createTheme } from '@mui/material'
-import Dashboard from './components/Dashboard'
+import { ThemeProvider, createTheme } from '@mui/material';
+import Dashboard from './components/Dashboard';
+import Layout from './Layout';
 
 const theme = createTheme({
   typography: {
@@ -10,9 +11,11 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Dashboard />
+      <Layout>
+        <Dashboard />
+      </Layout>
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+export default App;

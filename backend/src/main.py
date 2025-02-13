@@ -1,10 +1,10 @@
 from datetime import datetime
 
 import uvicorn
-from fastapi import FastAPI
-
 from apply import apply_from_files, write_job_applications
 from custom_types import PromptRequest
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from libs.db.get_job import get_all_jobs
 from libs.db.init_db import initialize_db
 from libs.db.write_job import update_job
@@ -15,6 +15,18 @@ from libs.scrape_and_drive.application_driver import apply_from_db
 from libs.scrape_and_drive.scraper import scrape_jobs_fmap
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:5173",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
