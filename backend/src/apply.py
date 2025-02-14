@@ -37,6 +37,7 @@ def apply_from_files():
 def write_job_applications(update: bool = False):
     logger.info("Writing job applications to DB...")
 
+    # TODO: get all jobs that haven't been applied to
     if not update:
         # retrieve all jobs without applications
         jobs = get_jobs_without_application_letter()

@@ -11,6 +11,7 @@ from libs.db.init_db import initialize_db
 from libs.db.write_job import update_job_by_id
 from libs.embed.embed_document import embed_document
 from libs.generate.retrieve_from_rag import retrieve_from_rag_experimental
+from libs.llm.init_llm import init_llm_services
 from libs.logger.init_logger import logger
 from libs.scrape_and_drive.application_driver import apply_from_db
 from libs.scrape_and_drive.scraper import scrape_jobs_fmap
@@ -51,15 +52,16 @@ def generate(req: PromptRequest):
 
 @app.get("/write_applications/")
 def write_applications(update: bool = False):
+    print("Writing applications", update)
     # generate the application from job description
     number_of_jobs = write_job_applications(update)
     return {"message": f"Job applications generated for {number_of_jobs} jobs"}
 
 
-@app.get("/apply_from_files/")
-def apply_to_job():
-    # generate the application from job description
-    apply_from_files()
+# @app.get("/apply_from_files/")
+# def apply_to_job():
+#     # generate the application from job description
+#     apply_from_files()
 
 
 @app.get("/apply/")
@@ -84,7 +86,7 @@ def get_jobs():
 
 @app.put("/jobs/{job_id}")
 def update_job_status(job_id: int, job_update: JobUpdate):
-    update_job_by_id(id=job_id, status=job_update.status)
+    update_job_by_id(job_id, status=job_update.status)
     return {"message": f"Job {job_id} updated with status {job_update.status}"}
 
 
@@ -102,7 +104,11 @@ def get_db_schema():
 
 
 if __name__ == "__main__":
-    # run the server
-    initialize_db()
-    logger.info("DB started")
-    uvicorn.run("main:app", reload=True)
+    # Initialize services
+    try:
+        initialize_db()
+        init_llm_services()
+        uvicorn.run("main:app", reload=True)
+    except RuntimeError as e:
+        logger.error(str(e))
+        exit(1)

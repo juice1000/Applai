@@ -1,10 +1,13 @@
-import { Box } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 
 export const getStatusColor = (status: string) => {
   switch (status.toLowerCase()) {
     case 'pending':
       return '#ffd54f'; // Vivid yellow
+    case 'ready':
+      return '#64b5f6'; // Vivid blue
+    case 'review':
+      return '#b0aac0'; // Vivid purple
     case 'applied':
       return '#81c784'; // Vivid green
     case 'rejected':
@@ -32,17 +35,15 @@ export const columns: GridColDef[] = [
     width: 100,
     headerClassName: 'super-app-theme--header',
     renderCell: (params) => (
-      <Box
-        sx={{
+      <div
+        style={{
           backgroundColor: getStatusColor(params.value as string),
-          borderRadius: '4px',
           width: '100%',
-          margin: 0,
           textAlign: 'center',
         }}
       >
         {params.value}
-      </Box>
+      </div>
     ),
   },
   {
@@ -76,6 +77,9 @@ export const gridStyles = {
     '&:hover': {
       backgroundColor: '#e3f2fd !important', // Vivid blue hover
       cursor: 'pointer',
+    },
+    '&.Mui-selected': {
+      backgroundColor: '#e3f2fd !important', // Vivid blue selected
     },
   },
   '& .MuiDataGrid-cell': {

@@ -1,7 +1,5 @@
 from datetime import datetime
 
-from selenium.webdriver.common.by import By
-
 from libs.db.get_job import get_jobs_with_pending_application
 from libs.db.write_job import update_job
 from libs.logger.init_logger import logger
@@ -14,12 +12,15 @@ from libs.scrape_and_drive.driver_utils import (
 )
 from libs.scrape_and_drive.init_scraper import close_driver, get_driver, navigate_to
 from libs.scrape_and_drive.scraper import login
+from selenium.webdriver.common.by import By
 
 
 def apply_from_db():
+
     logger.info("Applying from DB...")
     # generate the application from job description
     jobs = get_jobs_with_pending_application()
+    return
     driver = get_driver()
     login(driver)
 

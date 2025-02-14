@@ -29,12 +29,12 @@ const JobDetailModal = ({ open, onClose, job, onUpdate }: JobDetailModalProps) =
   if (!job) return null;
 
   const isIrrelevant = job.status === 'irrelevant';
+  const underReview = job.status === 'review';
 
-  const handleFlagToggle = async () => {
+  const handleFlagToggle = async (newStatus: 'pending' | 'applied' | 'rejected' | 'irrelevant' | 'review' | 'ready') => {
     if (!job) return;
 
     try {
-      const newStatus = isIrrelevant ? 'pending' : 'irrelevant';
       await updateJobStatus(job.id, newStatus);
       onUpdate();
       onClose();
@@ -55,7 +55,7 @@ const JobDetailModal = ({ open, onClose, job, onUpdate }: JobDetailModalProps) =
 
         <Box sx={{ mb: 3, display: 'flex', gap: 2 }}>
           <Typography
-            sx={{ backgroundColor: getStatusColor(job.status), width: 'fit-content', paddingY: 1, paddingX: 2, borderRadius: '20px', fontWeight: 'bold' }}
+            sx={{ backgroundColor: getStatusColor(job.status), width: 'fit-content', paddingY: 1, paddingX: 2, borderRadius: '50px', fontWeight: 'bold' }}
             color="text.secondary"
             variant="subtitle1"
           >
@@ -75,16 +75,25 @@ const JobDetailModal = ({ open, onClose, job, onUpdate }: JobDetailModalProps) =
         <Typography color="text.secondary" variant="h6" gutterBottom>
           Keywords
         </Typography>
-        <Typography color="text.secondary" paragraph>
-          {job.keywords}
-        </Typography>
-
+        <Typography color="text.secondary">{job.keywords}</Typography>
+        <br />
         <Typography color="text.secondary" variant="h6" gutterBottom>
           Description
         </Typography>
         <Typography color="text.secondary" style={{ whiteSpace: 'pre-wrap' }}>
           {job.description}
         </Typography>
+        <br />
+        {job.applicationLetter && (
+          <>
+            <Typography color="text.secondary" variant="h6" gutterBottom>
+              Application Letter
+            </Typography>
+            <Typography color="text.secondary" style={{ whiteSpace: 'pre-wrap' }}>
+              {job.applicationLetter || 'No application letter'}
+            </Typography>
+          </>
+        )}
 
         <Box
           sx={{
@@ -99,9 +108,25 @@ const JobDetailModal = ({ open, onClose, job, onUpdate }: JobDetailModalProps) =
             justifyContent: 'flex-end',
           }}
         >
-          <Button variant="outlined" color={isIrrelevant ? 'success' : 'warning'} onClick={handleFlagToggle} startIcon={<FlagIcon />}>
+          <Button
+            variant="outlined"
+            color={isIrrelevant ? 'success' : 'warning'}
+            onClick={() => handleFlagToggle(isIrrelevant ? 'pending' : 'irrelevant')}
+            startIcon={<FlagIcon />}
+            sx={{ borderRadius: '50px', fontWeight: 'bold' }}
+          >
             {isIrrelevant ? 'Mark Relevant' : 'Mark Irrelevant'}
           </Button>
+          {job.applicationLetter && (
+            <Button
+              variant="outlined"
+              color={underReview ? 'primary' : 'secondary'}
+              onClick={() => handleFlagToggle(underReview ? 'ready' : 'review')}
+              sx={{ borderRadius: '50px', fontWeight: 'bold', ml: 2 }}
+            >
+              {underReview ? 'Mark Safe' : 'Mark Under Review'}
+            </Button>
+          )}
         </Box>
       </Box>
     </Modal>

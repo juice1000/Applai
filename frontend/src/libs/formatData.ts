@@ -1,6 +1,8 @@
 export const getStatus = (jobData: any) => {
   if (jobData['status'] === 'irrelevant') {
     return 'irrelevant';
+  } else if (jobData['status'] === 'review') {
+    return 'review';
   } else if (jobData['date_applied'] !== null) {
     return 'applied';
   } else if (jobData['application_letter'] !== null) {
