@@ -9,7 +9,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <Box sx={{ width: '100vw', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Box sx={{ width: '100%', maxWidth: '1400px', margin: '0 auto', px: '3vw' }}>{children}</Box>
+      <Box sx={{ width: '100%', maxWidth: '2000px', margin: '0 auto', px: '3vw' }}>{children}</Box>
     </Box>
   );
 };
