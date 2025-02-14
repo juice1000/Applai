@@ -1,5 +1,7 @@
 export const getStatus = (job: any) => {
-  if (job['date_applied'] !== null) {
+  if (job['status'] === 'irrelevant') {
+    return 'Irrelevant';
+  } else if (job['date_applied'] !== null) {
     return 'Applied';
   } else if (job['application_letter'] !== null) {
     return 'Ready';

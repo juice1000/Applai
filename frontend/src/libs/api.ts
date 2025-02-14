@@ -9,7 +9,7 @@ export interface Job {
   url: string;
   keywords: string;
   description: string;
-  status: string;
+  status: 'pending' | 'applied' | 'rejected' | 'irrelevant';
   dateApplied: string;
   applicationLetter: string;
 }
@@ -17,4 +17,9 @@ export interface Job {
 export const fetchJobs = async (): Promise<Job[]> => {
   const response = await axios.get(`${API_URL}/jobs/`);
   return formatData(response.data);
+};
+
+export const updateJobStatus = async (jobId: number, status: Job['status']): Promise<Job> => {
+  const response = await axios.put(`${API_URL}/jobs/${jobId}`, { status });
+  return response.data;
 };

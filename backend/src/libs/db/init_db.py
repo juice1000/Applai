@@ -1,8 +1,7 @@
 from typing import Optional
 
-from sqlmodel import Field, SQLModel, create_engine
-
 from libs.logger.init_logger import logger
+from sqlmodel import Field, SQLModel, create_engine
 
 engine = create_engine("sqlite:///./jobs.db")
 
@@ -16,6 +15,7 @@ class Job(SQLModel, table=True):
     date_applied: Optional[str] = None
     resume_context: Optional[str] = None
     application_letter: Optional[str] = None
+    status: Optional[str] = None
 
 
 def initialize_db():

@@ -2,17 +2,19 @@ from datetime import datetime
 
 import uvicorn
 from apply import apply_from_files, write_job_applications
-from custom_types import PromptRequest
+from custom_types import FieldRequest, JobUpdate, PromptRequest
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from libs.db.db_operations import add_field_to_table, get_table_schema
 from libs.db.get_job import get_all_jobs
 from libs.db.init_db import initialize_db
-from libs.db.write_job import update_job
+from libs.db.write_job import update_job_by_id
 from libs.embed.embed_document import embed_document
 from libs.generate.retrieve_from_rag import retrieve_from_rag_experimental
 from libs.logger.init_logger import logger
 from libs.scrape_and_drive.application_driver import apply_from_db
 from libs.scrape_and_drive.scraper import scrape_jobs_fmap
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -79,6 +81,25 @@ def get_jobs():
     # generate the application from job description
     jobs = get_all_jobs()
     return jobs
+
+
+@app.put("/jobs/{job_id}")
+def update_job_status(job_id: int, job_update: JobUpdate):
+    update_job_by_id(id=job_id, status=job_update.status)
+    return {"message": f"Job {job_id} updated with status {job_update.status}"}
+
+
+@app.post("/db/")
+def update_db_fields(req: FieldRequest):
+    # add a field to the database table
+    add_field_to_table(req.field_name, req.field_type)
+    return {"message": "Field added to table"}
+
+
+@app.get("/db/")
+def get_db_schema():
+    # get the database schema
+    return get_table_schema()
 
 
 if __name__ == "__main__":

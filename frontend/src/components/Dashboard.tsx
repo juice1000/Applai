@@ -11,24 +11,28 @@ const Dashboard = () => {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    const loadJobs = async () => {
-      try {
-        const data = await fetchJobs();
-        setJobs(data);
-      } catch (error) {
-        console.error('Failed to fetch jobs:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const loadJobs = async () => {
+    try {
+      const data = await fetchJobs();
+      setJobs(data);
+    } catch (error) {
+      console.error('Failed to fetch jobs:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     loadJobs();
   }, []);
 
   const handleRowDoubleClick = (params: GridRowParams) => {
     setSelectedJob(params.row as Job);
     setIsModalOpen(true);
+  };
+
+  const handleJobUpdate = () => {
+    loadJobs(); // Refresh the jobs list
   };
 
   return (
@@ -61,7 +65,7 @@ const Dashboard = () => {
         </Box>
       </div>
 
-      <JobDetailModal open={isModalOpen} onClose={() => setIsModalOpen(false)} job={selectedJob} />
+      <JobDetailModal open={isModalOpen} onClose={() => setIsModalOpen(false)} job={selectedJob} onUpdate={handleJobUpdate} />
     </Box>
   );
 };

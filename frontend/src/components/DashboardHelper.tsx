@@ -9,6 +9,8 @@ export const getStatusColor = (status: string) => {
       return '#e8f5e9'; // Light green
     case 'rejected':
       return '#ffebee'; // Light red
+    case 'irrelevant':
+      return '#ffebee'; // Light red
     default:
       return 'transparent';
   }
