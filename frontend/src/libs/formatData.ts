@@ -1,20 +1,20 @@
-export const getStatus = (job: any) => {
-  if (job['status'] === 'irrelevant') {
-    return 'Irrelevant';
-  } else if (job['date_applied'] !== null) {
-    return 'Applied';
-  } else if (job['application_letter'] !== null) {
-    return 'Ready';
+export const getStatus = (jobData: any) => {
+  if (jobData['status'] === 'irrelevant') {
+    return 'irrelevant';
+  } else if (jobData['date_applied'] !== null) {
+    return 'applied';
+  } else if (jobData['application_letter'] !== null) {
+    return 'ready';
   } else {
-    return 'Pending';
+    return 'pending';
   }
 };
 
 export const formatData = (data: any) => {
-  return data.map((job: any) => ({
-    ...job,
-    dateApplied: job['date_applied'] && new Date(job['date_applied']).toLocaleDateString(),
-    applicationLetter: job['application_letter'],
-    status: getStatus(job),
+  return data.map((jobData: any) => ({
+    ...jobData,
+    dateApplied: jobData['date_applied'] && new Date(job['date_applied']).toLocaleDateString(),
+    applicationLetter: jobData['application_letter'],
+    status: getStatus(jobData),
   }));
 };

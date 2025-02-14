@@ -14,7 +14,6 @@ from libs.generate.retrieve_from_rag import retrieve_from_rag_experimental
 from libs.logger.init_logger import logger
 from libs.scrape_and_drive.application_driver import apply_from_db
 from libs.scrape_and_drive.scraper import scrape_jobs_fmap
-from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -105,4 +104,5 @@ def get_db_schema():
 if __name__ == "__main__":
     # run the server
     initialize_db()
+    logger.info("DB started")
     uvicorn.run("main:app", reload=True)

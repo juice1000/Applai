@@ -37,16 +37,12 @@ const Dashboard = () => {
 
   return (
     <Box sx={{ width: '100%', py: 4 }}>
-      <Typography variant="h4">This is a full-width component</Typography>
-      <Typography variant="h3" className="mb-6 text-gray-800">
-        Dashboard
+      <Typography variant="h3" className="text-gray-800">
+        Job Applications
       </Typography>
 
       {/* Jobs Table Section */}
       <div className="bg-white rounded-lg p-4">
-        <Typography variant="h5" className="mb-4">
-          Job Applications
-        </Typography>
         <Box sx={{ width: '100%', height: '100%' }}>
           <DataGrid
             rows={jobs}
@@ -59,7 +55,7 @@ const Dashboard = () => {
               },
             }}
             pageSizeOptions={[5, 10]}
-            getRowHeight={() => 80}
+            getRowHeight={() => 120}
             sx={gridStyles}
           />
         </Box>

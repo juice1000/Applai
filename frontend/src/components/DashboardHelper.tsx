@@ -4,13 +4,13 @@ import { GridColDef } from '@mui/x-data-grid';
 export const getStatusColor = (status: string) => {
   switch (status.toLowerCase()) {
     case 'pending':
-      return '#fff3e0'; // Light orange
+      return '#ffd54f'; // Vivid yellow
     case 'applied':
-      return '#e8f5e9'; // Light green
+      return '#81c784'; // Vivid green
     case 'rejected':
-      return '#ffebee'; // Light red
+      return '#ff8a80'; // Vivid red
     case 'irrelevant':
-      return '#ffebee'; // Light red
+      return '#b0bec5'; // Vivid grey
     default:
       return 'transparent';
   }
@@ -19,7 +19,13 @@ export const getStatusColor = (status: string) => {
 // Add table data
 export const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 40, headerClassName: 'super-app-theme--header' },
-  { field: 'title', headerName: 'Job Title', width: 200, headerClassName: 'super-app-theme--header' },
+  {
+    field: 'title',
+    headerName: 'Job Title',
+    width: 200,
+    headerClassName: 'super-app-theme--header',
+    renderCell: (params) => <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.2', width: '100%' }}>{params.value}</div>,
+  },
   {
     field: 'status',
     headerName: 'Status',
@@ -65,10 +71,10 @@ export const gridStyles = {
   },
   '& .MuiDataGrid-row': {
     '&:nth-of-type(even)': {
-      backgroundColor: '#e6e6e6',
+      backgroundColor: '#f5f5f5',
     },
     '&:hover': {
-      backgroundColor: '#c4c4c4 !important',
+      backgroundColor: '#e3f2fd !important', // Vivid blue hover
       cursor: 'pointer',
     },
   },
@@ -77,6 +83,18 @@ export const gridStyles = {
     whiteSpace: 'normal',
     padding: '8px',
     borderBottom: '1px solid #e0e0e0',
+  },
+  '& .MuiDataGrid-cell:focus': {
+    outline: 'none',
+  },
+  '& .MuiDataGrid-cell:focus-within': {
+    outline: 'none',
+  },
+  '& .MuiDataGrid-columnHeader:focus': {
+    outline: 'none',
+  },
+  '& .MuiDataGrid-columnHeader:focus-within': {
+    outline: 'none',
   },
   '& .MuiDataGrid-columnHeaders': {
     borderBottom: '2px solid #bdbdbd',

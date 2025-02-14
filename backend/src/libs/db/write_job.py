@@ -51,7 +51,7 @@ def update_job_by_id(id: int, **kwargs):
     with Session(engine) as session:
         job = session.get(Job, id)
     if job:
-        update_job(job, kwargs)
+        update_job(job=job, **kwargs)
     else:
         logger.error(f"Job {id} not found")
         raise Exception(f"Job {id} not found")

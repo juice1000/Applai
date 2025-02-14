@@ -100,7 +100,7 @@ const JobDetailModal = ({ open, onClose, job, onUpdate }: JobDetailModalProps) =
           }}
         >
           <Button variant="outlined" color={isIrrelevant ? 'success' : 'warning'} onClick={handleFlagToggle} startIcon={<FlagIcon />}>
-            {isIrrelevant ? 'Mark Relevant' : 'Flag Irrelevant'}
+            {isIrrelevant ? 'Mark Relevant' : 'Mark Irrelevant'}
           </Button>
         </Box>
       </Box>
