@@ -61,11 +61,6 @@ const Dashboard = () => {
     loadJobs();
   }, []);
 
-  // Remount on jobs change
-  useEffect(() => {
-    console.log('jobs:', jobs);
-  }, [jobs]);
-
   let selectedJob: Job | undefined;
   if (selectedJobId) {
     selectedJob = jobs.find((job) => job.id === selectedJobId);
