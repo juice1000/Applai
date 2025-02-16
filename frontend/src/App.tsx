@@ -1,5 +1,4 @@
 import { ThemeProvider, createTheme } from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
 import Dashboard from './components/Dashboard';
 import Layout from './Layout';
 
