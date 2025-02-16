@@ -23,11 +23,14 @@ export const updateJobStatus = async (jobId: number, status: Job['status']): Pro
   const response = await axios.put(`${API_URL}/jobs/${jobId}`, { status });
   return response.data;
 };
-export const updateApplication = async (jobId: number, applicationLetter: Job['applicationLetter']): Promise<Job> => {
-  const response = await axios.put(`${API_URL}/jobs${jobId}`, { applicationLetter });
+export const updateApplication = async (jobId: number, applicationLetter?: Job['applicationLetter']): Promise<Job> => {
+  const response = await axios.put(`${API_URL}/jobs/${jobId}`, { applicationLetter });
   return response.data;
 };
-
+export const writeApplication = async (jobId: number) => {
+  const response = await axios.get(`${API_URL}/write_applications/${jobId}`);
+  return response.data;
+};
 export const writeCoverLetter = async (update?: boolean) => {
   if (update !== undefined) {
     await axios.get(`${API_URL}/write_applications`, { params: { update: update } });

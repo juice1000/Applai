@@ -1,7 +1,4 @@
-from datetime import datetime
-
 import uvicorn
-from apply import apply_from_files, write_job_applications
 from custom_types import FieldRequest, JobUpdate, PromptRequest
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,6 +12,7 @@ from libs.llm.init_llm import init_llm_services
 from libs.logger.init_logger import logger
 from libs.scrape_and_drive.application_driver import apply_from_db
 from libs.scrape_and_drive.scraper import scrape_jobs_fmap
+from write_application import write_job_applications
 
 app = FastAPI()
 
@@ -37,8 +35,8 @@ def root():
 
 
 @app.get("/embed/")
-def embed_sources():
-    embed_document()
+def embed_sources(clear: bool = False):
+    embed_document(clear=clear)
     return {"message": "Document loaded"}
 
 
@@ -54,7 +52,7 @@ def generate(req: PromptRequest):
 def write_applications(update: bool = False):
     print("Writing applications", update)
     # generate the application from job description
-    number_of_jobs = write_job_applications(update)
+    number_of_jobs = write_job_applications(update=update)
     return {"message": f"Job applications generated for {number_of_jobs} jobs"}
 
 
@@ -88,6 +86,14 @@ def get_jobs():
 def update_job_status(job_id: int, job_update: JobUpdate):
     update_job_by_id(job_id, status=job_update.status)
     return {"message": f"Job {job_id} updated with status {job_update.status}"}
+
+
+@app.get("/write_applications/{job_id}")
+def write_single_job_application(job_id: int):
+    print("Update application", job_id)
+    # generate the application from job description
+    number_of_jobs = write_job_applications(job_id=job_id)
+    return {"message": f"Job applications generated for {number_of_jobs} jobs"}
 
 
 @app.post("/db/")

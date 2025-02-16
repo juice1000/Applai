@@ -5,17 +5,33 @@ from langchain.schema.document import Document
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-
 from libs.llm.init_llm import init_embedding_function
 from libs.logger.init_logger import logger
 
-CHROMA_PATH = "chroma"
-DATA_PATH = "data"
+# Get the project root directory (where main.py is located)
+CUR_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.abspath(os.path.join(CUR_DIR, "..", "..", ".."))
+CHROMA_PATH = os.path.join(ROOT_DIR, "chroma")
+DATA_PATH = os.path.join(ROOT_DIR, "data")
 
 
 def load_document() -> list[Document]:
-    # Load the document
-    loader = PyMuPDFLoader("data/input/resume.pdf")
+    """
+    Load the resume document using a relative path from the project root.
+
+    Returns:
+        list[Document]: A list containing the loaded document
+    """
+
+    resume_path = os.path.join(ROOT_DIR, "data", "input", "resume.pdf")
+
+    logger.info(f"Loading document from: {resume_path}")
+
+    if not os.path.exists(resume_path):
+        logger.error(f"Resume file not found at: {resume_path}")
+        raise FileNotFoundError(f"Resume file not found at: {resume_path}")
+
+    loader = PyMuPDFLoader(resume_path)
     documents = loader.load()
     return documents
 
@@ -97,7 +113,6 @@ def add_to_chroma(chunks: list[Document]):
         print(f"👉 Adding new documents: {len(new_chunks)}")
         new_chunk_ids = [chunk.metadata["id"] for chunk in new_chunks]
         db.add_documents(new_chunks, ids=new_chunk_ids)
-        db.persist()
     else:
         print("✅ No new documents to add")
 
@@ -107,9 +122,11 @@ def clear_database():
         shutil.rmtree(CHROMA_PATH)
 
 
-def embed_document():
+def embed_document(clear: bool = False):
     logger.info("Embedding document...")
-    clear_database()
+    if clear:
+        clear_database()
+
     documents = load_document()
     chunks = split_documents(documents)
     add_to_chroma(chunks)

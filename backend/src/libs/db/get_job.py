@@ -31,6 +31,13 @@ def get_job_by_url(url):
         return session.exec(statement).first()
 
 
+def get_job_by_id(job_id):
+    logger.info(f"Retrieving job by ID: {job_id}")
+    with Session(engine) as session:
+        statement = select(Job).where(Job.id == job_id)
+        return session.exec(statement).first()
+
+
 def get_all_jobs():
     logger.info("Retrieving all jobs from DB...")
     """

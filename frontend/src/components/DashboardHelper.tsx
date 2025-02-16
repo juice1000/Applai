@@ -66,38 +66,15 @@ export const columns: GridColDef[] = [
 ];
 
 export const gridStyles = {
-  backgroundColor: 'white',
   '& .MuiDataGrid-root': {
     width: '100%',
-  },
-  '& .MuiDataGrid-row': {
-    '&:nth-of-type(even)': {
-      backgroundColor: '#f5f5f5',
-    },
-    '&:hover': {
-      backgroundColor: '#e3f2fd !important', // Vivid blue hover
-      cursor: 'pointer',
-    },
-    '&.Mui-selected': {
-      backgroundColor: '#e3f2fd !important', // Vivid blue selected
-    },
   },
   '& .MuiDataGrid-cell': {
     overflow: 'auto !important',
     whiteSpace: 'normal',
     padding: '8px',
-    borderBottom: '1px solid #e0e0e0',
-  },
-  '& .MuiDataGrid-cell:focus': {
-    outline: 'none',
   },
   '& .MuiDataGrid-cell:focus-within': {
-    outline: 'none',
-  },
-  '& .MuiDataGrid-columnHeader:focus': {
-    outline: 'none',
-  },
-  '& .MuiDataGrid-columnHeader:focus-within': {
     outline: 'none',
   },
   '& .MuiDataGrid-columnHeaders': {

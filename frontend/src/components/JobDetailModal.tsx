@@ -1,9 +1,10 @@
 import { Modal, Box, Typography, IconButton, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import FlagIcon from '@mui/icons-material/Flag';
-import { Job, updateJobStatus } from '../libs/api';
+import { Job, writeApplication, updateJobStatus } from '../libs/api';
 import { getStatusColor } from './DashboardHelper';
-
+import CircularProgress from '@mui/material/CircularProgress';
+import { useState } from 'react';
 interface JobDetailModalProps {
   open: boolean;
   onClose: () => void;
@@ -26,6 +27,7 @@ const modalStyle = {
 };
 
 const JobDetailModal = ({ open, onClose, job, onUpdate }: JobDetailModalProps) => {
+  const [loading, setLoading] = useState(false);
   if (!job) return null;
 
   const isIrrelevant = job.status === 'irrelevant';
@@ -41,6 +43,13 @@ const JobDetailModal = ({ open, onClose, job, onUpdate }: JobDetailModalProps) =
     } catch (error) {
       console.error('Error updating job status:', error);
     }
+  };
+  const handleWriteApplication = async () => {
+    if (!job) return;
+    setLoading(true);
+    await writeApplication(job.id);
+    onUpdate();
+    setLoading(false);
   };
 
   return (
@@ -89,9 +98,13 @@ const JobDetailModal = ({ open, onClose, job, onUpdate }: JobDetailModalProps) =
             <Typography color="text.secondary" variant="h6" gutterBottom>
               Application Letter
             </Typography>
-            <Typography color="text.secondary" style={{ whiteSpace: 'pre-wrap' }}>
-              {job.applicationLetter || 'No application letter'}
-            </Typography>
+            {loading ? (
+              <CircularProgress />
+            ) : (
+              <Typography color="text.secondary" style={{ whiteSpace: 'pre-wrap' }}>
+                {job.applicationLetter || 'No application letter'}
+              </Typography>
+            )}
           </>
         )}
 
@@ -106,9 +119,14 @@ const JobDetailModal = ({ open, onClose, job, onUpdate }: JobDetailModalProps) =
             backgroundColor: 'background.paper',
             display: 'flex',
             justifyContent: 'flex-end',
+            gap: 2,
           }}
         >
+          <Button disabled={loading} variant="outlined" color="secondary" onClick={handleWriteApplication} sx={{ borderRadius: '50px', fontWeight: 'bold' }}>
+            {job.applicationLetter ? 'Rewrite Application' : 'Write Application'}
+          </Button>
           <Button
+            disabled={loading}
             variant="outlined"
             color={isIrrelevant ? 'success' : 'warning'}
             onClick={() => handleFlagToggle(isIrrelevant ? 'pending' : 'irrelevant')}
@@ -119,10 +137,11 @@ const JobDetailModal = ({ open, onClose, job, onUpdate }: JobDetailModalProps) =
           </Button>
           {job.applicationLetter && (
             <Button
+              disabled={loading}
               variant="outlined"
               color={underReview ? 'primary' : 'secondary'}
               onClick={() => handleFlagToggle(underReview ? 'ready' : 'review')}
-              sx={{ borderRadius: '50px', fontWeight: 'bold', ml: 2 }}
+              sx={{ borderRadius: '50px', fontWeight: 'bold' }}
             >
               {underReview ? 'Mark Safe' : 'Mark Under Review'}
             </Button>

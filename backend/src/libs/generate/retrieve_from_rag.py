@@ -1,11 +1,15 @@
+import os
+
 from langchain.prompts import ChatPromptTemplate
 from langchain_chroma import Chroma
-
 from libs.llm.init_llm import init_completion_function, init_embedding_function
 from libs.llm.prompts import rag_retrieval_prompt, rag_retrieval_prompt_experimental
 from libs.logger.init_logger import logger
 
-CHROMA_PATH = "chroma"
+# Get the project root directory (where main.py is located)
+CUR_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.abspath(os.path.join(CUR_DIR, "..", "..", ".."))
+CHROMA_PATH = os.path.join(ROOT_DIR, "chroma")
 
 
 def search_docs(query_text: str):
@@ -66,6 +70,7 @@ def retrieve_from_rag(query_text: str, keywords: str = ""):
     response_text = retrieve_rag_response_from_context(
         query_text, context_text, keywords
     )
+
     logger.info(f"Retrieving response: {response_text[:100]}")
     return response_text
 

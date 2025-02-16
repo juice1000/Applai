@@ -91,7 +91,7 @@ const Dashboard = () => {
             onClick={handleApplyToJobs}
             sx={{ borderRadius: '50px', fontWeight: 'bold', color: 'lightblue', borderColor: 'lightblue' }}
           >
-            Apply to Jobs
+            Bulk Apply
           </Button>
         </Stack>
       </Box>

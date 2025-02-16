@@ -1,5 +1,6 @@
 from libs.db.get_job import (
     get_all_jobs,
+    get_job_by_id,
     get_job_files,
     get_jobs_without_application_letter,
 )
@@ -34,11 +35,15 @@ def apply_from_files():
     return {"message": "Job applications generated"}
 
 
-def write_job_applications(update: bool = False):
+def write_job_applications(update: bool = False, job_id: int = None):
     logger.info("Writing job applications to DB...")
 
-    # TODO: get all jobs that haven't been applied to
-    if not update:
+    # look for a specific job by id
+    if job_id:
+        jobs = [get_job_by_id(job_id)]
+
+    # get all jobs that haven't been applied to
+    elif not update:
         # retrieve all jobs without applications
         jobs = get_jobs_without_application_letter()
     else:

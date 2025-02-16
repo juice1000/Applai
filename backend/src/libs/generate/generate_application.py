@@ -1,5 +1,4 @@
 from langchain.prompts import ChatPromptTemplate
-
 from libs.db.init_db import Job
 from libs.llm.init_llm import init_completion_function
 from libs.llm.prompts import application_prompt as PROMPT_TEMPLATE
@@ -14,7 +13,6 @@ def generate_application(job: Job):
     context = job.resume_context
     # Extract the keywords
     keywords = job.keywords
-
     # Prepare the prompt for the LLM.
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(
