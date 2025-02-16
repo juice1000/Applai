@@ -4,12 +4,14 @@ import FlagIcon from '@mui/icons-material/Flag';
 import { Job, writeApplication, updateJobStatus } from '../libs/api';
 import { getStatusColor } from './DashboardHelper';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useState } from 'react';
+
 interface JobDetailModalProps {
   open: boolean;
   onClose: () => void;
-  job: Job | null;
+  job: Job | undefined;
   onUpdate: () => void; // Add this to refresh the job list after update
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
 const modalStyle = {
@@ -26,16 +28,9 @@ const modalStyle = {
   borderRadius: '8px',
 };
 
-const JobDetailModal = ({ open, onClose, job, onUpdate }: JobDetailModalProps) => {
-  const [loading, setLoading] = useState(false);
-  if (!job) return null;
-
-  const isIrrelevant = job.status === 'irrelevant';
-  const underReview = job.status === 'review';
-
+const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: JobDetailModalProps) => {
   const handleFlagToggle = async (newStatus: 'pending' | 'applied' | 'rejected' | 'irrelevant' | 'review' | 'ready') => {
     if (!job) return;
-
     try {
       await updateJobStatus(job.id, newStatus);
       onUpdate();
@@ -49,8 +44,11 @@ const JobDetailModal = ({ open, onClose, job, onUpdate }: JobDetailModalProps) =
     setLoading(true);
     await writeApplication(job.id);
     onUpdate();
-    setLoading(false);
   };
+
+  if (!job) return null;
+  const isIrrelevant = job.status === 'irrelevant';
+  const underReview = job.status === 'review';
 
   return (
     <Modal open={open} onClose={onClose}>

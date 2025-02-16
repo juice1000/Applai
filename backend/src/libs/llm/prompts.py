@@ -1,4 +1,4 @@
-application_prompt = """Act as a professional job application assistant for freelance projects. Given my the context from my resume and the provided job description, draft a customized job application that highlights my most relevant skills, experiences, and achievements. Use a semi-formal and engaging tone, with concise sentences and industry-standard phrasing. Do not hallucinate any information.
+application_prompt = """Act as a professional job application assistant for freelance projects. Given my the context from my resume and the provided job description, draft a customized job application that highlights my most relevant skills, experiences, and achievements. Use a semi-formal and engaging tone, with concise sentences and industry-standard phrasing. Write the application in German if the job ad is written in German. Do not hallucinate any information.
 
 Here's the structure I want you to follow:
 	1.	Start with a brief introduction expressing enthusiasm for the project, mentioning the job title.

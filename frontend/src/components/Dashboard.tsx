@@ -10,7 +10,8 @@ import JobDetailModal from './JobDetailModal';
 const Dashboard = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+
+  const [selectedJobId, setSelectedJobId] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const loadJobs = async () => {
@@ -25,12 +26,8 @@ const Dashboard = () => {
     }
   };
 
-  useEffect(() => {
-    loadJobs();
-  }, []);
-
   const handleRowDoubleClick = (params: GridRowParams) => {
-    setSelectedJob(params.row as Job);
+    setSelectedJobId(params.row.id);
     setIsModalOpen(true);
   };
 
@@ -59,6 +56,20 @@ const Dashboard = () => {
     }
   };
 
+  // Load jobs on component mount
+  useEffect(() => {
+    loadJobs();
+  }, []);
+
+  // Remount on jobs change
+  useEffect(() => {
+    console.log('jobs:', jobs);
+  }, [jobs]);
+
+  let selectedJob: Job | undefined;
+  if (selectedJobId) {
+    selectedJob = jobs.find((job) => job.id === selectedJobId);
+  }
   return (
     <Box sx={{ width: '100%', py: 4, display: 'flex', flexDirection: 'column', gap: 6 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -117,7 +128,7 @@ const Dashboard = () => {
         </Box>
       </div>
 
-      <JobDetailModal open={isModalOpen} onClose={() => setIsModalOpen(false)} job={selectedJob} onUpdate={handleJobUpdate} />
+      <JobDetailModal open={isModalOpen} onClose={() => setIsModalOpen(false)} job={selectedJob} onUpdate={handleJobUpdate} loading={loading} setLoading={setLoading} />
     </Box>
   );
 };
