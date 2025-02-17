@@ -1,5 +1,5 @@
 import uvicorn
-from custom_types import FieldRequest, JobUpdate, PromptRequest
+from custom_types import FieldRequest, JobStatusUpdate, PromptRequest
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from libs.db.db_operations import add_field_to_table, get_table_schema
@@ -83,7 +83,7 @@ def get_jobs():
 
 
 @app.put("/jobs/{job_id}")
-def update_job_status(job_id: int, job_update: JobUpdate):
+def update_job_status(job_id: int, job_update: JobStatusUpdate):
     update_job_by_id(job_id, status=job_update.status)
     return {"message": f"Job {job_id} updated with status {job_update.status}"}
 

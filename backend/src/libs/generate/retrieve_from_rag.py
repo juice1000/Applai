@@ -3,7 +3,10 @@ import os
 from langchain.prompts import ChatPromptTemplate
 from langchain_chroma import Chroma
 from libs.llm.init_llm import init_completion_function, init_embedding_function
-from libs.llm.prompts import rag_retrieval_prompt, rag_retrieval_prompt_experimental
+from libs.llm.prompt_context_retrieval import (
+    rag_retrieval_prompt,
+    rag_retrieval_prompt_experimental,
+)
 from libs.logger.init_logger import logger
 
 # Get the project root directory (where main.py is located)

@@ -12,6 +12,7 @@ export interface Job {
   status: 'pending' | 'applied' | 'rejected' | 'irrelevant' | 'review' | 'ready';
   dateApplied: string;
   applicationLetter: string;
+  language: string;
 }
 
 export const fetchJobs = async (): Promise<Job[]> => {

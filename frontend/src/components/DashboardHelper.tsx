@@ -26,9 +26,9 @@ export const columns: GridColDef[] = [
     field: 'title',
 
     headerName: 'Job Title',
-    width: 200,
+    width: 230,
     headerClassName: 'super-app-theme--header',
-    renderCell: (params) => <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.5', width: '100%', padding: 10 }}>{params.value}</div>,
+    renderCell: (params) => <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.5', padding: 10 }}>{params.value}</div>,
   },
   {
     field: 'status',
@@ -53,7 +53,7 @@ export const columns: GridColDef[] = [
     flex: 1,
     minWidth: 200,
     headerClassName: 'super-app-theme--header',
-    renderCell: (params) => <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.5', width: '100%', padding: 10 }}>{params.value}</div>,
+    renderCell: (params) => <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.5', padding: 10 }}>{params.value}</div>,
   },
   {
     field: 'description',
@@ -61,9 +61,10 @@ export const columns: GridColDef[] = [
     flex: 2,
     minWidth: 300,
     headerClassName: 'super-app-theme--header',
-    renderCell: (params) => <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.5', width: '100%', padding: 10 }}>{params.value}</div>,
+    renderCell: (params) => <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.5', padding: 10 }}>{params.value}</div>,
   },
-  { field: 'dateApplied', headerName: 'Date Applied', width: 120, headerClassName: 'super-app-theme--header' },
+  { field: 'language', headerName: 'Language', width: 120, headerClassName: 'super-app-theme--header' },
+  { field: 'dateApplied', headerName: 'Applied at', width: 120, headerClassName: 'super-app-theme--header' },
 ];
 
 export const gridStyles = {
@@ -84,6 +85,6 @@ export const gridStyles = {
   },
   '& .super-app-theme--header': {
     fontWeight: '700',
-    fontSize: '1.3rem',
+    fontSize: '1.2rem',
   },
 };

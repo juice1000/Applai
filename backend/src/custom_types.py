@@ -7,7 +7,7 @@ class PromptRequest(BaseModel):
     prompt: str
 
 
-class JobUpdate(BaseModel):
+class JobStatusUpdate(BaseModel):
     status: str
 
 

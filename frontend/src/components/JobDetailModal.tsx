@@ -56,7 +56,7 @@ const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: J
         <IconButton onClick={onClose} sx={{ position: 'absolute', right: 8, top: 8 }}>
           <CloseIcon />
         </IconButton>
-        <Typography color="text.secondary" variant="h3" component="h2" gutterBottom>
+        <Typography variant="h3" component="h2" gutterBottom>
           {job.title}
         </Typography>
 
@@ -68,41 +68,36 @@ const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: J
           >
             {job.status}
           </Typography>
+          <Typography variant="subtitle1" sx={{ width: 'fit-content', paddingY: 1, paddingX: 2, borderRadius: '50px', fontWeight: 'bold' }}>
+            {job.language}
+          </Typography>
           {job.dateApplied && (
-            <Typography
-              sx={{ width: 'fit-content', paddingY: 1, paddingX: 2, borderRadius: '20px', fontWeight: 'bold', border: 'solid' }}
-              variant="subtitle1"
-              color="text.secondary"
-            >
+            <Typography sx={{ width: 'fit-content', paddingY: 1, paddingX: 2, borderRadius: '20px', fontWeight: 'bold', border: 'solid' }} variant="subtitle1">
               Date Applied: {job.dateApplied || 'Not applied'}
             </Typography>
           )}
         </Box>
 
-        <Typography color="text.secondary" variant="h6" gutterBottom>
+        <Typography variant="h6" gutterBottom>
           Keywords
         </Typography>
-        <Typography color="text.secondary">{job.keywords}</Typography>
+        <Typography>{job.keywords}</Typography>
         <br />
-        <Typography color="text.secondary" variant="h6" gutterBottom>
+        <hr />
+        <br />
+        <Typography variant="h6" gutterBottom>
           Description
         </Typography>
-        <Typography color="text.secondary" style={{ whiteSpace: 'pre-wrap' }}>
-          {job.description}
-        </Typography>
+        <Typography style={{ whiteSpace: 'pre-wrap' }}>{job.description}</Typography>
+        <br />
+        <hr className="border" />
         <br />
         {job.applicationLetter && (
           <>
-            <Typography color="text.secondary" variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom>
               Application Letter
             </Typography>
-            {loading ? (
-              <CircularProgress />
-            ) : (
-              <Typography color="text.secondary" style={{ whiteSpace: 'pre-wrap' }}>
-                {job.applicationLetter || 'No application letter'}
-              </Typography>
-            )}
+            {loading ? <CircularProgress /> : <Typography style={{ whiteSpace: 'pre-wrap' }}>{job.applicationLetter || 'No application letter'}</Typography>}
           </>
         )}
 

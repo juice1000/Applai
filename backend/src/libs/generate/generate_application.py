@@ -1,7 +1,7 @@
 from langchain.prompts import ChatPromptTemplate
 from libs.db.init_db import Job
 from libs.llm.init_llm import init_completion_function
-from libs.llm.prompts import application_prompt as PROMPT_TEMPLATE
+from libs.llm.prompt_write_application import application_prompt as PROMPT_TEMPLATE
 from libs.logger.init_logger import logger
 
 
