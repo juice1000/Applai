@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import List, Literal, Optional
 
 from pydantic import BaseModel
@@ -24,3 +25,8 @@ class ColumnInfo(BaseModel):
 
 class TableSchema(BaseModel):
     columns: List[ColumnInfo]
+
+
+class Language(str, Enum):
+    de = "de"
+    en = "en"

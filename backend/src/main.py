@@ -1,5 +1,5 @@
 import uvicorn
-from custom_types import FieldRequest, JobStatusUpdate, PromptRequest
+from custom_types import FieldRequest, JobStatusUpdate, Language, PromptRequest
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from libs.db.db_operations import add_field_to_table, get_table_schema
@@ -35,8 +35,8 @@ def root():
 
 
 @app.get("/embed/")
-def embed_sources(clear: bool = False):
-    embed_document(clear=clear)
+def embed_sources(clear: bool = False, language: Language = Language.en):
+    embed_document(clear=clear, language=language)
     return {"message": "Document loaded"}
 
 

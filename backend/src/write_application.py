@@ -8,6 +8,7 @@ from libs.db.init_db import Job
 from libs.db.write_job import update_job
 from libs.generate.generate_application import generate_application
 from libs.generate.retrieve_from_rag import retrieve_from_rag
+from libs.generate.retrieve_language import retrieve_language
 from libs.logger.init_logger import logger
 from libs.sanitize_input.text_to_json import text_to_json_string as ttj
 
@@ -41,7 +42,6 @@ def write_job_applications(update: bool = False, job_id: int = None):
     # look for a specific job by id
     if job_id:
         jobs = [get_job_by_id(job_id)]
-
     # get all jobs that haven't been applied to
     elif not update:
         # retrieve all jobs without applications
@@ -49,9 +49,14 @@ def write_job_applications(update: bool = False, job_id: int = None):
     else:
         jobs = get_all_jobs()
 
+    # generate applications for each job that was retrieved
     for job in jobs:
+        # get the language of the job description
+        job.language = retrieve_language(job)
         # retrieve the context from the resume in regards to the job description
-        rag_retrieval_context = retrieve_from_rag(job.description, job.keywords)
+        rag_retrieval_context = retrieve_from_rag(
+            job.description, job.keywords, job.language
+        )
         job.resume_context = rag_retrieval_context
 
         # generate the application from job description

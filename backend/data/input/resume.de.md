@@ -59,7 +59,7 @@
 
 ## **Berufserfahrung**
 
-### **Adjunct Lecturer in MLOps, Nobleprog (Freelance, Jan-Feb 2025, Remote)**
+### **Dozent in MLOps, Nobleprog (Freelance, Jan-Feb 2025, Remote)**
 
 - Konzeption und Durchführung von Unterrichtseinheiten zu MLOps, einschließlich automatisiertem Data Wrangling, ML Lifecycle, Monitoring und Orchestrierung.
 - Entwicklung praxisnaher Labs mit realen Anwendungsfällen zu modernen MLOps-Tools.
@@ -92,7 +92,7 @@
 
 ### **Lead Fullstack Engineer, Cybercrush (Freelance, Dez 2023 - Jan 2024, Remote)**
 
-- Entwicklung eines Shopify Storefronts mit Remix.js (Hydrogen) und Shopify GraphQL APIs.
+- Entwicklung eines Shopify Stores mit Remix.js (Hydrogen) und Shopify GraphQL APIs.
 - Leitung eines vierköpfigen Entwicklerteams und Überwachung der technischen Umsetzung.
 - Implementierung von CI/CD-Pipelines mit GitHub Actions.
 

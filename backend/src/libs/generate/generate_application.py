@@ -1,12 +1,12 @@
 from langchain.prompts import ChatPromptTemplate
 from libs.db.init_db import Job
 from libs.llm.init_llm import init_completion_function
-from libs.llm.prompt_write_application import application_prompt as PROMPT_TEMPLATE
+from libs.llm.prompt_write_application import application_prompt, application_prompt_de
 from libs.logger.init_logger import logger
 
 
 def generate_application(job: Job):
-    logger.info(f"Generating application for job {job.title}...")
+    logger.info(f"Generating application for job: '{job.title}'...")
     # Extract the job description
     job_description = job.description
     # Extract the context
@@ -14,9 +14,16 @@ def generate_application(job: Job):
     # Extract the keywords
     keywords = job.keywords
     # Prepare the prompt for the LLM.
-    prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
+    if job.language == "de":
+        prompt_template = ChatPromptTemplate.from_template(application_prompt_de)
+    else:
+        prompt_template = ChatPromptTemplate.from_template(application_prompt)
+
     prompt = prompt_template.format(
-        context=context, description=job_description, keywords=keywords
+        context=context,
+        description=job_description,
+        keywords=keywords,
+        language=job.language,
     )
 
     model = init_completion_function()

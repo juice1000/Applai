@@ -23,7 +23,8 @@ const modalStyle = {
   height: '90%',
   bgcolor: 'background.paper',
   boxShadow: 24,
-  p: 4,
+  pt: 4,
+  px: 4,
   overflow: 'auto',
   borderRadius: '8px',
 };
@@ -68,7 +69,7 @@ const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: J
           >
             {job.status}
           </Typography>
-          <Typography variant="subtitle1" sx={{ width: 'fit-content', paddingY: 1, paddingX: 2, borderRadius: '50px', fontWeight: 'bold' }}>
+          <Typography variant="subtitle1" sx={{ width: 'fit-content', paddingY: 1, paddingX: 1, borderRadius: '50px', border: '1px solid white', fontWeight: 'bold' }}>
             {job.language}
           </Typography>
           {job.dateApplied && (
@@ -100,14 +101,14 @@ const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: J
             {loading ? <CircularProgress /> : <Typography style={{ whiteSpace: 'pre-wrap' }}>{job.applicationLetter || 'No application letter'}</Typography>}
           </>
         )}
+        <br />
 
         <Box
           sx={{
             position: 'sticky',
             bottom: 0,
-            pb: 2,
+            pb: 4,
             pt: 2,
-            mt: 4,
             borderTop: '1px solid #e0e0e0',
             backgroundColor: 'background.paper',
             display: 'flex',

@@ -18,3 +18,5 @@ selenium #  webdriver
 webdriver-manager
 sqlmodel
 python-dotenv
+langdetect
+"unstructured[md]" nltk 

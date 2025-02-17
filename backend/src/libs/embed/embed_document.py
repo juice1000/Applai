@@ -3,7 +3,7 @@ import shutil
 
 from langchain.schema.document import Document
 from langchain_chroma import Chroma
-from langchain_community.document_loaders import PyMuPDFLoader
+from langchain_community.document_loaders import UnstructuredMarkdownLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from libs.llm.init_llm import init_embedding_function
 from libs.logger.init_logger import logger
@@ -12,10 +12,11 @@ from libs.logger.init_logger import logger
 CUR_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.abspath(os.path.join(CUR_DIR, "..", "..", ".."))
 CHROMA_PATH = os.path.join(ROOT_DIR, "chroma")
+CHROMA_PATH_DE = os.path.join(ROOT_DIR, "chroma_de")
 DATA_PATH = os.path.join(ROOT_DIR, "data")
 
 
-def load_document() -> list[Document]:
+def load_document(language: str = "en") -> list[Document]:
     """
     Load the resume document using a relative path from the project root.
 
@@ -23,15 +24,17 @@ def load_document() -> list[Document]:
         list[Document]: A list containing the loaded document
     """
 
-    resume_path = os.path.join(ROOT_DIR, "data", "input", "resume.pdf")
-
+    if language == "de":
+        resume_path = os.path.join(ROOT_DIR, "data", "input", "resume.de.md")
+    else:
+        resume_path = os.path.join(ROOT_DIR, "data", "input", "resume.en.md")
     logger.info(f"Loading document from: {resume_path}")
 
     if not os.path.exists(resume_path):
         logger.error(f"Resume file not found at: {resume_path}")
         raise FileNotFoundError(f"Resume file not found at: {resume_path}")
 
-    loader = PyMuPDFLoader(resume_path)
+    loader = UnstructuredMarkdownLoader(resume_path)
     documents = loader.load()
     return documents
 
@@ -82,7 +85,7 @@ def calculate_chunk_ids(chunks: list[Document]) -> list[Document]:
     return chunks
 
 
-def add_to_chroma(chunks: list[Document]):
+def add_to_chroma(chunks: list[Document], language: str = "en"):
     """
     Adds new document chunks to the Chroma database if they do not already exist.
     Args:
@@ -91,9 +94,15 @@ def add_to_chroma(chunks: list[Document]):
         None
     """
     # Load the existing database.
-    db = Chroma(
-        persist_directory=CHROMA_PATH, embedding_function=init_embedding_function()
-    )
+    if language == "de":
+        db = Chroma(
+            persist_directory=CHROMA_PATH_DE,
+            embedding_function=init_embedding_function(),
+        )
+    else:
+        db = Chroma(
+            persist_directory=CHROMA_PATH, embedding_function=init_embedding_function()
+        )
 
     # Calculate Page IDs.
     chunks_with_ids = calculate_chunk_ids(chunks)
@@ -122,11 +131,17 @@ def clear_database():
         shutil.rmtree(CHROMA_PATH)
 
 
-def embed_document(clear: bool = False):
+def embed_document(clear: bool = False, language: str = "en"):
+    """
+    Embeds the resume document into the Chroma database.
+    Args:
+        clear (bool): If True, the database will be cleared before adding the document.
+        language (str): The language of the document.
+    """
     logger.info("Embedding document...")
     if clear:
         clear_database()
 
-    documents = load_document()
+    documents = load_document(language)
     chunks = split_documents(documents)
-    add_to_chroma(chunks)
+    add_to_chroma(chunks, language)
