@@ -84,7 +84,8 @@ def retrieve_from_rag(query_text: str, keywords: str = "", language: str = "en")
 
     # Get the context from the DB results.
     context_text = get_context(db_results)
-
+    # print("context_text", context_text)
+    print("\n\n\n\n\n\n")
     # Prompt the LLM.
     response_text = retrieve_rag_response_from_context(
         query_text, context_text, keywords, language

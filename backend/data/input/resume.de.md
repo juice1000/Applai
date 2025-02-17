@@ -1,11 +1,11 @@
-# Julien Look - Allgemeiner Lebenslauf (Optimiert für Embeddings)
+# **Julien Look - Lebenslauf**
 
 ## **Persönliche Informationen**
 
 - **Name:** Julien Look
 - **Rolle:** Software Engineer, Data Scientist, Fullstack Engineer
 - **LinkedIn:** [linkedin.com/in/julien-look](https://www.linkedin.com/in/julien-look/)
-- **GitHub:** [github.com/juice1000](https://github.com/juice1000)
+- **GitHub:** [github.com/juice1000](https://github.com/juice1000/)
 
 ---
 
@@ -13,142 +13,190 @@
 
 ### **Data Science & Machine Learning**
 
-- Machine Learning: LLMs, CNNs, Classification, Time Series, Regression, Reinforcement Learning
-- Data Engineering: Big Data Mining, ETL, Embeddings,
-- Data Quality: Evidently.ai, DeepEval
-- Libraries: TensorFlow, Keras, PyTorch, Pandas, Scikit-Learn, Tidyverse, OpenCV, Apache Spark, LangChain, Chroma
+- **Machine Learning:** LLMs, CNNs, Classification, Time Series, Regression, Reinforcement Learning
+- **Data Engineering:** Big Data Mining, ETL
+- **Data Quality:** Evidently.ai, DeepEval
+- **Bibliotheken:** TensorFlow, Keras, PyTorch, Pandas, Scikit-Learn, Tidyverse, OpenCV, Apache Spark, LangChain, Chroma
 
-### **Software Architektur & Deployment**
+### **Software-Architektur & Deployment**
 
-- Monorepo: NX
-- Microservices Architektur
-- Cloud: AWS, Firebase, Microsoft Azure
-- CI/CD: GitHub Actions, GitLab CI/CD, Docker, Expo
-- MLOps: Amazon SageMaker, MLflow, DVC, Airflow
+- **Monorepo:** NX
+- **Microservices-Architektur**
+- **Cloud:** AWS, Firebase, Microsoft Azure
+- **CI/CD:** GitHub Actions, GitLab CI/CD, Docker, Expo
+- **MLOps:** Amazon SageMaker, MLflow, DVC, Airflow
 
-### **Frontend Entwicklung**
+### **Frontend-Entwicklung**
 
-- Frameworks: React, Remix, Angular
-- Styling: SASS, Tailwind, Bootstrap, Material UI, HeadlessUI, CoreUI
-- Testing: Cypress
-- Web Scraping: Selenium, XML, BeautifulSoup
-- Server-Side Rendering, GraphQL, REST, Websockets (Socket.io)
+- **Frameworks:** React, Remix, Angular
+- **Styling:** SASS, Tailwind, Bootstrap, Material UI, HeadlessUI, CoreUI
+- **Testing:** Cypress
+- **Web Scraping:** Selenium, XML, BeautifulSoup
+- **Sonstiges:** Server-Side Rendering, GraphQL, REST, Websockets (Socket.io)
 
-### **Backend Entwicklung**
+### **Backend-Entwicklung**
 
-- Frameworks: Express, Restify, Flask
-- Database Management: MongoDB, Prisma, BigQuery, Redis, dbt
-- Authentication: JWT, OAuth
-- Serverless Computing, Threading, Multiprocessing
-- API & Integration Testing: Jest, Python Unittest
+- **Frameworks:** Express, Restify, Flask
+- **Datenbanken:** MongoDB, Prisma, BigQuery, Redis, dbt
+- **Authentifizierung:** JWT, OAuth
+- **Sonstiges:** Serverless Computing, Threading, Multiprocessing
+- **API & Integration Testing:** Jest, Python Unittest
 
 ### **Programmiersprachen**
 
-- Web: JavaScript, React, Remix, Angular, HTML, CSS
-- Backend: Node.js, TypeScript, Bash
-- Data Science: Python, R, SQL
-- Mobile: React Native
+- **Web:** JavaScript, React, Remix, Angular, HTML, CSS
+- **Backend:** Node.js, TypeScript, Bash
+- **Data Science:** Python, R, SQL
+- **Mobile:** React Native
 
 ### **Sprachen**
 
-- Deutsch: Muttersprache
-- Englisch: Verhandlungssicher
-- Japanisch: Professionelle Arbeitssprache
+- **Deutsch:** Muttersprache
+- **Englisch:** Fließend in Wort und Schrift
+- **Japanisch:** Berufliche Kenntnisse
 
 ---
 
-## **Berufserfahrung**
+## **Projekte**
 
-### **Dozent in MLOps, Nobleprog (Freelance, Jan-Feb 2025, Remote)**
+### **:Project Title: AI Parent Advisor**
 
-- Konzeption und Durchführung von Unterrichtseinheiten zu MLOps, einschließlich automatisiertem Data Wrangling, ML Lifecycle, Monitoring und Orchestrierung.
-- Entwicklung praxisnaher Labs mit realen Anwendungsfällen zu modernen MLOps-Tools.
-- Technologien: Python, Mlflow, pandas, scikit-learn, Amazong Sagemaker, Airflow, DVC, evidently.ai, AWS, Github Actions, yaml, Bash, Docker
-
-### **Lead Frontend Engineer, R-Cycle (Freelance, Jan 2024, Remote)**
-
-- Entwicklung eines Kunden-Dashboards zur Überwachung des Kunststoffproduktionszyklus über mehrere Hersteller hinweg.
-- Leitung von Architekturverbesserungen einschließlich Workspace-Refactoring.
-- Entwicklung von UI-Komponenten mit React, SASS und CoreUI.
-- Implementierung einer Datenbank- und Dateiverwaltungslösung mit GCP.
-- Technologien: React.js, TypeScript, SASS, CoreUI, Bootstrap, Firebase, Gitlab CI, Cypress, Jest, React-Testing-Library, Docker
-
-### **Software Engineer, Cinoware (Freelance, Jan-Dez 2024, Remote)**
-
-- Erstellung von Prototypen und automatisierten Testsoftware für Telekommunikationsprodukte.
-- Entwicklung einer Remote-Robotersteuerung mit einer React.js-Oberfläche und einem Python Flask-Backend.
-- Implementierung von Navigation Tracking mit OpenCV und Performance-Tracking mit MLflow und Scikit-Learn.
-- Entwicklung einer Selenium Grid Testing Suite und Analyse von Performance mit Allure Reports.
-- Technologien: Python, Bash, yaml, Selenium, Selenium Grid, Mlflow, scikit-learn, pandas, React, Gitlab CI, Node.js, Graylog, TypeScript, Express, OpenCV, TesseractOCR, tailwind, Docker
-
-### **Dozent in Data Analytics, Data Smartpoint (Freelance, Jun-Okt 2024, Remote)**
-
-- Unterricht in Data Analytics, Machine Learning, Web Scraping und API-Entwicklung.
-- Erstellung von Lernmaterialien und Abschlussprojekten für eine Klasse mit ~15 Studenten.
-- Technologien: Python, FastAPI, pandas, Streamlit, scikit-learn, selenium, beautiful soup
-
-### **Lead Fullstack Engineer, Full-Circle Family (Freelance, Nov 2023 - März 2024, Remote)**
-
-- Entwicklung eines KI-gestützten Elternberaters mit OpenAI GPT-Modellen und WhatsApp API.
-- Entwurf und Skalierung von Anwendungen mit Microservices, NX Monorepo und AWS.
-- Entwicklung eines TypeScript- und React.js-basierten Analyse-Dashboards zur Nutzerverhaltensanalyse.
-- Nutzung von AWS-Tools wie Lambda, API Gateway, DynamoDB, Cognito und EC2.
-- Technologien: Node.js, React, TypeScript, LLM, RAG, AWS, NX Monorepo
-
-### **Lead Fullstack Engineer, Cybercrush (Freelance, Dez 2023 - Jan 2024, Remote)**
-
-- Entwicklung eines Shopify Stores mit Remix.js (Hydrogen) und Shopify GraphQL APIs.
-- Leitung eines vierköpfigen Entwicklerteams und Überwachung der technischen Umsetzung.
-- Implementierung von CI/CD-Pipelines mit GitHub Actions.
-- Technologien: React, Remix.js, TypeScript, GraphQL, Shopify, Github Actions, yaml, tailwind
-
-### **Frontend Engineer (Freelance, Okt 2023, Remote)**
-
-- Entwicklung eines Zeitmanagement-Tools mit React, Tailwind und Firebase.
-- Implementierung von Authentifizierung und Datenbankverwaltung mit Firebase Cloud Functions.
-- Einrichtung einer CI/CD-Pipeline mit GitLab.
-
-### **Fullstack Engineer, kunveno (Freelance, Jun - Aug 2023, Remote)**
-
-- Integration einer Fullstack-App als Microsoft Teams Message Extension.
-- Architektur von Microsoft Azure Umgebung und Verwaltung der CI/CD-Pipeline.
-- Implementierung von Authentifizierung mit OAuth und Azure AD.
-
-### **Fullstack Engineer, Listify (Eigenes Projekt, Jan 2023, Berlin, Deutschland)**
-
-- Entwicklung einer App zum Herunterladen von Spotify-Playlists für DJs.
-- Umsetzung mit Python, Flask, FastAPI, Celery, Redis, Selenium und BeautifulSoup.
-
-### **Data Scientist, Expresssteuer GmbH (Mai 2021 - Dez 2022, Remote)**
-
-- Verwaltung von ETL-Prozessen, Neugestaltung des Data Warehouses (Kostensenkung um 90%).
-- Implementierung eines KI-gestützten Kundenchatbots und Automatisierung von Datenprozessen.
-- Entwicklung von Analyse-Dashboards für Finanz- und Betriebsdaten.
-
-### **Data Science Research Assistant, TU Berlin (Sep 2020 - Sep 2021, Remote)**
-
-- ML-Forschung in Quality Science mit Python und R.
-- Mitwirkung an Forschungspublikationen und interaktiven Kongresspräsentationen.
-
-### **Machine Learning Engineer, Cyanite (Freelance, Jun - Nov 2020, Remote)**
-
-- Entwicklung von ML-Prototypen zur Klassifikation von Musikären.
-- Implementierung von CNN- und Recurrent CNN-Modellen für Zeitreihenklassifikation.
-
-### **Operating System Engineer, Bosch (Praktikum, Sep 2019 - März 2020, Singapur)**
-
-- Entwicklung von Linux OS Komponenten für Boschs eigene Linux-Distribution.
-- Implementierung einer Verifikationsstufe für nicht vertrauenswürdige Softwareinstallationen.
+- **Rolle:** Lead Fullstack Engineer
+- **Unternehmen:** Full-Circle Family
+- **Zeitraum:** Nov 2023 - März 2024 (Freelance, Remote)
+- **Beschreibung:**
+  - Entwicklung eines **KI-gestützten Chatbots** für Elternberatung mit **OpenAI GPT-Modellen** und **WhatsApp API**.
+  - Skalierung der Anwendung mit **Microservices-Architektur** und **NX Monorepo**.
+  - Entwicklung eines **Analyse-Dashboards** mit **React.js**, um Benutzerverhalten zu verfolgen und datengetriebene Optimierungen vorzunehmen.
+  - Verwaltung der **AWS-Infrastruktur** mit **Lambda, API Gateway, DynamoDB, Cognito und EC2**.
+- **Technologien:** OpenAI GPT, WhatsApp API, AWS Lambda, API Gateway, DynamoDB, NX Monorepo, Cognito, EC2, TypeScript, React.js
 
 ---
 
-## **Bildung**
+### **:Project Title: R-Cycle Customer Dashboard**
 
-### **Software Engineering Immersive, Codeworks (Feb - Mai 2023, Berlin, Deutschland)**
+- **Rolle:** Lead Frontend Engineer
+- **Unternehmen:** R-Cycle
+- **Zeitraum:** Jan 2024 (Freelance, Remote)
+- **Beschreibung:**
+  - Entwicklung eines **Dashboards zur Verfolgung von Kunststoffproduktionszyklen** für Hersteller zur Einhaltung von **Recycling-Vorschriften**.
+  - Umsetzung von **architektonischen Verbesserungen**, Code-Refactoring und UI-Optimierungen.
+  - Erstellung von **wiederverwendbaren UI-Komponenten** mit **React, SASS und CoreUI**.
+  - Integration von **Google Cloud Platform (GCP)** für Dateiverwaltung und Datenanalyse.
+- **Technologien:** React, SASS, CoreUI, Google Cloud Platform (GCP)
 
-- Fortgeschrittene JavaScript-Konzepte, Backend-/Frontend-Frameworks und Softwarearchitektur.
+---
 
-### **Bachelor of Science - Computational Engineering Science, TU Berlin (Apr 2018 - Aug 2021, Berlin, Deutschland)**
+### **:Project Title: Remote Robot Operation App**
 
-- **Note:** 2.1 (entspricht GPA 3.1 oder 86%)
-- **Bachelorarbeit:** Advantage Actor-Critic Reinforcement Learning (Note: 1.3)
+- **Rolle:** Software Engineer
+- **Unternehmen:** Cinoware
+- **Zeitraum:** Jan - Dez 2024 (Freelance, Remote)
+- **Beschreibung:**
+  - Entwicklung einer **Fernsteuerungsplattform für Roboter** mit **React.js (Frontend) und Python Flask (Backend)**.
+  - Implementierung eines **Navigations-Tracking-Systems** mit OpenCV für präzise Roboterbewegung.
+  - Erstellung eines **Leistungsverfolgungssystems** mit **MLflow und Scikit-Learn**.
+  - Entwicklung einer **Selenium Grid-Test-Suite** mit **Allure-Berichtsanalyse**.
+- **Technologien:** React.js, Python, Flask, OpenCV, MLflow, Scikit-Learn, Selenium Grid, Allure Reports
+
+---
+
+### **:Project Title: Bosch Linux Distribution**
+
+- **Rolle:** Operating System Engineer (Intern)
+- **Unternehmen:** Bosch
+- **Zeitraum:** Sep 2019 - März 2020 (Singapur)
+- **Beschreibung:**
+  - Entwicklung von **Debian-basierten Linux OS-Komponenten** für industrielle Automatisierungssysteme.
+  - Implementierung eines **Sicherheitsverifikationssystems** für nicht vertrauenswürdige Softwareinstallationen.
+- **Technologien:** Debian, Bash, Python, Linux System Development
+
+---
+
+### **:Project Title: AI-Powered Tax Assistant**
+
+- **Rolle:** Data Scientist
+- **Unternehmen:** Expresssteuer GmbH
+- **Zeitraum:** Mai 2021 - Dez 2022 (Remote)
+- **Beschreibung:**
+  - Leitung der **KI-gestützten Automatisierung** von Finanzdatenverarbeitung.
+  - Optimierung von **ETL-Pipelines**, wodurch die Cloud-Kosten um **90% gesenkt** wurden.
+  - Entwicklung eines **KI-gestützten Chatbots** zur Unterstützung von Kundenanfragen.
+  - Erstellung von **Echtzeit-Analyse-Dashboards** mit **BigQuery und dbt**.
+- **Technologien:** BigQuery, dbt, Python, Machine Learning, ETL Pipelines
+
+---
+
+### **:Project Title: ML Research in Quality Science**
+
+- **Rolle:** Data Science Research Assistant
+- **Unternehmen:** TU Berlin
+- **Zeitraum:** Sep 2020 - Sep 2021 (Remote)
+- **Beschreibung:**
+  - Durchführung von Forschung im Bereich **Machine Learning für Quality Science**.
+  - Beitrag zu **wissenschaftlichen Publikationen** und Konferenzpräsentationen.
+  - Entwicklung von **ML-Modellen für Anomalieerkennung und prädiktive Analysen** mit **Python und R**.
+- **Technologien:** Python, R
+
+---
+
+### **:Project Title: ML Music Classification**
+
+- **Rolle:** Machine Learning Engineer
+- **Unternehmen:** Cyanite
+- **Zeitraum:** Jun - Nov 2020 (Freelance, Remote)
+- **Beschreibung:**
+  - Entwicklung eines **CNN-gestützten Musikklassifikationsmodells** zur Identifizierung von Musik-Epochen.
+  - Implementierung von **Recurrent CNNs** zur Verarbeitung von **Zeitserien-Daten**.
+  - Aufbau einer **Musik-Datenpipeline** für Deep Learning-Trainingsdaten.
+- **Technologien:** TensorFlow, CNN, Python
+
+---
+
+### **:Project Title: Listify**
+
+- **Rolle:** Fullstack Engineer
+- **Unternehmen:** Eigenes Projekt
+- **Zeitraum:** Jan 2023 (Berlin, Deutschland)
+- **Beschreibung:**
+  - Entwicklung einer **Plattform zur Umwandlung von Spotify-Playlists** für DJs zur Setlist-Erstellung.
+  - Implementierung eines **Selenium-basierten Scrapers** zur automatisierten Extraktion von Musikmetadaten.
+  - Nutzung von **Flask und FastAPI** für die serverseitige Verarbeitung von Songdaten.
+- **Technologien:** Python, Flask, FastAPI, Celery, Redis, Selenium, BeautifulSoup
+
+---
+
+### **:Project Title: Microsoft Teams Extension**
+
+- **Rolle:** Fullstack Engineer
+- **Unternehmen:** kunveno
+- **Zeitraum:** Jun - Aug 2023 (Freelance, Remote)
+- **Beschreibung:**
+  - Entwicklung einer **Microsoft Teams Message Extension**, die sich nahtlos in Unternehmenskommunikation integriert.
+  - Architektur der **Microsoft Azure Umgebung**, um eine skalierbare Infrastruktur sicherzustellen.
+  - Implementierung von **OAuth und Azure AD Authentifizierung** für sichere Unternehmenslogins.
+  - Aufbau einer **CI/CD-Pipeline** für automatisierte Bereitstellung und Multi-Environment Releases.
+- **Technologien:** Microsoft Azure, OAuth, Azure AD, CI/CD Pipelines
+
+---
+
+### **:Project Title: Shopify Storefront**
+
+- **Rolle:** Lead Fullstack Engineer
+- **Unternehmen:** Cybercrush
+- **Zeitraum:** Dez 2023 - Jan 2024 (Freelance, Remote)
+- **Beschreibung:**
+  - Entwicklung eines **maßgeschneiderten Shopify Storefronts** mit **Remix.js (Hydrogen) und Shopify GraphQL APIs**.
+  - Leitung eines **Teams aus vier Entwicklern**, das sich auf technische Architektur und UI/UX konzentrierte.
+  - Implementierung von **CI/CD Pipelines mit GitHub Actions** für automatisierte Tests und Bereitstellungen.
+- **Technologien:** Remix.js, Shopify GraphQL APIs, GitHub Actions
+
+---
+
+### **Bachelor of Science - Computational Engineering Science**
+
+- **Institution:** TU Berlin
+- **Zeitraum:** Apr 2018 - Aug 2021 (Berlin, Deutschland)
+- **Abschlussnote:** 2.1 (GPA 3.1 oder 86%)
+- **Thesis:** Advantage Actor-Critic Reinforcement Learning (Note: 1.3)
+- **Schwerpunkte:** Computational Mathematics, Machine Learning, Data Analytics
