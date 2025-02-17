@@ -55,7 +55,7 @@ def write_job_applications(update: bool = False, job_id: int = None):
         job.language = retrieve_language(job)
         # retrieve the context from the resume in regards to the job description
         rag_retrieval_context = retrieve_from_rag(
-            job.description, job.keywords, job.language
+            job.title, job.description, job.keywords, job.language
         )
         job.resume_context = rag_retrieval_context
 

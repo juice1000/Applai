@@ -1,3 +1,4 @@
+import json
 import os
 
 from langchain.prompts import ChatPromptTemplate
@@ -17,7 +18,7 @@ CHROMA_PATH = os.path.join(ROOT_DIR, "chroma")
 CHROMA_PATH_DE = os.path.join(ROOT_DIR, "chroma_de")
 
 
-def search_docs(query_text: str, language: str = "en"):
+def search_docs(job_title: str, keywords: str, language: str = "en"):
     # Prepare the DB.
     embedding_function = init_embedding_function()
     if language == "de":
@@ -30,8 +31,9 @@ def search_docs(query_text: str, language: str = "en"):
             persist_directory=CHROMA_PATH, embedding_function=embedding_function
         )
 
+    query_text = f"Job Title: {job_title}\nKeywords: {keywords}"
     # Search the DB.
-    db_results = db.similarity_search_with_score(query_text, k=5)
+    db_results = db.similarity_search_with_score(query_text, k=3)
     return db_results
 
 
@@ -77,14 +79,16 @@ def retrieve_rag_response_from_context(
     return response_text
 
 
-def retrieve_from_rag(query_text: str, keywords: str = "", language: str = "en"):
+def retrieve_from_rag(
+    job_title: str, query_text: str, keywords: str = "", language: str = "en"
+):
     logger.info(f"Retrieving from RAG for query: {query_text[:100]}")
     # Search the DB for the query text
-    db_results = search_docs(query_text, language)
+    db_results = search_docs(job_title, keywords, language)
 
     # Get the context from the DB results.
     context_text = get_context(db_results)
-    # print("context_text", context_text)
+    print("context_text", context_text)
     print("\n\n\n\n\n\n")
     # Prompt the LLM.
     response_text = retrieve_rag_response_from_context(
