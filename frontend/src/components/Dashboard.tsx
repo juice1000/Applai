@@ -68,8 +68,35 @@ const Dashboard = () => {
   return (
     <Box sx={{ width: '100%', py: 4, display: 'flex', flexDirection: 'column', gap: 6 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
-          Job Applications
+        <Typography
+          variant="h2"
+          sx={{
+            fontWeight: 'bold',
+            position: 'relative',
+            background: 'linear-gradient(45deg,rgb(1, 129, 233) 0%,rgb(201, 245, 255) 90%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textFillColor: 'transparent',
+            '&::before': {
+              content: '"Welcome to Applai"',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              background: 'linear-gradient(45deg, rgb(201, 245, 255) 0%, rgb(1, 129, 233) 90%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              textFillColor: 'transparent',
+              opacity: 0,
+              transition: 'opacity 2s ease-in-out',
+            },
+            '&:hover::before': {
+              opacity: 1,
+            },
+          }}
+        >
+          Welcome to Applai
         </Typography>
         <Stack direction="row" spacing={2}>
           <Button

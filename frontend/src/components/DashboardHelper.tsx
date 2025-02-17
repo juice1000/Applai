@@ -24,10 +24,11 @@ export const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 40, headerClassName: 'super-app-theme--header' },
   {
     field: 'title',
+
     headerName: 'Job Title',
     width: 200,
     headerClassName: 'super-app-theme--header',
-    renderCell: (params) => <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.2', width: '100%' }}>{params.value}</div>,
+    renderCell: (params) => <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.5', width: '100%', padding: 10 }}>{params.value}</div>,
   },
   {
     field: 'status',
@@ -52,7 +53,7 @@ export const columns: GridColDef[] = [
     flex: 1,
     minWidth: 200,
     headerClassName: 'super-app-theme--header',
-    renderCell: (params) => <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.2', width: '100%' }}>{params.value}</div>,
+    renderCell: (params) => <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.5', width: '100%', padding: 10 }}>{params.value}</div>,
   },
   {
     field: 'description',
@@ -60,7 +61,7 @@ export const columns: GridColDef[] = [
     flex: 2,
     minWidth: 300,
     headerClassName: 'super-app-theme--header',
-    renderCell: (params) => <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.2', width: '100%' }}>{params.value}</div>,
+    renderCell: (params) => <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.5', width: '100%', padding: 10 }}>{params.value}</div>,
   },
   { field: 'dateApplied', headerName: 'Date Applied', width: 120, headerClassName: 'super-app-theme--header' },
 ];
@@ -72,7 +73,8 @@ export const gridStyles = {
   '& .MuiDataGrid-cell': {
     overflow: 'auto !important',
     whiteSpace: 'normal',
-    padding: '8px',
+    fontSize: '1rem',
+    cursor: 'pointer',
   },
   '& .MuiDataGrid-cell:focus-within': {
     outline: 'none',
@@ -82,6 +84,6 @@ export const gridStyles = {
   },
   '& .super-app-theme--header': {
     fontWeight: '700',
-    fontSize: '1rem',
+    fontSize: '1.3rem',
   },
 };
