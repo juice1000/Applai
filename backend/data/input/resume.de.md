@@ -63,6 +63,7 @@
 
 - Konzeption und Durchführung von Unterrichtseinheiten zu MLOps, einschließlich automatisiertem Data Wrangling, ML Lifecycle, Monitoring und Orchestrierung.
 - Entwicklung praxisnaher Labs mit realen Anwendungsfällen zu modernen MLOps-Tools.
+- Technologien: Python, Mlflow, pandas, scikit-learn, Amazong Sagemaker, Airflow, DVC, evidently.ai, AWS, Github Actions, yaml, Bash, Docker
 
 ### **Lead Frontend Engineer, R-Cycle (Freelance, Jan 2024, Remote)**
 
@@ -70,6 +71,7 @@
 - Leitung von Architekturverbesserungen einschließlich Workspace-Refactoring.
 - Entwicklung von UI-Komponenten mit React, SASS und CoreUI.
 - Implementierung einer Datenbank- und Dateiverwaltungslösung mit GCP.
+- Technologien: React.js, TypeScript, SASS, CoreUI, Bootstrap, Firebase, Gitlab CI, Cypress, Jest, React-Testing-Library, Docker
 
 ### **Software Engineer, Cinoware (Freelance, Jan-Dez 2024, Remote)**
 
@@ -77,11 +79,13 @@
 - Entwicklung einer Remote-Robotersteuerung mit einer React.js-Oberfläche und einem Python Flask-Backend.
 - Implementierung von Navigation Tracking mit OpenCV und Performance-Tracking mit MLflow und Scikit-Learn.
 - Entwicklung einer Selenium Grid Testing Suite und Analyse von Performance mit Allure Reports.
+- Technologien: Python, Bash, yaml, Selenium, Selenium Grid, Mlflow, scikit-learn, pandas, React, Gitlab CI, Node.js, Graylog, TypeScript, Express, OpenCV, TesseractOCR, tailwind, Docker
 
-### **Adjunct Lecturer in Data Analytics, Data Smartpoint (Freelance, Jun-Okt 2024, Remote)**
+### **Dozent in Data Analytics, Data Smartpoint (Freelance, Jun-Okt 2024, Remote)**
 
 - Unterricht in Data Analytics, Machine Learning, Web Scraping und API-Entwicklung.
 - Erstellung von Lernmaterialien und Abschlussprojekten für eine Klasse mit ~15 Studenten.
+- Technologien: Python, FastAPI, pandas, Streamlit, scikit-learn, selenium, beautiful soup
 
 ### **Lead Fullstack Engineer, Full-Circle Family (Freelance, Nov 2023 - März 2024, Remote)**
 
@@ -89,12 +93,14 @@
 - Entwurf und Skalierung von Anwendungen mit Microservices, NX Monorepo und AWS.
 - Entwicklung eines TypeScript- und React.js-basierten Analyse-Dashboards zur Nutzerverhaltensanalyse.
 - Nutzung von AWS-Tools wie Lambda, API Gateway, DynamoDB, Cognito und EC2.
+- Technologien: Node.js, React, TypeScript, LLM, RAG, AWS, NX Monorepo
 
 ### **Lead Fullstack Engineer, Cybercrush (Freelance, Dez 2023 - Jan 2024, Remote)**
 
 - Entwicklung eines Shopify Stores mit Remix.js (Hydrogen) und Shopify GraphQL APIs.
 - Leitung eines vierköpfigen Entwicklerteams und Überwachung der technischen Umsetzung.
 - Implementierung von CI/CD-Pipelines mit GitHub Actions.
+- Technologien: React, Remix.js, TypeScript, GraphQL, Shopify, Github Actions, yaml, tailwind
 
 ### **Frontend Engineer (Freelance, Okt 2023, Remote)**
 

@@ -126,8 +126,16 @@ def add_to_chroma(chunks: list[Document], language: str = "en"):
         print("✅ No new documents to add")
 
 
-def clear_database():
-    if os.path.exists(CHROMA_PATH):
+def clear_database(language: str = "en"):
+    """
+    Clears the Chroma database.
+    Args:
+        language (str): The language of the database.
+    """
+    logger.info("Clearing database...")
+    if language == "de" and os.path.exists(CHROMA_PATH_DE):
+        shutil.rmtree(CHROMA_PATH_DE)
+    elif language == "en" and os.path.exists(CHROMA_PATH):
         shutil.rmtree(CHROMA_PATH)
 
 
@@ -140,7 +148,7 @@ def embed_document(clear: bool = False, language: str = "en"):
     """
     logger.info("Embedding document...")
     if clear:
-        clear_database()
+        clear_database(language)
 
     documents = load_document(language)
     chunks = split_documents(documents)

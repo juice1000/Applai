@@ -69,7 +69,7 @@ def retrieve_rag_response_from_context(
     # Prepare the prompt for the LLM.
     prompt_template = get_prompt_template(language, experimental)
     prompt = prompt_template.format(
-        context=context_text, description=query_text, keywords=keywords
+        context=context_text, keywords=keywords, description=query_text
     )
     model = init_completion_function()
     response_text = model.invoke(prompt)
@@ -90,7 +90,7 @@ def retrieve_from_rag(query_text: str, keywords: str = "", language: str = "en")
         query_text, context_text, keywords, language
     )
 
-    logger.info(f"Retrieving response: {response_text[:100]}")
+    logger.info(f"Retrieving response: {response_text}")
     return response_text
 
 

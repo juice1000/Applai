@@ -33,24 +33,50 @@ Answer concise in incomplete sentences with the minimum amount of required words
 """
 
 
-rag_retrieval_prompt_de = """Beantworten Sie die Frage nur auf der Grundlage des folgenden Kontextes:
+rag_retrieval_prompt_de = """Beantworten Sie die folgende Frage ausschließlich auf Grundlage des bereitgestellten Kontextes. Verwenden Sie **keinerlei Informationen** aus der Stellenbeschreibung für die Antwort.
 
+---
+
+**ACHTUNG: Verwenden Sie KEINERLEI Informationen aus der Stellenbeschreibung.**  
+- Die Stellenbeschreibung dient nur als Orientierung.  
+- Sie ist **keine Quelle für Ihre Antwort**.  
+- Alle Informationen müssen aus dem Kontext stammen.  
+
+---
+
+### **Gültige Quelle für Ihre Antwort:**  
 {context}
 
----
-
-Die Frage lautet: "Welche relevante Projekterfahrung habe ich auf der Grundlage der folgenden Stellenbeschreibung?" Geben Sie eine Liste der zwei relevantesten Stellen mit detaillierten Informationen an. Geben Sie nur die Projektdetails, die Beschreibung und die verwendete Technologie an. Lassen Sie alle einleitenden oder kontextbezogenen Sätze weg. 
-
----
-
-Hier sind Schlüsselwörter, die mit der Stellenbeschreibung zusammenhängen:
-
+**Schlüsselwörter zur Stellenbeschreibung:**
 {keywords}
 
 ---
 
-Hier ist die Stellenbeschreibung:
-
+**Verbotene Quelle (NICHT zur Antwort verwenden!):**  
+Die Stellenbeschreibung:  
 {description}
+
+
+
+
+Die Beschreibung enthält KEINE relevanten Informationen über frühere Erfahrungen und darf NICHT als Grundlage für die Antwort verwendet werden.
+---
+
+
+**Frage:**  
+"Welche relevante Projekterfahrung habe ich auf Grundlage der unten folgenden Stellenbeschreibung?"
+
+Erstellen Sie eine Liste mit den **zwei relevantesten Projekten** aus dem oben genannten **Kontext**.  
+**Wenn keine passenden Projekte im Kontext vorhanden sind, antworten Sie mit:**  
+_"Keine relevante Erfahrung im Kontext gefunden."_  
+
+Geben Sie für jede Stelle an:  
+1. **Projekttitel**  
+2. **Zeitraum**  
+3. **Projektbeschreibung**  
+4. **Verwendete Technologien**  
+
+Lassen Sie alle einleitenden oder kontextbezogenen Sätze weg und antworten Sie direkt mit den relevanten Stellen.
+
 
 """
