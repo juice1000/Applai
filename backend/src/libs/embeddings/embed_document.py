@@ -1,5 +1,4 @@
-import os
-import shutil
+from os.path import abspath, dirname, exists, join
 
 from langchain.schema.document import Document
 from langchain_chroma import Chroma
@@ -9,11 +8,11 @@ from libs.llm.init_llm import init_embedding_function
 from libs.logger.init_logger import logger
 
 # Get the project root directory (where main.py is located)
-CUR_DIR = os.path.dirname(os.path.abspath(__file__))
-ROOT_DIR = os.path.abspath(os.path.join(CUR_DIR, "..", "..", ".."))
-CHROMA_PATH = os.path.join(ROOT_DIR, "chroma")
-CHROMA_PATH_DE = os.path.join(ROOT_DIR, "chroma_de")
-DATA_PATH = os.path.join(ROOT_DIR, "data")
+CUR_DIR = dirname(abspath(__file__))
+ROOT_DIR = abspath(join(CUR_DIR, "..", "..", ".."))
+CHROMA_PATH = join(ROOT_DIR, "chroma")
+CHROMA_PATH_DE = join(ROOT_DIR, "chroma_de")
+DATA_PATH = join(ROOT_DIR, "data", "input")
 
 
 def load_document(language: str = "en") -> list[Document]:
@@ -25,12 +24,12 @@ def load_document(language: str = "en") -> list[Document]:
     """
 
     if language == "de":
-        resume_path = os.path.join(ROOT_DIR, "data", "input", "resume.de.md")
+        resume_path = join(DATA_PATH, "resume.de.md")
     else:
-        resume_path = os.path.join(ROOT_DIR, "data", "input", "resume.en.md")
+        resume_path = join(DATA_PATH, "resume.en.md")
     logger.info(f"Loading document from: {resume_path}")
 
-    if not os.path.exists(resume_path):
+    if not exists(resume_path):
         logger.error(f"Resume file not found at: {resume_path}")
         raise FileNotFoundError(f"Resume file not found at: {resume_path}")
 
@@ -126,30 +125,13 @@ def add_to_chroma(chunks: list[Document], language: str = "en"):
         print("✅ No new documents to add")
 
 
-def clear_database(language: str = "en"):
-    """
-    Clears the Chroma database.
-    Args:
-        language (str): The language of the database.
-    """
-    logger.info("Clearing database...")
-    if language == "de" and os.path.exists(CHROMA_PATH_DE):
-        shutil.rmtree(CHROMA_PATH_DE)
-    elif language == "en" and os.path.exists(CHROMA_PATH):
-        shutil.rmtree(CHROMA_PATH)
-
-
-def embed_document(clear: bool = False, language: str = "en"):
+def embed_document(language: str = "en"):
     """
     Embeds the resume document into the Chroma database.
     Args:
-        clear (bool): If True, the database will be cleared before adding the document.
         language (str): The language of the document.
     """
     logger.info("Embedding document...")
-    if clear:
-        clear_database(language)
-
     documents = load_document(language)
     chunks = split_documents(documents)
     add_to_chroma(chunks, language)

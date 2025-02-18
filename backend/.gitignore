@@ -3,6 +3,7 @@ venv/
 .DS_Store
 backup
 chroma
+chroma_de
 .deepeval*
 .env
 jobs.db

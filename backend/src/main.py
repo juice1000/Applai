@@ -6,8 +6,10 @@ from libs.db.db_operations import add_field_to_table, get_table_schema
 from libs.db.get_job import get_all_jobs
 from libs.db.init_db import initialize_db
 from libs.db.write_job import update_job_by_id
-from libs.embed.embed_document import embed_document
-from libs.generate.retrieve_from_rag import retrieve_from_rag_experimental
+
+# from libs.embeddings.embed_document import embed_document
+from libs.embeddings.embed_structured_file import embed_file
+from libs.embeddings.init_chroma import clear_database
 from libs.llm.init_llm import init_llm_services
 from libs.logger.init_logger import logger
 from libs.scrape_and_drive.application_driver import apply_from_db
@@ -36,16 +38,18 @@ def root():
 
 @app.get("/embed/")
 def embed_sources(clear: bool = False, language: Language = Language.en):
-    embed_document(clear=clear, language=language)
+    if clear:
+        clear_database(language)
+    embed_file(language=language)
     return {"message": "Document loaded"}
 
 
-@app.post("/prompt/")
-def generate(req: PromptRequest):
-    # generate the application from job description
-    prompt = req.prompt
-    response = retrieve_from_rag_experimental(prompt)
-    return {"message": response}
+# @app.post("/prompt/")
+# def generate(req: PromptRequest):
+#     # generate the application from job description
+#     prompt = req.prompt
+#     response = retrieve_from_rag_experimental(prompt)
+#     return {"message": response}
 
 
 @app.get("/write_applications/")

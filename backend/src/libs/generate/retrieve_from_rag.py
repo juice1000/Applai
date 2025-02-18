@@ -1,9 +1,9 @@
-import json
 import os
 
 from langchain.prompts import ChatPromptTemplate
 from langchain_chroma import Chroma
-from libs.llm.init_llm import init_completion_function, init_embedding_function
+from libs.embeddings.init_chroma import init_databases
+from libs.llm.init_llm import init_completion_function
 from libs.llm.prompt_context_retrieval import (
     rag_retrieval_prompt,
     rag_retrieval_prompt_de,
@@ -20,20 +20,11 @@ CHROMA_PATH_DE = os.path.join(ROOT_DIR, "chroma_de")
 
 def search_docs(job_title: str, keywords: str, language: str = "en"):
     # Prepare the DB.
-    embedding_function = init_embedding_function()
-    if language == "de":
-        logger.info("Using German DB")
-        db = Chroma(
-            persist_directory=CHROMA_PATH_DE, embedding_function=embedding_function
-        )
-    else:
-        db = Chroma(
-            persist_directory=CHROMA_PATH, embedding_function=embedding_function
-        )
+    db_projects, db_technologies, db_global_information = init_databases(language)
 
-    query_text = f"Job Title: {job_title}\nKeywords: {keywords}"
     # Search the DB.
-    db_results = db.similarity_search_with_score(query_text, k=3)
+    query_text = f"Job Title: {job_title}\nKeywords: {keywords}"
+    db_results = db_projects.similarity_search_with_score(query_text, k=3)
     return db_results
 
 
@@ -88,30 +79,29 @@ def retrieve_from_rag(
 
     # Get the context from the DB results.
     context_text = get_context(db_results)
-    print("context_text", context_text)
-    print("\n\n\n\n\n\n")
+    print("Context text:", context_text)
     # Prompt the LLM.
     response_text = retrieve_rag_response_from_context(
         query_text, context_text, keywords, language
     )
 
-    logger.info(f"Retrieving response: {response_text}")
+    logger.info(f"Retrieving response: {response_text[:100]}")
     return response_text
 
 
-def retrieve_from_rag_experimental(query_text: str):
-    # Search the DB for the query text
-    db_results = search_docs(query_text)
+# def retrieve_from_rag_experimental(query_text: str):
+#     # Search the DB for the query text
+#     db_results = search_docs(query_text)
 
-    # Get the sources and context from the DB results.
-    sources = get_sources(db_results)
-    context_text = get_context(db_results)
+#     # Get the sources and context from the DB results.
+#     sources = get_sources(db_results)
+#     context_text = get_context(db_results)
 
-    # Prepare the prompt for the LLM.
-    response_text = retrieve_rag_response_from_context(
-        query_text, context_text, experimental=True
-    )
+#     # Prepare the prompt for the LLM.
+#     response_text = retrieve_rag_response_from_context(
+#         query_text, context_text, experimental=True
+#     )
 
-    formatted_response = f"Response: {response_text}\nSources: {sources}\n\n"
-    logger.info(f"Retrieving response: {formatted_response[:100]}")
-    return response_text
+#     formatted_response = f"Response: {response_text}\nSources: {sources}\n\n"
+#     logger.info(f"Retrieving response: {formatted_response[:100]}")
+#     return response_text

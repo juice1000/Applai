@@ -30,3 +30,9 @@ class TableSchema(BaseModel):
 class Language(str, Enum):
     de = "de"
     en = "en"
+
+
+class Collection(str, Enum):
+    PROJECTS = "project_embeddings"
+    TECHNOLOGIES = "technology_embeddings"
+    PERSONAL = "personal_embeddings"
