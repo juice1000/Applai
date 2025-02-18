@@ -47,7 +47,7 @@
       "company": "R-Cycle",
       "dates": "Jan 2024",
       "description": "Developed a dashboard to track plastic production cycles, helping manufacturers comply with recycling mandates. Focused on architectural improvements and UI optimizations. Built reusable UI components in React and integrated with Google Cloud Platform.",
-      "technologies": ["React", "SASS", "CoreUI", "Google Cloud Platform (GCP)"],
+      "technologies": ["React", "SASS", "CoreUI", "Bootstrap", "Google Cloud Platform (GCP)", "Firebase", "Gitlab CI/CD"],
       "year": 2024
     },
     {
@@ -56,7 +56,21 @@
       "company": "Cinoware",
       "dates": "Jan - Dec 2024",
       "description": "Built a remote robot operation platform with navigation tracking and performance analysis. Developed a React.js frontend and a Python Flask backend. Implemented real-time navigation tracking with OpenCV and integrated performance analysis with MLflow and Scikit-Learn.",
-      "technologies": ["React.js", "Python", "Flask", "OpenCV", "MLflow", "Scikit-Learn", "Selenium Grid", "Allure Reports"],
+      "technologies": [
+        "React.js",
+        "Python",
+        "Flask",
+        "OpenCV",
+        "MLflow",
+        "Scikit-Learn",
+        "Selenium Grid",
+        "Allure Reports",
+        "pytest",
+        "Jira",
+        "Docker",
+        "TesseractOCR",
+        "LLM"
+      ],
       "year": 2024
     },
     {
@@ -65,7 +79,7 @@
       "company": "Full-Circle Family",
       "dates": "Nov 2023 - Mar 2024",
       "description": "Developed an AI-powered chatbot for parenting advice using OpenAI GPT models and WhatsApp API. Designed and scaled a microservices architecture with NX Monorepo. Built a React.js dashboard for user behavior analytics. Managed AWS infrastructure, ensuring scalability and security.",
-      "technologies": ["OpenAI GPT", "WhatsApp API", "AWS Lambda", "API Gateway", "DynamoDB", "NX Monorepo", "Cognito", "EC2", "TypeScript", "React.js"],
+      "technologies": ["LLM", "RAG", "WhatsApp API", "AWS Lambda", "API Gateway", "DynamoDB", "NX Monorepo", "Cognito", "EC2", "TypeScript", "React.js"],
       "year": 2023
     },
     {
@@ -74,7 +88,7 @@
       "company": "Cybercrush",
       "dates": "Dec 2023 - Jan 2024",
       "description": "Developed a custom Shopify storefront using Remix.js (Hydrogen) and Shopify GraphQL APIs. Led a team of four developers, overseeing both technical architecture and UI/UX design. Set up CI/CD pipelines with GitHub Actions to automate testing and deployment.",
-      "technologies": ["Remix.js", "Shopify GraphQL APIs", "GitHub Actions"],
+      "technologies": ["Remix.js", "Shopify APIs", "GitHub Actions", "GraphQL"],
       "year": 2023
     },
     {
@@ -83,7 +97,7 @@
       "company": "kunveno",
       "dates": "Jun - Aug 2023",
       "description": "Developed a Microsoft Teams Message Extension, enabling seamless integration within enterprise workflows. Architected the Microsoft Azure environment, ensuring scalable cloud infrastructure. Implemented OAuth and Azure AD authentication for secure enterprise logins. Built a CI/CD pipeline to manage multi-environment releases.",
-      "technologies": ["Microsoft Azure", "OAuth", "Azure AD", "CI/CD Pipelines"],
+      "technologies": ["Microsoft Azure", "OAuth", "Azure AD", "CI/CD Pipelines", "TypeScript", "Node.js"],
       "year": 2023
     },
     {

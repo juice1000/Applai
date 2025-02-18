@@ -5,9 +5,9 @@ from langchain_chroma import Chroma
 from libs.embeddings.init_chroma import init_databases
 from libs.llm.init_llm import init_completion_function
 from libs.llm.prompt_context_retrieval import (
-    rag_retrieval_prompt,
-    rag_retrieval_prompt_de,
-    rag_retrieval_prompt_experimental,
+    project_retrieval_prompt_de,
+    project_retrieval_prompt_en,
+    project_retrieval_prompt_experimental,
 )
 from libs.logger.init_logger import logger
 
@@ -24,7 +24,7 @@ def search_docs(job_title: str, keywords: str, language: str = "en"):
 
     # Search the DB.
     query_text = f"Job Title: {job_title}\nKeywords: {keywords}"
-    db_results = db_projects.similarity_search_with_score(query_text, k=3)
+    db_results = db_projects.similarity_search_with_score(query_text, k=5)
     return db_results
 
 
@@ -45,15 +45,15 @@ def get_context(db_results):
 
 def get_prompt_template(language: str = "en", experimental=False):
     if experimental:
-        return ChatPromptTemplate.from_template(rag_retrieval_prompt_experimental)
+        return ChatPromptTemplate.from_template(project_retrieval_prompt_experimental)
     elif language == "de":
-        return ChatPromptTemplate.from_template(rag_retrieval_prompt_de)
+        return ChatPromptTemplate.from_template(project_retrieval_prompt_de)
     else:
-        return ChatPromptTemplate.from_template(rag_retrieval_prompt)
+        return ChatPromptTemplate.from_template(project_retrieval_prompt_en)
 
 
 def retrieve_rag_response_from_context(
-    query_text: str,
+    job_description: str,
     context_text: str,
     keywords: str = "",
     language: str = "en",
@@ -62,7 +62,7 @@ def retrieve_rag_response_from_context(
     # Prepare the prompt for the LLM.
     prompt_template = get_prompt_template(language, experimental)
     prompt = prompt_template.format(
-        context=context_text, keywords=keywords, description=query_text
+        context=context_text, keywords=keywords, description=job_description
     )
     model = init_completion_function()
     response_text = model.invoke(prompt)
@@ -71,9 +71,9 @@ def retrieve_rag_response_from_context(
 
 
 def retrieve_from_rag(
-    job_title: str, query_text: str, keywords: str = "", language: str = "en"
+    job_title: str, job_description: str, keywords: str = "", language: str = "en"
 ):
-    logger.info(f"Retrieving from RAG for query: {query_text[:100]}")
+    logger.info(f"Retrieving from RAG for description: {job_description[:100]}")
     # Search the DB for the query text
     db_results = search_docs(job_title, keywords, language)
 
@@ -82,10 +82,11 @@ def retrieve_from_rag(
     print("Context text:", context_text)
     # Prompt the LLM.
     response_text = retrieve_rag_response_from_context(
-        query_text, context_text, keywords, language
+        job_description, context_text, keywords, language
     )
-
-    logger.info(f"Retrieving response: {response_text[:100]}")
+    print("\n\n\n\n\n\n\n")
+    print("Response text:", response_text)
+    # logger.info(f"Retrieving response: {response_text}")
     return response_text
 
 

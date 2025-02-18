@@ -1,39 +1,63 @@
-rag_retrieval_prompt = """Answer the question based only on the following context:
+project_retrieval_prompt_en = """
+You receive three separate information sources:
 
+1. Context (Julien Look's Work Experience) - VALID SOURCE  
+   - Contains only real project experiences from Julien Look.  
+   - ONLY this information may be used to answer the question.  
+   - Information outside of this section must not be used.  
+
+2. Keywords (Extracted from the Job Posting) - REFERENCE ONLY  
+   - These are relevant technologies, skills, and requirements from the job posting.  
+   - They serve as guidance to match relevant experience but are NOT a valid source for the response.  
+
+3. Job Description (Employer's Job Posting) - FORBIDDEN SOURCE  
+   - This contains the full job posting from the employer.  
+   - It MUST NOT be used as a basis for the response.  
+   - It MUST NOT be mixed with or inferred from Julien Look's experience.  
+   - It describes the job requirements but NOT Julien Look's past experience.  
+
+---
+
+## Your Task
+
+### Question:  
+*"What relevant project experience does Julien Look have based on the job description below?"*  
+
+- You may ONLY access the Context section.  
+- DO NOT use, derive from, or modify ANY information from the Job Description.
+
+List the two most relevant projects based on Julien Look's experience. Assess relevancy by matching technologies with the given keywords. Prioritize the latest projects over older ones.  
+
+For each relevant project, provide:  
+1. Project Title  
+2. Time Period  
+3. Project Description (All information must come from the context and directly relate to the project title.)  
+4. Technologies Used  
+
+Respond directly with the two most relevant projects without introduction or explanations. Start each project description with the project title. 
+
+---
+
+## Input Data Format (Example)
+
+Context (Julien Look's Experience - Allowed Source):  
 {context}
 
 ---
 
-The question is: "What relevant project experience do I have based on the following job description?" Provide a list of the two most relevant jobs with detailed information. Return only the project details, the description and the used technology. Omit any introductory or contextual sentences. 
-
----
-
-Here are keywords related to the job description:
-
+Keywords (Extracted from the Job Posting - Reference Only):  
 {keywords}
 
 ---
 
-Here is the job description:
-
+Job Description (Forbidden Source - DO NOT USE!):  
 {description}
 
-
+Leave out any introductory or contextual sentences and respond only with the relevant projects.  
 """
 
 
-rag_retrieval_prompt_experimental = """Answer the question based only on the following context: 
-
-{context}
-
----
-
-Answer concise in incomplete sentences with the minimum amount of required words. Assume you know the answer. The question is: {description}
-
-"""
-
-
-rag_retrieval_prompt_de = """
+project_retrieval_prompt_de = """
 Sie erhalten drei getrennte Informationsquellen:
 
 1. Kontext (Julien Looks Berufserfahrung) - GÜLTIGE QUELLE  
@@ -94,5 +118,16 @@ Stellenbeschreibung (Verbotene Quelle - NICHT verwenden!):
 
 
 Lassen Sie alle einleitenden oder kontextbezogenen Sätze weg und antworten Sie direkt mit den relevanten Projekten.  
+
+"""
+
+
+project_retrieval_prompt_experimental = """Answer the question based only on the following context: 
+
+{context}
+
+---
+
+Answer concise in incomplete sentences with the minimum amount of required words. Assume you know the answer. The question is: {description}
 
 """

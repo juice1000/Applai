@@ -1,5 +1,5 @@
 import json
-from os.path import abspath, dirname, exists, join
+from os.path import abspath, dirname, join
 
 from langchain_chroma import Chroma
 from libs.embeddings.init_chroma import clear_database, init_databases
