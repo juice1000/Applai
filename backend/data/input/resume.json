@@ -1,0 +1,68 @@
+{
+    "name": "Julien Look",
+    "role": "",
+    "contact": {},
+    "skills": {},
+    "projects": [
+        {
+            "title": "Adjunct Lecturer in MLOps",
+            "role": "Nobleprog",
+            "company": "Freelance Jan-Feb",
+            "dates": ""
+        },
+        {
+            "title": "Lead Frontend Engineer",
+            "role": "R-Cycle",
+            "company": "Freelance Jan",
+            "dates": "2024"
+        },
+        {
+            "title": "Software Engineer",
+            "role": "Cinoware",
+            "company": "Freelance Jan-Dec",
+            "dates": ""
+        },
+        {
+            "title": "Adjunct Lecturer in Data Analytics",
+            "role": "Data Smartpoint",
+            "company": "Freelance Jun-Oct",
+            "dates": ""
+        },
+        {
+            "title": "Lead Fullstack Engineer",
+            "role": "Full-Circle Family",
+            "company": "Freelance Nov",
+            "dates": "2023 -"
+        },
+        {
+            "title": "Lead Fullstack Engineer",
+            "role": "Cybercrush",
+            "company": "Freelance Dec",
+            "dates": "2023 -"
+        },
+        {
+            "title": "Frontend Engineer",
+            "role": "Freelance Oct",
+            "company": "2023",
+            "dates": "2023"
+        },
+        {
+            "title": "Fullstack Engineer",
+            "role": "kunveno",
+            "company": "Freelance Jun - Aug",
+            "dates": ""
+        },
+        {
+            "title": "Machine Learning Engineer",
+            "role": "Cyanite",
+            "company": "Freelance Jun",
+            "dates": "2020 -"
+        },
+        {
+            "title": "Operating System Engineer",
+            "role": "Bosch",
+            "company": "Internship Sep",
+            "dates": "2019 -"
+        }
+    ]
+}

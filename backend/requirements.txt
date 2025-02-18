@@ -20,3 +20,5 @@ sqlmodel
 python-dotenv
 langdetect
 "unstructured[md]" nltk 
+markdownify
+pdfplumber
