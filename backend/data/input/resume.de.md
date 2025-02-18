@@ -83,7 +83,7 @@
   - Umsetzung von **architektonischen Verbesserungen**, Code-Refactoring und UI-Optimierungen.
   - Erstellung von **wiederverwendbaren UI-Komponenten** mit **React, SASS und CoreUI**.
   - Integration von **Google Cloud Platform (GCP)** für Dateiverwaltung und Datenanalyse.
-- **Technologien:** React, SASS, CoreUI, Google Cloud Platform (GCP)
+- **Technologien:** React, SASS, CoreUI, Google Cloud Platform (GCP), Firebase, Bootstrap
 
 ---
 
@@ -190,13 +190,3 @@
   - Leitung eines **Teams aus vier Entwicklern**, das sich auf technische Architektur und UI/UX konzentrierte.
   - Implementierung von **CI/CD Pipelines mit GitHub Actions** für automatisierte Tests und Bereitstellungen.
 - **Technologien:** Remix.js, Shopify GraphQL APIs, GitHub Actions
-
----
-
-### **Bachelor of Science - Computational Engineering Science**
-
-- **Institution:** TU Berlin
-- **Zeitraum:** Apr 2018 - Aug 2021 (Berlin, Deutschland)
-- **Abschlussnote:** 2.1 (GPA 3.1 oder 86%)
-- **Thesis:** Advantage Actor-Critic Reinforcement Learning (Note: 1.3)
-- **Schwerpunkte:** Computational Mathematics, Machine Learning, Data Analytics
