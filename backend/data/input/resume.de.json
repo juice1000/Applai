@@ -1,0 +1,135 @@
+{
+  "name": "Julien Look",
+  "role": "Software Engineer, Data Scientist, Fullstack Engineer",
+  "contact": {
+    "linkedin": "https://www.linkedin.com/in/julien-look/",
+    "github": "https://github.com/juice1000/"
+  },
+  "skills": {
+    "data_science": [
+      "Machine Learning",
+      "LLMs",
+      "CNNs",
+      "Classification",
+      "Time Series",
+      "Regression",
+      "Reinforcement Learning",
+      "Big Data Mining",
+      "ETL",
+      "Data Quality"
+    ],
+    "software_architecture": ["Microservices", "NX Monorepo", "Serverless Computing", "Kubernetes"],
+    "cloud_platforms": ["AWS (Lambda, API Gateway, DynamoDB, Cognito, EC2, S3)", "Firebase", "Microsoft Azure"],
+    "devops": ["Docker", "Kubernetes", "Terraform", "GitHub Actions", "GitLab CI/CD", "Helm"],
+    "backend": ["Express", "Restify", "Flask", "Node.js", "TypeScript", "Python"],
+    "frontend": ["React", "Remix", "Angular", "Tailwind", "SASS", "Bootstrap", "Material UI", "CoreUI"],
+    "databases": ["MongoDB", "PostgreSQL", "BigQuery", "Redis", "dbt"],
+    "authentication": ["OAuth", "JWT", "AWS Cognito", "Azure AD"],
+    "languages": {
+      "german": "Muttersprache",
+      "english": "Fließend",
+      "japanese": "Berufliche Kenntnisse"
+    }
+  },
+  "projects": [
+    {
+      "title": "MLOps Seminar",
+      "role": "Dozent",
+      "company": "Nobleprog",
+      "dates": "Jan - Feb 2025",
+      "description": "Gestaltung und Leitung eines praxisorientierten MLOps-Seminars mit den Schwerpunkten automatisierte Datenaufbereitung, ML Lifecycle Management, Monitoring und Orchestrierung. Bereitstellung von realen Fallstudien und interaktiven Übungen zur Implementierung moderner MLOps-Techniken.",
+      "technologies": ["Amazon SageMaker", "MLflow", "DVC", "Airflow", "CI/CD for Machine Learning", "AWS Lambda", "Terraform", "Docker"],
+      "year": 2025
+    },
+    {
+      "title": "R-Cycle Kunden-Dashboard",
+      "role": "Lead Frontend Engineer",
+      "company": "R-Cycle",
+      "dates": "Jan 2024",
+      "description": "Entwicklung eines Dashboards zur Verfolgung von Kunststoffproduktionszyklen, um Herstellern die Einhaltung von Recyclingvorgaben zu ermöglichen. Fokus auf architektonische Verbesserungen und UI-Optimierungen. Erstellung wiederverwendbarer UI-Komponenten in React und Integration mit Google Cloud Platform.",
+      "technologies": ["React", "SASS", "CoreUI", "Google Cloud Platform (GCP)"],
+      "year": 2024
+    },
+    {
+      "title": "Remote Robot Operation App",
+      "role": "Software Engineer",
+      "company": "Cinoware",
+      "dates": "Jan - Dez 2024",
+      "description": "Entwicklung einer Plattform zur Fernsteuerung von Robotern mit Navigationsverfolgung und Leistungsanalyse. Implementierung eines Echtzeit-Navigationssystems mit OpenCV und Integration von Leistungsanalysen mit MLflow und Scikit-Learn.",
+      "technologies": ["React.js", "Python", "Flask", "OpenCV", "MLflow", "Scikit-Learn", "Selenium Grid", "Allure Reports"],
+      "year": 2024
+    },
+    {
+      "title": "AI Parent Advisor",
+      "role": "Lead Fullstack Engineer",
+      "company": "Full-Circle Family",
+      "dates": "Nov 2023 - März 2024",
+      "description": "Entwicklung eines KI-gestützten Chatbots für Elternberatung mit OpenAI GPT-Modellen und WhatsApp API. Konzeption und Skalierung einer Microservices-Architektur mit NX Monorepo. Erstellung eines React.js Dashboards zur Analyse des Nutzerverhaltens. Verwaltung der AWS-Infrastruktur zur Sicherstellung von Skalierbarkeit und Sicherheit.",
+      "technologies": ["OpenAI GPT", "WhatsApp API", "AWS Lambda", "API Gateway", "DynamoDB", "NX Monorepo", "Cognito", "EC2", "TypeScript", "React.js"],
+      "year": 2023
+    },
+    {
+      "title": "Shopify Storefront",
+      "role": "Lead Fullstack Engineer",
+      "company": "Cybercrush",
+      "dates": "Dez 2023 - Jan 2024",
+      "description": "Entwicklung eines maßgeschneiderten Shopify-Storefronts mit Remix.js (Hydrogen) und Shopify GraphQL APIs. Leitung eines Teams von vier Entwicklern mit Fokus auf technische Architektur und UI/UX-Design. Einrichtung von CI/CD-Pipelines mit GitHub Actions für automatisiertes Testing und Deployment.",
+      "technologies": ["Remix.js", "Shopify GraphQL APIs", "GitHub Actions"],
+      "year": 2023
+    },
+    {
+      "title": "Microsoft Teams Extension",
+      "role": "Fullstack Engineer",
+      "company": "kunveno",
+      "dates": "Jun - Aug 2023",
+      "description": "Entwicklung einer Microsoft Teams Message Extension für die nahtlose Integration in Unternehmensworkflows. Architektur der Microsoft Azure Umgebung für eine skalierbare Cloud-Infrastruktur. Implementierung von OAuth und Azure AD für sichere Authentifizierung. Erstellung einer CI/CD-Pipeline für Multi-Environment Deployments.",
+      "technologies": ["Microsoft Azure", "OAuth", "Azure AD", "CI/CD Pipelines"],
+      "year": 2023
+    },
+    {
+      "title": "Listify",
+      "role": "Fullstack Engineer",
+      "company": "Eigenes Projekt",
+      "dates": "Jan 2023",
+      "description": "Entwicklung einer Anwendung zur Konvertierung von Spotify-Playlists in DJ-Setlists. Integration eines Selenium-basierten Scrapers zur Extraktion von Musik-Metadaten und Entwicklung eines Flask-gestützten Backends.",
+      "technologies": ["Python", "Flask", "FastAPI", "Celery", "Redis", "Selenium", "BeautifulSoup"],
+      "year": 2023
+    },
+    {
+      "title": "KI-gestützter Steuerassistent",
+      "role": "Data Scientist",
+      "company": "Expresssteuer GmbH",
+      "dates": "Mai 2021 - Dez 2022",
+      "description": "Leitung der KI-gestützten Automatisierung der Finanzdatenverarbeitung. Neugestaltung der ETL-Pipelines und Reduktion der Cloud-Kosten um 90%. Entwicklung eines KI-gestützten Chatbots für den Kundensupport und Erstellung von Echtzeit-Analyse-Dashboards mit BigQuery.",
+      "technologies": ["BigQuery", "dbt", "Python", "Machine Learning", "ETL Pipelines"],
+      "year": 2022
+    },
+    {
+      "title": "ML-Forschung in Quality Science",
+      "role": "Data Science Research Assistant",
+      "company": "TU Berlin",
+      "dates": "Sep 2020 - Sep 2021",
+      "description": "Durchführung von Machine-Learning-Forschung im Bereich Quality Science. Entwicklung von Anomalieerkennungsmodellen und Beitrag zu wissenschaftlichen Publikationen.",
+      "technologies": ["Python", "R"],
+      "year": 2021
+    },
+    {
+      "title": "ML Musikklassifikation",
+      "role": "Machine Learning Engineer",
+      "company": "Cyanite",
+      "dates": "Jun - Nov 2020",
+      "description": "Entwicklung von CNN-Modellen zur Musikklassifikation. Aufbau einer Deep-Learning-Pipeline zur Klassifizierung von Musik nach Epoche mit Zeitreihenanalyse.",
+      "technologies": ["TensorFlow", "CNN", "Python"],
+      "year": 2020
+    },
+    {
+      "title": "Bosch Linux Distribution",
+      "role": "Operating System Engineer (Intern)",
+      "company": "Bosch",
+      "dates": "Sep 2019 - März 2020",
+      "description": "Entwicklung von Debian-basierten Linux OS-Komponenten für industrielle Automatisierung. Implementierung eines Sicherheitsverifikationssystems für nicht vertrauenswürdige Softwareinstallationen.",
+      "technologies": ["Debian", "Bash", "Python", "Linux System Development"],
+      "year": 2020
+    }
+  ]
+}

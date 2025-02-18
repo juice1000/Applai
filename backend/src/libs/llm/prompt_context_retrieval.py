@@ -36,17 +36,17 @@ Answer concise in incomplete sentences with the minimum amount of required words
 rag_retrieval_prompt_de = """
 Sie erhalten drei getrennte Informationsquellen:
 
-**1. Kontext (Julien Looks Berufserfahrung) – GÜLTIGE QUELLE**  
+1. Kontext (Julien Looks Berufserfahrung) - GÜLTIGE QUELLE  
 - Enthält ausschließlich echte Projekterfahrungen von Julien Look.  
 - NUR diese Informationen dürfen für die Antwort verwendet werden.  
 - Informationen außerhalb dieses Bereichs dürfen nicht genutzt werden.  
 
-**2. Schlüsselwörter (Aus der Stellenanzeige extrahiert) – NUR REFERENZ**  
+2. Schlüsselwörter (Aus der Stellenanzeige extrahiert) - NUR REFERENZ  
 - Dies sind relevante Technologien, Fähigkeiten und Anforderungen aus der Stellenanzeige.  
 - Sie können als Orientierung für die Auswahl passender Erfahrung dienen,  
   aber sie sind KEINE Quelle für die eigentliche Antwort.  
 
-**3. Stellenbeschreibung (Ausschreibung des Arbeitgebers) – VERBOTENE QUELLE**  
+3. Stellenbeschreibung (Ausschreibung des Arbeitgebers) - VERBOTENE QUELLE  
 - Diese enthält die vollständige Stellenanzeige des Arbeitgebers.  
 - Darf NICHT als Grundlage für die Antwort verwendet werden.  
 - Darf NICHT mit Julien Looks Erfahrung vermischt oder abgeleitet werden.  
@@ -56,7 +56,7 @@ Sie erhalten drei getrennte Informationsquellen:
 
 ## Ihre Aufgabe
 
-**Frage:**  
+Frage:  
 *"Welche relevante Projekterfahrung hat Julien Look basierend auf der untenstehenden Stellenbeschreibung?"*  
 
 - Sie dürfen AUSSCHLIESSLICH auf die Kontext-Sektion zugreifen.  
@@ -64,11 +64,11 @@ Sie erhalten drei getrennte Informationsquellen:
 - Falls keine passenden Projekte im Kontext vorhanden sind, antworten Sie mit:  
   *"Keine relevante Erfahrung im Kontext gefunden."*  
 
-**Für jedes relevante Projekt geben Sie an:**  
-1. **Projekttitel**  
-2. **Zeitraum**  
-3. **Projektbeschreibung** (Alle Angaben müssen aus dem Kontext stammen und sich direkt auf den Projekttitel beziehen.)  
-4. **Verwendete Technologien**  
+Für jedes relevante Projekt geben Sie an:  
+1. Projekttitel  
+2. Zeitraum  
+3. Projektbeschreibung (Alle Angaben müssen aus dem Kontext stammen und sich direkt auf den Projekttitel beziehen.)  
+4. Verwendete Technologien  
 
 Jede Projektbeschreibung muss explizit mit dem Projekttitel beginnen.  
 
@@ -78,18 +78,18 @@ Antworten Sie direkt mit den zwei relevantesten Projekten ohne Einleitung oder E
 
 ## Datenformat für die Eingabe (Beispiel)
 
-**Kontext (Julien Looks Erfahrung – Erlaubte Quelle):**  
+Kontext (Julien Looks Erfahrung - Erlaubte Quelle):  
 {context}
 
 ---
 
-**Schlüsselwörter (Aus der Stellenanzeige – Nur Referenz):**  
+Schlüsselwörter (Aus der Stellenanzeige - Nur Referenz):  
 {keywords}
 
 
 ---
 
-**Stellenbeschreibung (Verbotene Quelle – NICHT verwenden!):**  
+Stellenbeschreibung (Verbotene Quelle - NICHT verwenden!):  
 {description}
 
 
