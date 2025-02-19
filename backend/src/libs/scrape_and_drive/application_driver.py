@@ -20,7 +20,6 @@ def apply_from_db():
     logger.info("Applying from DB...")
     # generate the application from job description
     jobs = get_jobs_with_pending_application()
-    return
     driver = get_driver()
     login(driver)
 

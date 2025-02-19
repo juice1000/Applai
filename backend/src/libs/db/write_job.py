@@ -40,8 +40,8 @@ def update_job(job: Job, **kwargs):
             logger.info("Job record updated.")
             return job
         else:
-            logger.error(f"Job {job_id} not found")
-            raise Exception(f"Job {job_id} not found")
+            logger.error(f"Job {job.id} not found")
+            raise Exception(f"Job {job.id} not found")
 
 
 def update_job_by_id(id: int, **kwargs):

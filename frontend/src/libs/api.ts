@@ -17,34 +17,61 @@ export interface Job {
 }
 
 export const fetchJobs = async (): Promise<Job[]> => {
-  const response = await axios.get(`${API_URL}/jobs/`);
-  return formatData(response.data);
+  try {
+    const response = await axios.get(`${API_URL}/jobs/`);
+    return formatData(response.data);
+  } catch (error) {
+    console.error('Failed to fetch jobs:', error);
+    return [];
+  }
 };
-export const scrapeJobs = async (): Promise<Job[]> => {
-  const response = await axios.get(`${API_URL}/scrape`);
-  return formatData(response.data);
+export const scrapeJobs = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/scrape`);
+    return formatData(response.data);
+  } catch (error) {
+    console.error('Error scraping jobs:', error);
+  }
 };
 
-export const updateJobStatus = async (jobId: number, status: Job['status']): Promise<Job> => {
-  const response = await axios.put(`${API_URL}/jobs/${jobId}`, { status });
-  return response.data;
+export const updateJobStatus = async (jobId: number, status: Job['status']) => {
+  try {
+    const response = await axios.put(`${API_URL}/jobs/${jobId}`, { status });
+    return response.data;
+  } catch (error) {
+    console.error('Error updating job status:', error);
+  }
 };
-export const updateApplication = async (jobId: number, applicationLetter?: Job['applicationLetter']): Promise<Job> => {
-  const response = await axios.put(`${API_URL}/jobs/${jobId}`, { applicationLetter });
-  return response.data;
+export const updateApplication = async (jobId: number, applicationLetter?: Job['applicationLetter']) => {
+  try {
+    const response = await axios.put(`${API_URL}/jobs/${jobId}`, { applicationLetter });
+    return response.data;
+  } catch (error) {
+    console.error('Error updating application letter:', error);
+  }
 };
 export const writeApplication = async (jobId: number) => {
-  const response = await axios.get(`${API_URL}/write_applications/${jobId}`);
-  return response.data;
+  try {
+    await axios.get(`${API_URL}/write_applications/${jobId}`);
+  } catch (error) {
+    console.error('Error writing application:', error);
+  }
 };
 export const writeCoverLetter = async (update?: boolean) => {
-  if (update !== undefined) {
-    await axios.get(`${API_URL}/write_applications`, { params: { update: update } });
-  } else {
-    await axios.get(`${API_URL}/write_applications`);
+  try {
+    if (update !== undefined) {
+      await axios.get(`${API_URL}/write_applications`, { params: { update: update } });
+    } else {
+      await axios.get(`${API_URL}/write_applications`);
+    }
+  } catch (error) {
+    console.error('Error writing cover letters:', error);
   }
 };
 export const applyToJobs = async () => {
-  const response = await axios.get(`${API_URL}/apply`);
-  return response.data;
+  try {
+    await axios.get(`${API_URL}/apply`);
+  } catch (error) {
+    console.error('Error applying to jobs:', error);
+  }
 };

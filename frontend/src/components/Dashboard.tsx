@@ -3,7 +3,7 @@ import SendIcon from '@mui/icons-material/Send';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import { DataGrid, GridRowParams } from '@mui/x-data-grid';
 import { useState, useEffect } from 'react';
-import { fetchJobs, Job, scrapeJobs, writeCoverLetter } from '../libs/api';
+import { applyToJobs, fetchJobs, Job, scrapeJobs, writeCoverLetter } from '../libs/api';
 import { columns, gridStyles } from './DashboardHelper';
 import JobDetailModal from './JobDetailModal';
 
@@ -26,13 +26,9 @@ const Dashboard = () => {
     }
   };
   const handleScrapeJobs = async () => {
-    try {
-      setLoading(true);
-      await scrapeJobs();
-      loadJobs();
-    } catch (error) {
-      console.error('Failed to scrape jobs:', error);
-    }
+    setLoading(true);
+    await scrapeJobs();
+    loadJobs();
   };
 
   const handleRowDoubleClick = (params: GridRowParams) => {
@@ -40,29 +36,16 @@ const Dashboard = () => {
     setIsModalOpen(true);
   };
 
-  const handleJobUpdate = () => {
-    loadJobs(); // Refresh the jobs list
-  };
-
   const handleApplyToJobs = async () => {
-    try {
-      // TODO: Implement API call to apply to jobs
-      console.log('Applying to jobs...');
-    } catch (error) {
-      console.error('Error applying to jobs:', error);
-    }
+    setLoading(true);
+    await applyToJobs();
+    loadJobs();
   };
 
   const handleWriteCoverLetter = async (update?: boolean) => {
-    try {
-      // TODO: Implement API call to write cover letters
-      console.log('Writing cover letters...');
-      setLoading(true);
-      await writeCoverLetter(update);
-      loadJobs();
-    } catch (error) {
-      console.error('Error writing cover letters:', error);
-    }
+    setLoading(true);
+    await writeCoverLetter(update);
+    loadJobs();
   };
 
   // Load jobs on component mount
@@ -168,7 +151,7 @@ const Dashboard = () => {
         </Box>
       </div>
 
-      <JobDetailModal open={isModalOpen} onClose={() => setIsModalOpen(false)} job={selectedJob} onUpdate={handleJobUpdate} loading={loading} setLoading={setLoading} />
+      <JobDetailModal open={isModalOpen} onClose={() => setIsModalOpen(false)} job={selectedJob} onUpdate={loadJobs} loading={loading} setLoading={setLoading} />
     </Box>
   );
 };

@@ -49,6 +49,23 @@ def get_all_jobs():
     if not engine:
         raise Exception("No Engine for DB found")
     with Session(engine) as session:
+        statement = select(Job)
+        jobs = session.exec(statement).all()
+        logger.info(f"Number of Jobs retrieved: {len(jobs)}")
+        return jobs
+
+
+def get_all_jobs_without_application():
+    logger.info("Retrieving all jobs from DB...")
+    """
+    Get all jobs from the database.
+
+    Returns:
+        list: A list of all jobs in the database.
+    """
+    if not engine:
+        raise Exception("No Engine for DB found")
+    with Session(engine) as session:
         statement = select(Job).where(Job.date_applied.is_(None))
         jobs = session.exec(statement).all()
         logger.info(f"Number of Jobs retrieved: {len(jobs)}")
@@ -83,9 +100,11 @@ def get_jobs_with_pending_application():
         raise Exception("No Engine for DB found")
     with Session(engine) as session:
         statement = select(Job).where(
-            (Job.date_applied.is_(None))
-            & (Job.status != "review")
-            & (Job.status != "irrelevant")
+            Job.application_letter.isnot(None)
+            & (Job.date_applied.is_(None))
+            & (Job.status.isnot("review"))
+            & (Job.status.isnot("irrelevant"))
         )
         jobs = session.exec(statement).all()
         logger.info(f"Number of Jobs with pending applications retrieved: {len(jobs)}")
+        return jobs
