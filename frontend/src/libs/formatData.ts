@@ -15,8 +15,9 @@ export const getStatus = (jobData: any) => {
 export const formatData = (data: any) => {
   return data.map((jobData: any) => ({
     ...jobData,
-    dateApplied: jobData['date_applied'] && new Date(job['date_applied']).toLocaleDateString(),
+    dateApplied: jobData['date_applied'] && new Date(jobData['date_applied']).toLocaleDateString(),
     applicationLetter: jobData['application_letter'],
+    contactPerson: jobData['contact_person'],
     status: getStatus(jobData),
   }));
 };

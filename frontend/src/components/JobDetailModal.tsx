@@ -69,9 +69,11 @@ const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: J
           >
             {job.status}
           </Typography>
-          <Typography variant="subtitle1" sx={{ width: 'fit-content', paddingY: 1, paddingX: 1, borderRadius: '50px', border: '1px solid white', fontWeight: 'bold' }}>
-            {job.language}
-          </Typography>
+          {job.language && (
+            <Typography variant="subtitle1" sx={{ width: 'fit-content', paddingY: 1, paddingX: 1, borderRadius: '50px', border: '1px solid white', fontWeight: 'bold' }}>
+              {job.language}
+            </Typography>
+          )}
           {job.dateApplied && (
             <Typography sx={{ width: 'fit-content', paddingY: 1, paddingX: 2, borderRadius: '20px', fontWeight: 'bold', border: 'solid' }} variant="subtitle1">
               Date Applied: {job.dateApplied || 'Not applied'}
@@ -79,6 +81,15 @@ const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: J
           )}
         </Box>
 
+        {job.contactPerson && (
+          <>
+            <Typography variant="h6" gutterBottom>
+              Contact Person
+            </Typography>
+            <Typography>{job.contactPerson}</Typography>
+          </>
+        )}
+        <br />
         <Typography variant="h6" gutterBottom>
           Keywords
         </Typography>
@@ -90,11 +101,12 @@ const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: J
           Description
         </Typography>
         <Typography style={{ whiteSpace: 'pre-wrap' }}>{job.description}</Typography>
-        <br />
-        <hr className="border" />
-        <br />
+
         {job.applicationLetter && (
           <>
+            <br />
+            <hr />
+            <br />
             <Typography variant="h6" gutterBottom>
               Application Letter
             </Typography>

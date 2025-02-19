@@ -13,10 +13,15 @@ export interface Job {
   dateApplied: string;
   applicationLetter: string;
   language: string;
+  contactPerson: string;
 }
 
 export const fetchJobs = async (): Promise<Job[]> => {
   const response = await axios.get(`${API_URL}/jobs/`);
+  return formatData(response.data);
+};
+export const scrapeJobs = async (): Promise<Job[]> => {
+  const response = await axios.get(`${API_URL}/scrape`);
   return formatData(response.data);
 };
 

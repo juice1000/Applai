@@ -47,10 +47,19 @@
   },
   "projects": [
     {
+      "title": "Dozent in MLOps",
+      "role": "Dozent",
+      "company": "Nobleprog",
+      "period": "Jan - Feb 2025",
+      "description": "Konzeption und Durchführung eines praxisorientierten Seminars zu MLOps mit Fokus auf automatisierte Datenverarbeitung, ML-Lifecycle-Management, Monitoring und Orchestrierung.",
+      "technologies": ["Amazon SageMaker", "MLflow", "DVC", "Airflow", "CI/CD", "Docker", "evidently.ai", "AWS", "Python", "Bash", "scikit-learn", "pandas", "SQL"],
+      "year": 2025
+    },
+    {
       "title": "KI Elternberater",
       "role": "Fullstack Engineer",
       "company": "Full-Circle Family",
-      "period": "Nov 2023 - März 2024 (Freelance, Remote)",
+      "period": "Nov 2023 - März 2024",
       "description": "Entwicklung eines KI-gestützten Chatbots für Elternberatung mit OpenAI GPT-Modellen und WhatsApp API. Skalierung der Anwendung mit Microservices-Architektur und NX Monorepo. Entwicklung eines Analyse-Dashboards mit React.js, um Benutzerverhalten zu verfolgen und datengetriebene Optimierungen vorzunehmen. Verwaltung der AWS-Infrastruktur mit Lambda, API Gateway, DynamoDB, Cognito und EC2.",
       "technologies": [
         "OpenAI GPT",
@@ -67,21 +76,23 @@
         "Microservices",
         "Jest",
         "nginx"
-      ]
+      ],
+      "year": 2024
     },
     {
       "title": "R-Cycle Kundendashboard",
       "role": "Frontend Engineer",
       "company": "R-Cycle",
-      "period": "Jan 2024 (Freelance, Remote)",
+      "period": "Jan 2024",
       "description": "Entwicklung eines Dashboards zur Verfolgung von Kunststoffproduktionszyklen für Hersteller zur Einhaltung von Recycling-Vorschriften. Umsetzung von architektonischen Verbesserungen, Code-Refactoring und UI-Optimierungen. Erstellung von wiederverwendbaren UI-Komponenten mit React, SASS und CoreUI. Integration von Google Cloud Platform (GCP) für Dateiverwaltung und Datenanalyse.",
-      "technologies": ["React", "SASS", "CoreUI", "Firebase", "Bootstrap", "TypeScript", "React-Testing-Library", "Jest", "Cypress", "Gitlab CI/CD", "Redux"]
+      "technologies": ["React", "SASS", "CoreUI", "Firebase", "Bootstrap", "TypeScript", "React-Testing-Library", "Jest", "Cypress", "Gitlab CI/CD", "Redux"],
+      "year": 2024
     },
     {
       "title": "Roboter Bedienungsapp",
       "role": "Software Engineer",
       "company": "Cinoware",
-      "period": "Jan - Dez 2024 (Freelance, Remote)",
+      "period": "Jan - Dez 2024",
       "description": "Entwicklung einer Fernsteuerungsplattform für Roboter mit React.js (Frontend) und Python Flask (Backend). Implementierung eines Navigations-Tracking-Systems mit OpenCV für präzise Roboterbewegung. Erstellung eines Leistungsverfolgungssystems mit MLflow und Scikit-Learn. Entwicklung einer Selenium Grid-Test-Suite mit Allure-Berichtsanalyse.",
       "technologies": [
         "React.js",
@@ -99,69 +110,50 @@
         "pytest",
         "Selenium",
         "scikit-learn"
-      ]
-    },
-    {
-      "title": "Dozent in MLOps",
-      "role": "Dozent",
-      "company": "Nobleprog",
-      "period": "Jan - Feb 2025 (Freelance, Remote)",
-      "description": "Konzeption und Durchführung eines praxisorientierten Seminars zu MLOps mit Fokus auf automatisierte Datenverarbeitung, ML-Lifecycle-Management, Monitoring und Orchestrierung.",
-      "technologies": ["Amazon SageMaker", "MLflow", "DVC", "Airflow", "CI/CD", "Docker", "evidently.ai", "AWS", "Python", "Bash", "scikit-learn", "pandas", "SQL"]
+      ],
+      "year": 2024
     },
     {
       "title": "Dozent in Data Analytics",
       "role": "Dozent",
       "company": "Data Smartpoint",
-      "period": "Jun - Okt 2024 (Freelance, Remote)",
+      "period": "Jun - Okt 2024",
       "description": "Unterricht in Data Analytics, Machine Learning, Web Scraping und API-Entwicklung für Gruppen von ca. 15 Studierenden. Entwicklung von Studienmaterialien und Projektanforderungen.",
-      "technologies": ["Python", "Pandas", "Scikit-Learn", "Selenium", "FastAPI", "BeautifulSoup", "Streamlit"]
-    },
-    {
-      "title": "Microsoft Teams Extension",
-      "role": "Fullstack Engineer",
-      "company": "Kunveno",
-      "period": "Jun - Aug 2023 (Freelance, Remote)",
-      "description": "Entwicklung einer Microsoft Teams Message Extension zur Optimierung von Unternehmenskommunikation. Architektur der Microsoft Azure Umgebung und Implementierung einer CI/CD-Pipeline für automatisierte Bereitstellungen.",
-      "technologies": ["Microsoft Azure", "OAuth", "Azure AD", "CI/CD Pipelines", "Node.js", "TypeScript"]
+      "technologies": ["Python", "Pandas", "Scikit-Learn", "Selenium", "FastAPI", "BeautifulSoup", "Streamlit"],
+      "year": 2024
     },
     {
       "title": "Shopify Storefront",
       "role": "Fullstack Engineer",
       "company": "Cybercrush",
-      "period": "Dez 2023 - Jan 2024 (Freelance, Remote)",
+      "period": "Dez 2023 - Jan 2024",
       "description": "Entwicklung eines individuellen Shopify Storefronts mit Remix.js (Hydrogen) und Shopify GraphQL APIs. Leitung eines Teams von vier Entwicklern für die technische Umsetzung.",
-      "technologies": ["Remix.js", "Shopify API", "GraphQL", "GitHub Actions"]
+      "technologies": ["Remix.js", "Shopify API", "GraphQL", "GitHub Actions"],
+      "year": 2024
+    },
+    {
+      "title": "Microsoft Teams Extension",
+      "role": "Fullstack Engineer",
+      "company": "Kunveno",
+      "period": "Jun - Aug 2023",
+      "description": "Entwicklung einer Microsoft Teams Message Extension zur Optimierung von Unternehmenskommunikation. Architektur der Microsoft Azure Umgebung und Implementierung einer CI/CD-Pipeline für automatisierte Bereitstellungen.",
+      "technologies": ["Microsoft Azure", "OAuth", "Azure AD", "CI/CD Pipelines", "Node.js", "TypeScript"],
+      "year": 2023
     },
     {
       "title": "Listify",
       "role": "Fullstack Engineer",
-      "company": "Eigenes Projekt",
-      "period": "Jan 2023 (Berlin, Deutschland)",
+      "company": "Listify",
+      "period": "Jan 2023",
       "description": "Entwicklung einer Plattform zur automatisierten Umwandlung von Spotify-Playlists in DJ-Setlists unter Verwendung von Web Scraping-Techniken.",
-      "technologies": ["Python", "Flask", "FastAPI", "Celery", "Redis", "Selenium", "BeautifulSoup"]
-    },
-    {
-      "title": "KI in Qualitätswissenschaften",
-      "role": "Data Science Research Assistant",
-      "company": "TU Berlin",
-      "period": "Sep 2020 - Sep 2021 (Remote)",
-      "description": "Forschung im Bereich Machine Learning zur Qualitätswissenschaft. Entwicklung von ML-Modellen zur Anomalieerkennung und Predictive Analytics.",
-      "technologies": ["Python", "R", "pandas", "scikit-learn", "TensorFlow", "Keras", "LaTeX"]
-    },
-    {
-      "title": "KI Music Classification",
-      "role": "Machine Learning Engineer",
-      "company": "Cyanite",
-      "period": "Jun - Nov 2020 (Freelance, Remote)",
-      "description": "Entwicklung eines CNN-gestützten Musikklassifikationsmodells zur automatisierten Erkennung von Musik-Epochen.",
-      "technologies": ["TensorFlow", "CNN", "Python", "RNN", "Pytorch", "pandas"]
+      "technologies": ["Python", "Flask", "FastAPI", "Celery", "Redis", "Selenium", "BeautifulSoup"],
+      "year": 2023
     },
     {
       "title": "KI-Assistenten im Steuerwesen",
       "role": "Data Scientist",
       "company": "Expresssteuer GmbH",
-      "period": "Mai 2021 - Dez 2022 (Remote)",
+      "period": "Mai 2021 - Dez 2022",
       "description": "Leitung der KI-gestützten Automatisierung von Finanzdatenverarbeitung. Optimierung von ETL-Pipelines, wodurch die Cloud-Kosten um 90% gesenkt wurden. Entwicklung eines KI-gestützten Chatbots zur Unterstützung von Kundenanfragen.",
       "technologies": [
         "BigQuery",
@@ -182,21 +174,41 @@
         "scikit-learn",
         "Jest",
         "Redux"
-      ]
+      ],
+      "year": 2022
+    },
+    {
+      "title": "KI in Qualitätswissenschaften",
+      "role": "Data Science Research Assistant",
+      "company": "TU Berlin",
+      "period": "Sep 2020 - Sep 2021",
+      "description": "Forschung im Bereich Machine Learning zur Qualitätswissenschaft. Entwicklung von ML-Modellen zur Anomalieerkennung und Predictive Analytics.",
+      "technologies": ["Python", "R", "pandas", "scikit-learn", "TensorFlow", "Keras", "LaTeX"],
+      "year": 2021
+    },
+    {
+      "title": "KI Music Classification",
+      "role": "Machine Learning Engineer",
+      "company": "Cyanite",
+      "period": "Jun - Nov 2020",
+      "description": "Entwicklung eines CNN-gestützten Musikklassifikationsmodells zur automatisierten Erkennung von Musik-Epochen.",
+      "technologies": ["TensorFlow", "CNN", "Python", "RNN", "Pytorch", "pandas"],
+      "year": 2020
     },
     {
       "title": "Entwicklung von Linux OS-Komponenten",
       "role": "Operating System Engineer",
       "company": "Bosch",
-      "period": "Sep 2019 - März 2020 (Singapur)",
+      "period": "Sep 2019 - März 2020",
       "description": "Entwicklung von Debian-basierten Linux OS-Komponenten für industrielle Automatisierungssysteme. Implementierung eines Sicherheitsverifikationssystems für nicht vertrauenswürdige Softwareinstallationen.",
-      "technologies": ["Debian", "Bash", "Python", "Linux System Development"]
+      "technologies": ["Debian", "Bash", "Python", "Linux System Development"],
+      "year": 2020
     }
   ],
   "education": {
     "degree": "Bachelor of Science - Computational Engineering Science",
     "institution": "TU Berlin",
-    "period": "Apr 2018 - Aug 2021 (Berlin, Deutschland)",
+    "period": "Apr 2018 - Aug 2021",
     "final_grade": "2.1 (GPA 3.1 oder 86%)",
     "thesis": "Advantage Actor-Critic Reinforcement Learning (Note: 1.3)",
     "focus_areas": ["Computational Mathematics", "Machine Learning", "Data Analytics"]

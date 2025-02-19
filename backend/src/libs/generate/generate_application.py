@@ -13,6 +13,8 @@ def generate_application(job: Job):
     context = job.resume_context
     # Extract the keywords
     keywords = job.keywords
+    # Extract the contact person
+    contact_person = job.contact_person
     # Prepare the prompt for the LLM.
     if job.language == "de":
         prompt_template = ChatPromptTemplate.from_template(application_prompt_de)
@@ -23,7 +25,7 @@ def generate_application(job: Job):
         context=context,
         description=job_description,
         keywords=keywords,
-        language=job.language,
+        contact_person=contact_person or "",
     )
 
     model = init_completion_function()

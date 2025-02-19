@@ -1,9 +1,6 @@
 import os
 
 from dotenv import load_dotenv
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
 from libs.db.init_db import Job
 from libs.db.write_job import write_or_update_job
 from libs.logger.init_logger import logger
@@ -16,6 +13,8 @@ from libs.scrape_and_drive.driver_utils import (
     wait_for_page,
 )
 from libs.scrape_and_drive.init_scraper import close_driver, get_driver, navigate_to
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 # Loads the .env file
 load_dotenv()
@@ -110,6 +109,15 @@ def scrape_job_details(job_link: dict[str, str]):
         job_description = wait_for_element(driver, By.CLASS_NAME, "projectcontent")
         keywords = job_description.find_elements(By.CLASS_NAME, "keyword.no-truncate")
         content = wait_for_element(job_description, By.XPATH, '//*[@class="content"]')
+        try:
+            contact_person = wait_for_element(
+                driver,
+                By.XPATH,
+                '//*[@data-translatable="contactPersonHeader"]/following-sibling::*[1]',
+            )
+            job.contact_person = contact_person.text
+        except:
+            print("No contact person found for job:", job.title)
 
         job.keywords = ", ".join([keyword.text for keyword in keywords])
         job.description = content.text
@@ -133,4 +141,4 @@ def scrape_jobs_fmap():
     for idx, link in enumerate(links):
         job = scrape_job_details(link)
         write_or_update_job(job)
-        logger.info(f"Scraped {idx} jobs out of {len(links)}.")
+        logger.info(f"Scraped {idx+1} jobs out of {len(links)}.")

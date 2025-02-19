@@ -3,7 +3,7 @@ import SendIcon from '@mui/icons-material/Send';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import { DataGrid, GridRowParams } from '@mui/x-data-grid';
 import { useState, useEffect } from 'react';
-import { fetchJobs, Job, writeCoverLetter } from '../libs/api';
+import { fetchJobs, Job, scrapeJobs, writeCoverLetter } from '../libs/api';
 import { columns, gridStyles } from './DashboardHelper';
 import JobDetailModal from './JobDetailModal';
 
@@ -23,6 +23,15 @@ const Dashboard = () => {
       console.error('Failed to fetch jobs:', error);
     } finally {
       setLoading(false);
+    }
+  };
+  const handleScrapeJobs = async () => {
+    try {
+      setLoading(true);
+      await scrapeJobs();
+      loadJobs();
+    } catch (error) {
+      console.error('Failed to scrape jobs:', error);
     }
   };
 
@@ -99,6 +108,15 @@ const Dashboard = () => {
           Welcome to Applai
         </Typography>
         <Stack direction="row" spacing={2}>
+          <Button
+            variant="outlined"
+            size="large"
+            startIcon={<SendIcon />}
+            onClick={handleScrapeJobs}
+            sx={{ borderRadius: '50px', fontWeight: 'bold', color: 'lightblue', borderColor: 'lightblue' }}
+          >
+            Scrape Jobs
+          </Button>
           <Button
             variant="outlined"
             size="large"

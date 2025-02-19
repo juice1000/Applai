@@ -42,7 +42,8 @@ def embed_file(language: str = "en"):
             f"Title: {proj['title']}\n"
             f"Role: {proj['role']}\n"
             f"Company: {proj['company']}\n"
-            f"Dates: {proj['dates']}\n"
+            f"Period: {proj['period']}\n"
+            f"Year: {proj['year']}\n"
             f"Description: {proj['description']}\n"
             f"Technologies: {', '.join(proj['technologies'])}"
         )
@@ -53,7 +54,8 @@ def embed_file(language: str = "en"):
             "title": proj["title"],
             "role": proj["role"],
             "company": proj["company"],
-            "dates": proj["dates"],
+            "period": proj["period"],
+            "year": proj["year"],
             "description": proj["description"],
             "technologies": ", ".join(proj["technologies"]),
         }

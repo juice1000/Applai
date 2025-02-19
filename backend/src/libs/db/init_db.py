@@ -17,6 +17,7 @@ class Job(SQLModel, table=True):
     application_letter: Optional[str] = None
     status: Optional[str] = None
     language: Optional[str] = None
+    contact_person: Optional[str] = None
 
 
 def initialize_db():
