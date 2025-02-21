@@ -34,17 +34,17 @@ export const scrapeJobs = async () => {
   }
 };
 
-export const updateJobStatus = async (jobId: number, status: Job['status']) => {
+export const updateJobStatus = async (jobId: number, status: string) => {
   try {
-    const response = await axios.put(`${API_URL}/jobs/${jobId}`, { status });
+    const response = await axios.put(`${API_URL}/jobs/${jobId}`, { field_name: 'status', update_value: status });
     return response.data;
   } catch (error) {
     console.error('Error updating job status:', error);
   }
 };
-export const updateApplication = async (jobId: number, applicationLetter?: Job['applicationLetter']) => {
+export const updateApplication = async (jobId: number, applicationLetter: string) => {
   try {
-    const response = await axios.put(`${API_URL}/jobs/${jobId}`, { applicationLetter });
+    const response = await axios.put(`${API_URL}/jobs/${jobId}`, { field_name: 'application_letter', update_value: applicationLetter });
     return response.data;
   } catch (error) {
     console.error('Error updating application letter:', error);
@@ -57,6 +57,7 @@ export const writeApplication = async (jobId: number) => {
     console.error('Error writing application:', error);
   }
 };
+
 export const writeCoverLetter = async (update?: boolean) => {
   try {
     if (update !== undefined) {

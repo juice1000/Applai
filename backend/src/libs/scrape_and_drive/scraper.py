@@ -37,7 +37,7 @@ def login(driver: webdriver.Chrome):
     wait_for_page()
 
 
-def scrape_job_links():
+def scrape_job_links(job_search: str = "python developer") -> list:
     """
     Scrape job links from freelancermap.com using Selenium.
 
@@ -57,7 +57,7 @@ def scrape_job_links():
 
         # Input job filter field
         job_filter_form = wait_for_element(driver, By.ID, "project-search-form")
-        input_text(job_filter_form, By.TAG_NAME, "input", "python developer")
+        input_text(job_filter_form, By.TAG_NAME, "input", job_search)
         click_button(job_filter_form, By.TAG_NAME, "button")
 
         filter_sidebar = wait_for_element(driver, By.CLASS_NAME, "filter-sidebar")
@@ -131,12 +131,12 @@ def scrape_job_details(job_link: dict[str, str]):
         close_driver()
 
 
-def scrape_jobs_fmap():
+def scrape_jobs_fmap(job_search: str = "python developer"):
     """
     Scrape job links and details from freelancermap.com.
     """
     logger.info("Starting scrape_jobs_fmap...")
-    links = scrape_job_links()
+    links = scrape_job_links(job_search)
 
     for idx, link in enumerate(links):
         job = scrape_job_details(link)

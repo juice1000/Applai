@@ -1,9 +1,10 @@
-import { Modal, Box, Typography, IconButton, Button } from '@mui/material';
+import { Modal, Box, Typography, IconButton, Button, TextField } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import FlagIcon from '@mui/icons-material/Flag';
-import { Job, writeApplication, updateJobStatus } from '../libs/api';
+import { Job, writeApplication, updateJobStatus, updateApplication } from '../libs/api';
 import { getStatusColor } from './DashboardHelper';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useState } from 'react';
 
 interface JobDetailModalProps {
   open: boolean;
@@ -30,6 +31,7 @@ const modalStyle = {
 };
 
 const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: JobDetailModalProps) => {
+  const [editedLetter, setEditedLetter] = useState(job?.applicationLetter);
   const handleFlagToggle = async (newStatus: 'pending' | 'applied' | 'rejected' | 'irrelevant' | 'review' | 'ready') => {
     if (!job) return;
     try {
@@ -39,6 +41,11 @@ const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: J
     } catch (error) {
       console.error('Error updating job status:', error);
     }
+  };
+  const handleUpdateApplication = async () => {
+    if (!job || !editedLetter) return;
+    await updateApplication(job.id, editedLetter);
+    onUpdate();
   };
   const handleWriteApplication = async () => {
     if (!job) return;
@@ -110,7 +117,26 @@ const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: J
             <Typography variant="h6" gutterBottom>
               Application Letter
             </Typography>
-            {loading ? <CircularProgress /> : <Typography style={{ whiteSpace: 'pre-wrap' }}>{job.applicationLetter || 'No application letter'}</Typography>}
+            {loading ? (
+              <CircularProgress />
+            ) : (
+              <TextField
+                multiline
+                fullWidth
+                minRows={4}
+                maxRows={20}
+                value={editedLetter || job?.applicationLetter}
+                onBlur={handleUpdateApplication}
+                onChange={(e) => setEditedLetter(e.target.value)}
+                sx={{
+                  '& .MuiInputBase-input': {
+                    fontFamily: 'inherit',
+                    fontSize: 'inherit',
+                    whiteSpace: 'pre-wrap',
+                  },
+                }}
+              />
+            )}
           </>
         )}
         <br />
@@ -142,15 +168,17 @@ const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: J
             {isIrrelevant ? 'Mark Relevant' : 'Mark Irrelevant'}
           </Button>
           {job.applicationLetter && (
-            <Button
-              disabled={loading}
-              variant="outlined"
-              color={underReview ? 'primary' : 'secondary'}
-              onClick={() => handleFlagToggle(underReview ? 'ready' : 'review')}
-              sx={{ borderRadius: '50px', fontWeight: 'bold' }}
-            >
-              {underReview ? 'Mark Safe' : 'Mark Under Review'}
-            </Button>
+            <>
+              <Button
+                disabled={loading}
+                variant="outlined"
+                color={underReview ? 'primary' : 'secondary'}
+                onClick={() => handleFlagToggle(underReview ? 'ready' : 'review')}
+                sx={{ borderRadius: '50px', fontWeight: 'bold' }}
+              >
+                {underReview ? 'Mark Safe' : 'Mark Under Review'}
+              </Button>
+            </>
           )}
         </Box>
       </Box>

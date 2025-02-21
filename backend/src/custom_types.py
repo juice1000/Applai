@@ -8,8 +8,14 @@ class PromptRequest(BaseModel):
     prompt: str
 
 
-class JobStatusUpdate(BaseModel):
-    status: str
+class JobField(str, Enum):
+    status = "status"
+    application_letter = "application_letter"
+
+
+class UpdateJobRequest(BaseModel):
+    field_name: JobField
+    update_value: str
 
 
 class FieldRequest(BaseModel):

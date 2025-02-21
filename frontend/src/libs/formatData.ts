@@ -14,7 +14,6 @@ export const getStatus = (jobData: any) => {
 
 export const formatData = (data: any) => {
   return data.map((jobData: any) => {
-    console.log(jobData.date_applied);
     const formattedDate = jobData['date_applied'] && jobData.date_applied.replace('_', 'T') + ':00'; // Convert to ISO format
 
     return {

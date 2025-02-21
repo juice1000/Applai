@@ -1,5 +1,5 @@
 import uvicorn
-from custom_types import FieldRequest, JobStatusUpdate, Language, PromptRequest
+from custom_types import FieldRequest, JobField, Language, UpdateJobRequest
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from libs.db.db_operations import add_field_to_table, get_table_schema
@@ -74,8 +74,8 @@ def apply():
 
 
 @app.get("/scrape/")
-def scrape_jobs():
-    scrape_jobs_fmap()
+def scrape_jobs(job_search: str = "python developer"):
+    scrape_jobs_fmap(job_search=job_search)
     return {"message": "Job links scraped"}
 
 
@@ -87,9 +87,16 @@ def get_jobs():
 
 
 @app.put("/jobs/{job_id}")
-def update_job_status(job_id: int, job_update: JobStatusUpdate):
-    update_job_by_id(job_id, status=job_update.status)
-    return {"message": f"Job {job_id} updated with status {job_update.status}"}
+def update_job_status(job_id: int, request: UpdateJobRequest):
+    field_name = request.field_name
+    update_value = request.update_value
+    if field_name == JobField.status:
+        update_job_by_id(job_id, status=update_value)
+        return {"message": f"Job {job_id} updated with status {update_value}"}
+    if field_name == JobField.application_letter:
+        update_job_by_id(job_id, application_letter=update_value)
+        return {"message": f"Job {job_id} updated with application {update_value}"}
+    return {"message": "Field not found"}
 
 
 @app.get("/write_applications/{job_id}")
