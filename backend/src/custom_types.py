@@ -23,6 +23,10 @@ class FieldRequest(BaseModel):
     field_type: Literal["INTEGER", "TEXT", "BOOLEAN"]
 
 
+class SearchRequest(BaseModel):
+    search_term: str
+
+
 class ColumnInfo(BaseModel):
     name: str
     type: str

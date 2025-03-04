@@ -53,13 +53,17 @@ const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: J
     await writeApplication(job.id);
     onUpdate();
   };
+  const handleClose = () => {
+    setEditedLetter('');
+    onClose();
+  };
 
   if (!job) return null;
   const isIrrelevant = job.status === 'irrelevant';
   const underReview = job.status === 'review';
 
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal open={open} onClose={handleClose}>
       <Box sx={modalStyle}>
         <IconButton onClick={onClose} sx={{ position: 'absolute', right: 8, top: 8 }}>
           <CloseIcon />

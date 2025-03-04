@@ -131,12 +131,12 @@ def scrape_job_details(job_link: dict[str, str]):
         close_driver()
 
 
-def scrape_jobs_fmap(job_search: str = "python developer"):
+def scrape_jobs_fmap(search_term: str = "python developer"):
     """
     Scrape job links and details from freelancermap.com.
     """
     logger.info("Starting scrape_jobs_fmap...")
-    links = scrape_job_links(job_search)
+    links = scrape_job_links(search_term)
 
     for idx, link in enumerate(links):
         job = scrape_job_details(link)

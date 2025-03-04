@@ -1,18 +1,20 @@
-import { Typography, Box, Button, Stack } from '@mui/material';
+import { Typography, Box, Button, Stack, Input } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import EditNoteIcon from '@mui/icons-material/EditNote';
-import { DataGrid, GridRowParams } from '@mui/x-data-grid';
+import { DataGrid, GridRowParams, GridSearchIcon } from '@mui/x-data-grid';
 import { useState, useEffect } from 'react';
-import { applyToJobs, fetchJobs, Job, scrapeJobs, writeCoverLetter } from '../libs/api';
+import { applyToJobs, fetchJobs, Job, writeCoverLetter } from '../libs/api';
 import { columns, gridStyles } from './DashboardHelper';
 import JobDetailModal from './JobDetailModal';
+import ConfirmationModal from './ConfirmationModal';
 
 const Dashboard = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
-
+  const [searchTerm, setSearchTerm] = useState('');
   const [selectedJobId, setSelectedJobId] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
 
   const loadJobs = async () => {
     try {
@@ -24,11 +26,6 @@ const Dashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
-  const handleScrapeJobs = async () => {
-    setLoading(true);
-    await scrapeJobs();
-    loadJobs();
   };
 
   const handleRowDoubleClick = (params: GridRowParams) => {
@@ -48,6 +45,14 @@ const Dashboard = () => {
     loadJobs();
   };
 
+  const handleSearch = async () => {
+    if (searchTerm.trim().length === 0) {
+      alert('Please enter a search term');
+    } else {
+      setIsConfirmationModalOpen(true);
+    }
+  };
+
   // Load jobs on component mount
   useEffect(() => {
     loadJobs();
@@ -57,49 +62,71 @@ const Dashboard = () => {
   if (selectedJobId) {
     selectedJob = jobs.find((job) => job.id === selectedJobId);
   }
+
   return (
     <Box sx={{ width: '100%', py: 4, display: 'flex', flexDirection: 'column', gap: 6 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Typography
-          variant="h2"
-          sx={{
-            fontWeight: 'bold',
-            position: 'relative',
-            background: 'linear-gradient(45deg,rgb(1, 129, 233) 0%,rgb(201, 245, 255) 90%)',
+      <Typography
+        variant="h2"
+        sx={{
+          fontWeight: 'bold',
+          position: 'relative',
+          background: 'linear-gradient(45deg,rgb(1, 129, 233) 0%,rgb(201, 245, 255) 90%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textFillColor: 'transparent',
+          '&::before': {
+            content: '"Welcome to Applai"',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            background: 'linear-gradient(45deg, rgb(201, 245, 255) 0%, rgb(1, 129, 233) 90%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
             textFillColor: 'transparent',
-            '&::before': {
-              content: '"Welcome to Applai"',
+            opacity: 0,
+            transition: 'opacity 2s ease-in-out',
+          },
+          '&:hover::before': {
+            opacity: 1,
+          },
+        }}
+      >
+        Welcome to Applai
+      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Input
+          startAdornment={<GridSearchIcon sx={{ cursor: 'pointer' }} onClick={handleSearch} />}
+          error={true}
+          sx={{
+            borderRadius: 100,
+            border: 1,
+            width: 500,
+            '& .MuiSvgIcon-root': {
               position: 'absolute',
-              top: 0,
-              left: 0,
-              background: 'linear-gradient(45deg, rgb(201, 245, 255) 0%, rgb(1, 129, 233) 90%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              textFillColor: 'transparent',
-              opacity: 0,
-              transition: 'opacity 2s ease-in-out',
+              right: '10px',
+              top: '50%',
+              transform: 'translateY(-50%)',
             },
-            '&:hover::before': {
-              opacity: 1,
+            '& .Mui-error': {
+              borderColor: 'error.main',
+              color: 'red',
             },
+            paddingX: 2,
           }}
-        >
-          Welcome to Applai
-        </Typography>
+          color="secondary"
+          disableUnderline
+          placeholder="search new jobs"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              handleSearch();
+            }
+          }}
+        />
         <Stack direction="row" spacing={2}>
-          <Button
-            variant="outlined"
-            size="large"
-            startIcon={<SendIcon />}
-            onClick={handleScrapeJobs}
-            sx={{ borderRadius: '50px', fontWeight: 'bold', color: 'lightblue', borderColor: 'lightblue' }}
-          >
-            Scrape Jobs
-          </Button>
           <Button
             variant="outlined"
             size="large"
@@ -150,8 +177,8 @@ const Dashboard = () => {
           />
         </Box>
       </div>
-
       <JobDetailModal open={isModalOpen} onClose={() => setIsModalOpen(false)} job={selectedJob} onUpdate={loadJobs} loading={loading} setLoading={setLoading} />
+      <ConfirmationModal searchTerm={searchTerm} open={isConfirmationModalOpen} onClose={() => setIsConfirmationModalOpen(false)} />
     </Box>
   );
 };

@@ -25,9 +25,9 @@ export const fetchJobs = async (): Promise<Job[]> => {
     return [];
   }
 };
-export const scrapeJobs = async () => {
+export const scrapeJobs = async (searchTerm: string) => {
   try {
-    const response = await axios.get(`${API_URL}/scrape`);
+    const response = await axios.post(`${API_URL}/scrape`, { search_term: searchTerm });
     return formatData(response.data);
   } catch (error) {
     console.error('Error scraping jobs:', error);

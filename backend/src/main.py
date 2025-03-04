@@ -1,5 +1,11 @@
 import uvicorn
-from custom_types import FieldRequest, JobField, Language, UpdateJobRequest
+from custom_types import (
+    FieldRequest,
+    JobField,
+    Language,
+    SearchRequest,
+    UpdateJobRequest,
+)
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from libs.db.db_operations import add_field_to_table, get_table_schema
@@ -73,9 +79,10 @@ def apply():
     return {"message": "Job applications sent"}
 
 
-@app.get("/scrape/")
-def scrape_jobs(job_search: str = "python developer"):
-    scrape_jobs_fmap(job_search=job_search)
+@app.post("/scrape/")
+def scrape_jobs(req: SearchRequest):
+    search_term = req.search_term
+    scrape_jobs_fmap(search_term=search_term)
     return {"message": "Job links scraped"}
 
 

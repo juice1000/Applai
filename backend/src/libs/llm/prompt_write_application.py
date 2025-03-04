@@ -25,15 +25,16 @@ Here is the context from my resume:
 """
 
 
-application_prompt_de = """Helfen Sie mir, eine Bewerbung für ein freiberufliches Projekt zu entwerfen. Entwerfen Sie auf der Grundlage meines Lebenslaufs und der Stellenbeschreibung eine maßgeschneiderte Bewerbung, die meine wichtigsten Fähigkeiten, Erfahrungen und Leistungen hervorhebt. Schreiben Sie in der "Du"-Form, behalten Sie aber einen professionellen Ton mit kurzen Sätzen und branchenüblichen Formulierungen. Halluzinieren Sie keine Informationen.
+application_prompt_de = """Helfen Sie mir, eine Bewerbung für ein freiberufliches Projekt zu entwerfen. Entwerfen Sie auf der Grundlage meines Lebenslaufs und der Stellenbeschreibung eine maßgeschneiderte Bewerbung auf Deutsch, die meine wichtigsten Fähigkeiten, Erfahrungen und Leistungen hervorhebt. Schreiben Sie in der "Du"-Form, behalten Sie aber einen professionellen Ton mit kurzen Sätzen und branchenüblichen Formulierungen. Halluzinieren Sie keine Informationen.
 
 Hier ist die Struktur, die Sie befolgen sollten:
 	1.  Beginnen Sie mit "Hallo <Kontaktperson>", wenn der Name der Kontaktperson definiert ist, ansonsten schreiben Sie einen generischen Gruß. Nutzen Sie lediglich den Vornamen in der Anrede. Falls der Name eine Firma zu sein scheint, schreiben Sie "Hallo Team von <Kontaktperson>" mit dem vollen Namen der Firma.
-	2.	Schreiben Sie mit einer kurzen Einleitung, in der Sie Ihre Begeisterung für das Projekt zum Ausdruck bringen, und nennen Sie die Stellenbezeichnung.
+	2.	Schreiben Sie mit einer kurzen Einleitung, in der Sie Ihr Interesse für das Projekt zum Ausdruck bringen, und nennen Sie die Stellenbezeichnung.
 	3.	Wählen Sie ein oder zwei relevante Projekte aus meinem Lebenslauf aus, die der Stellenbeschreibung entsprechen, und beschreiben Sie diese ausführlich. Fälschen Sie keine Informationen.
 	4.	Betonen Sie die greifbaren Auswirkungen meiner Arbeit und verwenden Sie, wenn möglich, Messgrößen oder Ergebnisse. Stellen Sie klar dar, welchen Wert ich in das Projekt einbringen kann und warum mein Hintergrund mich zu einem idealen Kandidaten macht. Heben Sie hervor, wo ich die Führung oder Initiative übernommen habe. Halluzinieren Sie keine Informationen.
 	5.	Drücken Sie abschließend Ihr Interesse an einem persönlichen Gespräch über weitere Einzelheiten aus.
-    6.  Schließen Sie mit der Grußformel „Mit freundlichen Grüßen, Julien Look“.
+    6.  Falls nach Stundensatz und Verfügbarkeit gefragt wird, geben Sie an: 80€/Stunde und ab sofort Vollzeit verfügbar.
+	7.  Schließen Sie mit der Grußformel „Mit freundlichen Grüßen, Julien Look“.
 
 Nutzen Sie den Kontext meines Lebenslaufs, um Ihre Antwort relevant und zielgerichtet zu gestalten, und erwähnen Sie gegebenenfalls spezifische Technologien, Rahmenbedingungen und Soft Skills. Senden Sie nur die Bewerbung zurück und lassen Sie alle einleitenden oder kontextbezogenen Sätze weg.
 
@@ -49,4 +50,5 @@ Hier ist die Stellenbeschreibung:
 
 Hier ist der Kontext aus meinem Lebenslauf:
 {context}
+
 """
