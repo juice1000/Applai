@@ -50,28 +50,6 @@ def embed_sources(clear: bool = False, language: Language = Language.en):
     return {"message": "Document loaded"}
 
 
-# @app.post("/prompt/")
-# def generate(req: PromptRequest):
-#     # generate the application from job description
-#     prompt = req.prompt
-#     response = retrieve_from_rag_experimental(prompt)
-#     return {"message": response}
-
-
-@app.get("/write_applications/")
-def write_applications(update: bool = False):
-    print("Writing applications", update)
-    # generate the application from job description
-    number_of_jobs = write_job_applications(update=update)
-    return {"message": f"Job applications generated for {number_of_jobs} jobs"}
-
-
-# @app.get("/apply_from_files/")
-# def apply_to_job():
-#     # generate the application from job description
-#     apply_from_files()
-
-
 @app.get("/apply/")
 def apply():
     # run scraper to apply from jobs that haven't been applied to
@@ -106,6 +84,16 @@ def update_job_status(job_id: int, request: UpdateJobRequest):
     return {"message": "Field not found"}
 
 
+# Write job applications
+@app.get("/write_applications/")
+def write_applications(update: bool = False):
+    print("Writing applications", update)
+    # generate the application from job description
+    number_of_jobs = write_job_applications(update=update)
+    return {"message": f"Job applications generated for {number_of_jobs} jobs"}
+
+
+# Write job application for a single job
 @app.get("/write_applications/{job_id}")
 def write_single_job_application(job_id: int):
     print("Update application", job_id)
@@ -114,6 +102,7 @@ def write_single_job_application(job_id: int):
     return {"message": f"Job applications generated for {number_of_jobs} jobs"}
 
 
+# Add a field to the database table or inspect the schema
 @app.post("/db/")
 def update_db_fields(req: FieldRequest):
     # add a field to the database table

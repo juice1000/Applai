@@ -3,7 +3,7 @@ import SendIcon from '@mui/icons-material/Send';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import { DataGrid, GridRowParams, GridSearchIcon } from '@mui/x-data-grid';
 import { useState, useEffect } from 'react';
-import { applyToJobs, fetchJobs, Job, writeCoverLetter } from '../libs/api';
+import { applyToJobs, fetchJobs, Job, scrapeJobs, writeCoverLetter } from '../libs/api';
 import { columns, gridStyles } from './DashboardHelper';
 import JobDetailModal from './JobDetailModal';
 import ConfirmationModal from './ConfirmationModal';
@@ -52,7 +52,11 @@ const Dashboard = () => {
       setIsConfirmationModalOpen(true);
     }
   };
-
+  const onSearchConfirm = async () => {
+    setLoading(true);
+    await scrapeJobs(searchTerm);
+    loadJobs();
+  };
   // Load jobs on component mount
   useEffect(() => {
     loadJobs();
@@ -170,6 +174,7 @@ const Dashboard = () => {
                 noRowsVariant: 'skeleton',
               },
             }}
+            onRowClick={(params) => setSelectedJobId(params.row.id)}
             onRowDoubleClick={handleRowDoubleClick}
             pageSizeOptions={[5, 10]}
             getRowHeight={() => 120}
@@ -178,7 +183,7 @@ const Dashboard = () => {
         </Box>
       </div>
       <JobDetailModal open={isModalOpen} onClose={() => setIsModalOpen(false)} job={selectedJob} onUpdate={loadJobs} loading={loading} setLoading={setLoading} />
-      <ConfirmationModal searchTerm={searchTerm} open={isConfirmationModalOpen} onClose={() => setIsConfirmationModalOpen(false)} />
+      <ConfirmationModal searchTerm={searchTerm} open={isConfirmationModalOpen} onClose={() => setIsConfirmationModalOpen(false)} onSearch={onSearchConfirm} />
     </Box>
   );
 };

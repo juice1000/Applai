@@ -1,16 +1,16 @@
 import { Modal, Box, Typography, Button } from '@mui/material';
-import { scrapeJobs } from '../libs/api';
 
 interface ConfirmationModalProps {
   open: boolean;
   onClose: () => void;
   searchTerm: string;
+  onSearch: () => void;
 }
 
-const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ searchTerm, open, onClose }) => {
-  const handleScrapeJobs = () => {
-    scrapeJobs(searchTerm);
+const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ searchTerm, open, onClose, onSearch }) => {
+  const handleScrapeJobs = async () => {
     onClose();
+    onSearch();
   };
 
   return (

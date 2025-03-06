@@ -18,12 +18,12 @@ def write_or_update_job(job: Job):
             existing_job.keywords = job.keywords
             session.add(existing_job)
             session.commit()
-            logger.info("Job record saved.")
+            logger.info("Existing job record updated.")
             return existing_job
         else:
             session.add(job)
             session.commit()
-            logger.info("Job record saved.")
+            logger.info("New job record saved.")
             return job
 
 

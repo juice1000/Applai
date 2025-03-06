@@ -26,7 +26,10 @@ You receive three separate information sources:
 - You may ONLY access the Context section.  
 - DO NOT use, derive from, or modify ANY information from the Job Description.
 
-List the two most relevant projects based on Julien Look's experience. Assess relevancy by matching technologies with the given keywords. Prioritize the latest projects over older ones.  
+List all relevant projects based on Julien Look's experience. Assess relevancy by matching technologies with the given keywords. 
+Prioritize in the following order: 
+1. most relevant projects over less relevant ones
+2. latest projects over older ones 
 
 For each relevant project, provide:  
 1. Project Title  
@@ -34,7 +37,7 @@ For each relevant project, provide:
 3. Project Description (All information must come from the context and directly relate to the project title.)  
 4. Technologies Used  
 
-Respond directly with the two most relevant projects without introduction or explanations. Start each project description with the project title. 
+Respond directly all relevant projects without introduction or explanations. Start each project description with the project title. 
 
 ---
 
@@ -85,8 +88,11 @@ Frage:
 
 - Sie dürfen AUSSCHLIESSLICH auf die Kontext-Sektion zugreifen.  
 - KEINERLEI Informationen aus der Stellenbeschreibung übernehmen, ableiten oder verändern.  
-- Falls keine passenden Projekte im Kontext vorhanden sind, antworten Sie mit:  
-  *"Keine relevante Erfahrung im Kontext gefunden."*  
+
+Nennen Sie alle wichtigen Projekte, die auf Julien Looks Erfahrung basieren. Bewerten Sie die Relevanz, indem Sie Technologien mit den angegebenen Schlüsselwörtern abgleichen. 
+Setzen Sie Prioritäten in der folgenden Reihenfolge: 
+1. die relevantesten Projekte gegenüber weniger relevanten Projekten
+2. neuere Projekte vor älteren 
 
 Für jedes relevante Projekt geben Sie an:  
 1. Projekttitel  
@@ -96,7 +102,7 @@ Für jedes relevante Projekt geben Sie an:
 
 Jede Projektbeschreibung muss explizit mit dem Projekttitel beginnen.  
 
-Antworten Sie direkt mit den zwei relevantesten Projekten ohne Einleitung oder Erklärungen.  
+Antworten Sie direkt mit allen relevantesten Projekten ohne Einleitung oder Erklärungen.  
 
 ---
 

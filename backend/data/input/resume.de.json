@@ -56,30 +56,6 @@
       "year": 2025
     },
     {
-      "title": "KI Elternberater",
-      "role": "Fullstack Engineer",
-      "company": "Full-Circle Family",
-      "period": "Nov 2023 - März 2024",
-      "description": "Entwicklung eines KI-gestützten Chatbots für Elternberatung mit OpenAI GPT-Modellen und WhatsApp API. Skalierung der Anwendung mit Microservices-Architektur und NX Monorepo. Entwicklung eines Analyse-Dashboards mit React.js, um Benutzerverhalten zu verfolgen und datengetriebene Optimierungen vorzunehmen. Verwaltung der AWS-Infrastruktur mit Lambda, API Gateway, DynamoDB, Cognito und EC2.",
-      "technologies": [
-        "OpenAI GPT",
-        "WhatsApp API",
-        "AWS Lambda",
-        "API Gateway",
-        "DynamoDB",
-        "NX Monorepo",
-        "Cognito",
-        "EC2",
-        "TypeScript",
-        "React.js",
-        "Node.js",
-        "Microservices",
-        "Jest",
-        "nginx"
-      ],
-      "year": 2024
-    },
-    {
       "title": "R-Cycle Kundendashboard",
       "role": "Frontend Engineer",
       "company": "R-Cycle",
@@ -93,11 +69,10 @@
       "role": "Software Engineer",
       "company": "Cinoware",
       "period": "Jan - Dez 2024",
-      "description": "Entwicklung einer Fernsteuerungsplattform für Roboter mit React.js (Frontend) und Python Flask (Backend). Implementierung eines Navigations-Tracking-Systems mit OpenCV für präzise Roboterbewegung. Erstellung eines Leistungsverfolgungssystems mit MLflow und Scikit-Learn. Entwicklung einer Selenium Grid-Test-Suite mit Allure-Berichtsanalyse.",
+      "description": "Entwicklung einer Plattform zur Fernsteuerung von Robotern mit Python FastAPI. Implementierung eines Navigationsverfolgungssystems mit OpenCV für präzise Roboterbewegungen. Erstellung eines Leistungsverfolgungssystems mit MLflow und Scikit-Learn. Entwicklung einer Selenium-Grid-Testsuite mit Allure-Berichtsanalyse.",
       "technologies": [
-        "React.js",
         "Python",
-        "Flask",
+        "FastAPI",
         "OpenCV",
         "MLflow",
         "Scikit-Learn",
@@ -120,6 +95,30 @@
       "period": "Jun - Okt 2024",
       "description": "Unterricht in Data Analytics, Machine Learning, Web Scraping und API-Entwicklung für Gruppen von ca. 15 Studierenden. Entwicklung von Studienmaterialien und Projektanforderungen.",
       "technologies": ["Python", "Pandas", "Scikit-Learn", "Selenium", "FastAPI", "BeautifulSoup", "Streamlit"],
+      "year": 2024
+    },
+    {
+      "title": "KI Elternberater",
+      "role": "Fullstack Engineer",
+      "company": "Full-Circle Family",
+      "period": "Nov 2023 - März 2024",
+      "description": "Entwicklung eines KI-gestützten Chatbots für Elternberatung mit OpenAI GPT-Modellen und WhatsApp API. Skalierung der Anwendung mit Microservices-Architektur und NX Monorepo. Entwicklung eines Analyse-Dashboards mit React.js, um Benutzerverhalten zu verfolgen und datengetriebene Optimierungen vorzunehmen. Verwaltung der AWS-Infrastruktur mit Lambda, API Gateway, DynamoDB, Cognito und EC2.",
+      "technologies": [
+        "OpenAI GPT",
+        "WhatsApp API",
+        "AWS Lambda",
+        "API Gateway",
+        "DynamoDB",
+        "NX Monorepo",
+        "Cognito",
+        "EC2",
+        "TypeScript",
+        "React.js",
+        "Node.js",
+        "Microservices",
+        "Jest",
+        "nginx"
+      ],
       "year": 2024
     },
     {

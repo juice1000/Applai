@@ -55,6 +55,53 @@
       "technologies": ["Amazon SageMaker", "MLflow", "DVC", "Airflow", "CI/CD", "Docker", "evidently.ai", "AWS", "Python", "Bash", "scikit-learn", "pandas", "SQL"],
       "year": 2025
     },
+
+    {
+      "title": "R-Cycle Customer Dashboard",
+      "role": "Lead Frontend Engineer",
+      "company": "R-Cycle",
+      "period": "Jan 2024",
+      "description": "Developed a dashboard to track plastic production cycles for manufacturers to comply with recycling regulations. Led architectural improvements, code refactoring, and UI optimizations. Created reusable UI components using React, SASS, and CoreUI. Integrated Google Cloud Platform (GCP) for file management and data analysis.",
+      "technologies": ["React", "SASS", "CoreUI", "Firebase", "Bootstrap", "TypeScript", "React-Testing-Library", "Jest", "Cypress", "Gitlab CI/CD", "Redux", "Docker"],
+      "year": 2024
+    },
+    {
+      "title": "Remote Robot Operation App",
+      "role": "Software Engineer",
+      "company": "Cinoware",
+      "period": "Jan - Dec 2024",
+      "description": "Developed a remote robot control platform using Python FastAPI. Implemented a navigation tracking system using OpenCV for precise robot movement. Created a performance tracking system with MLflow and Scikit-Learn. Developed a Selenium Grid testing suite with Allure report analysis.",
+      "technologies": [
+        "Python",
+        "Flask",
+        "OpenCV",
+        "MLflow",
+        "Scikit-Learn",
+        "Selenium Grid",
+        "Allure Reports",
+        "Jira API",
+        "LLM",
+        "pandas",
+        "TesseractOCR",
+        "pytest",
+        "Selenium",
+        "scikit-learn",
+        "Jest",
+        "Microservices",
+        "NX Monorepo",
+        "Docker"
+      ],
+      "year": 2024
+    },
+    {
+      "title": "Adjunct Lecturer in Data Analytics",
+      "role": "Adjunct Lecturer",
+      "company": "Data Smartpoint",
+      "period": "Jun - Oct 2024",
+      "description": "Taught Data Analytics, Machine Learning, Web Scraping, and API development to groups of ~15 students. Designed study materials and final projects.",
+      "technologies": ["Python", "Pandas", "Scikit-Learn", "Selenium", "FastAPI", "BeautifulSoup", "Streamlit"],
+      "year": 2024
+    },
     {
       "title": "AI Parent Advisor",
       "role": "Lead Fullstack Engineer",
@@ -80,52 +127,6 @@
       "year": 2024
     },
     {
-      "title": "R-Cycle Customer Dashboard",
-      "role": "Lead Frontend Engineer",
-      "company": "R-Cycle",
-      "period": "Jan 2024",
-      "description": "Developed a dashboard to track plastic production cycles for manufacturers to comply with recycling regulations. Led architectural improvements, code refactoring, and UI optimizations. Created reusable UI components using React, SASS, and CoreUI. Integrated Google Cloud Platform (GCP) for file management and data analysis.",
-      "technologies": ["React", "SASS", "CoreUI", "Firebase", "Bootstrap", "TypeScript", "React-Testing-Library", "Jest", "Cypress", "Gitlab CI/CD", "Redux"],
-      "year": 2024
-    },
-    {
-      "title": "Remote Robot Operation App",
-      "role": "Software Engineer",
-      "company": "Cinoware",
-      "period": "Jan - Dec 2024",
-      "description": "Developed a remote robot control platform using React.js (Frontend) and Python Flask (Backend). Implemented a navigation tracking system using OpenCV for precise robot movement. Created a performance tracking system with MLflow and Scikit-Learn. Developed a Selenium Grid testing suite with Allure report analysis.",
-      "technologies": [
-        "React.js",
-        "Python",
-        "Flask",
-        "OpenCV",
-        "MLflow",
-        "Scikit-Learn",
-        "Selenium Grid",
-        "Allure Reports",
-        "Jira API",
-        "LLM",
-        "pandas",
-        "TesseractOCR",
-        "pytest",
-        "Selenium",
-        "scikit-learn",
-        "Jest",
-        "Microservices",
-        "NX Monorepo"
-      ],
-      "year": 2024
-    },
-    {
-      "title": "Adjunct Lecturer in Data Analytics",
-      "role": "Adjunct Lecturer",
-      "company": "Data Smartpoint",
-      "period": "Jun - Oct 2024",
-      "description": "Taught Data Analytics, Machine Learning, Web Scraping, and API development to groups of ~15 students. Designed study materials and final projects.",
-      "technologies": ["Python", "Pandas", "Scikit-Learn", "Selenium", "FastAPI", "BeautifulSoup", "Streamlit"],
-      "year": 2024
-    },
-    {
       "title": "Shopify Storefront",
       "role": "Lead Fullstack Engineer",
       "company": "Cybercrush",
@@ -140,7 +141,7 @@
       "company": "Kunveno",
       "period": "Jun - Aug 2023",
       "description": "Developed a Microsoft Teams Message Extension to enhance enterprise communication. Architected Microsoft Azure infrastructure and implemented CI/CD pipelines for automated deployment.",
-      "technologies": ["Microsoft Azure", "OAuth", "Azure AD", "CI/CD Pipelines", "Node.js", "TypeScript"],
+      "technologies": ["Microsoft Azure", "OAuth", "Azure AD", "CI/CD Pipelines", "Node.js", "TypeScript", "yaml"],
       "year": 2023
     },
     {
@@ -206,7 +207,7 @@
       "company": "Bosch",
       "period": "Sep 2019 - Mar 2020",
       "description": "Developed Debian-based Linux OS components for industrial automation systems. Implemented a security verification system for untrusted software installations.",
-      "technologies": ["Debian", "Bash", "Python", "Linux System Development"],
+      "technologies": ["Debian", "Bash", "Python", "Linux System Development", "Jenkins", "Ansible"],
       "year": 2020
     }
   ],
