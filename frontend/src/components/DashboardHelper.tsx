@@ -19,6 +19,24 @@ export const getStatusColor = (status: string) => {
   }
 };
 
+// Status priority order for sorting
+const getStatusPriority = (status: string): number => {
+  switch (status.toLowerCase()) {
+    case 'pending':
+      return 1;
+    case 'ready':
+      return 2;
+    case 'review':
+      return 3;
+    case 'applied':
+      return 4;
+    case 'irrelevant':
+      return 5;
+    default:
+      return 999; // Any other status will be at the end
+  }
+};
+
 // Add table data
 export const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 40, headerClassName: 'super-app-theme--header' },
@@ -35,6 +53,11 @@ export const columns: GridColDef[] = [
     headerName: 'Status',
     width: 100,
     headerClassName: 'super-app-theme--header',
+    sortComparator: (v1, v2) => {
+      const priority1 = getStatusPriority(v1 as string);
+      const priority2 = getStatusPriority(v2 as string);
+      return priority1 - priority2;
+    },
     renderCell: (params) => (
       <div
         style={{

@@ -168,6 +168,11 @@ const Dashboard = () => {
             rows={jobs}
             columns={columns}
             loading={loading}
+            initialState={{
+              sorting: {
+                sortModel: [{ field: 'status', sort: 'asc' }],
+              },
+            }}
             slotProps={{
               loadingOverlay: {
                 variant: 'skeleton',
