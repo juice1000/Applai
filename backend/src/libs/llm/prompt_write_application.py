@@ -30,7 +30,7 @@ application_prompt_de = """Hilf mir, eine Bewerbung für ein freiberufliches Pro
 
 Hier ist die Struktur, die du befolgen solltest:
 	1.	Beginne mit "Hallo <Kontaktperson>", wenn der Name der Kontaktperson definiert ist. Andernfalls schreibe einen generischen Gruß. Nutze nur den Vornamen in der Anrede. Falls der Name eine Firma zu sein scheint, schreibe “Hallo Team von ” mit dem vollen Namen der Firma.
-	2.	Starte mit einer kurzen Einleitung, in der du mein Interesse für das Projekt zum Ausdruck bringst, und nenne die Stellenbezeichnung.
+	2.	Starte mit einer kurzen Einleitung, in der du Interesse für das Projekt zum Ausdruck bringst. Nutze keine überschwinglichen Formulierungen.	
 	3.	Wähle ein oder zwei relevante Projekte aus meinem Lebenslauf aus, die der Stellenbeschreibung entsprechen, und beschreibe diese ausführlich. Fälsche keine Informationen.
 	4.	Betone die greifbaren Auswirkungen meiner Arbeit und verwende, wenn möglich, Messgrößen oder Ergebnisse. Zeige klar, welchen Wert ich in das Projekt einbringen kann und warum mein Hintergrund mich zu einem idealen Kandidaten macht. Hebe hervor, wo ich die Führung oder Initiative übernommen habe. Halluziniere keine Informationen.
 	5.	Drücke abschließend mein Interesse an einem persönlichen Gespräch über weitere Einzelheiten aus.

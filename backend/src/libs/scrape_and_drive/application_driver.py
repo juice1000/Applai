@@ -28,17 +28,22 @@ def apply_from_db():
             accept_cookies()
             # Navigate to the job URL
             driver = navigate_to(job.url)
-            # Get application form
-            application_form = wait_for_element(
-                driver, By.ID, "project-application-form"
-            )
-            # Insert application into the text field to apply to
-            input_text(
-                application_form,
-                By.ID,
-                "apply_project_form_content",
-                job.application_letter,
-            )
+            try:
+                # Get application form
+                application_form = wait_for_element(
+                    driver, By.ID, "project-application-form"
+                )
+                # Insert application into the text field to apply to
+                input_text(
+                    application_form,
+                    By.ID,
+                    "apply_project_form_content",
+                    job.application_letter,
+                )
+            except Exception as e:
+                logger.warning(
+                    f"Application form not found for job: {job.title}, error: {e}"
+                )
             # Click add resume button
             attachments = wait_for_element(driver, By.ID, "attachments")
             check_box(attachments, By.XPATH, '//*[@id="attachment-index-215084-1"]')
