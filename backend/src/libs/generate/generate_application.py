@@ -1,5 +1,5 @@
 import json
-from pathlib import Path
+from os.path import abspath, dirname, join
 
 from langchain.prompts import ChatPromptTemplate
 from libs.db.init_db import Job
@@ -8,15 +8,13 @@ from libs.llm.prompt_optimize_application import optimization_prompt
 from libs.llm.prompt_write_application import application_prompt, application_prompt_de
 from libs.logger.init_logger import logger
 
+CUR_DIR = dirname(abspath(__file__))
+ROOT_DIR = abspath(join(CUR_DIR, "..", "..", ".."))
+DATA_PATH = join(ROOT_DIR, "data", "cover_letters")
+
 
 def load_cover_letters():
-    cover_letters_path = (
-        Path(__file__).parent.parent.parent.parent
-        / "data"
-        / "cover_letters"
-        / "cover_letters.json"
-    )
-    with open(cover_letters_path) as f:
+    with open(join(DATA_PATH, "cover_letters.json"), "r", encoding="utf-8") as f:
         data = json.load(f)
     return data["cover_letters"]
 
