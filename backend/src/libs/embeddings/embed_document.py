@@ -1,18 +1,8 @@
-from os.path import abspath, dirname, exists, join
-
 from langchain.schema.document import Document
-from langchain_chroma import Chroma
 from langchain_community.document_loaders import UnstructuredMarkdownLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from libs.llm.init_llm import init_embedding_function
 from libs.logger.init_logger import logger
-
-# Get the project root directory (where main.py is located)
-CUR_DIR = dirname(abspath(__file__))
-ROOT_DIR = abspath(join(CUR_DIR, "..", "..", ".."))
-CHROMA_PATH = join(ROOT_DIR, "chroma")
-CHROMA_PATH_DE = join(ROOT_DIR, "chroma_de")
-DATA_PATH = join(ROOT_DIR, "data", "input")
+from libs.utils.load_and_save_file import get_input_file_path, load_vector_db
 
 
 def load_document(language: str = "en") -> list[Document]:
@@ -22,16 +12,8 @@ def load_document(language: str = "en") -> list[Document]:
     Returns:
         list[Document]: A list containing the loaded document
     """
-
-    if language == "de":
-        resume_path = join(DATA_PATH, "resume.de.md")
-    else:
-        resume_path = join(DATA_PATH, "resume.en.md")
+    resume_path = get_input_file_path(f"resume.{language}.md")
     logger.info(f"Loading document from: {resume_path}")
-
-    if not exists(resume_path):
-        logger.error(f"Resume file not found at: {resume_path}")
-        raise FileNotFoundError(f"Resume file not found at: {resume_path}")
 
     loader = UnstructuredMarkdownLoader(resume_path)
     documents = loader.load()
@@ -93,15 +75,7 @@ def add_to_chroma(chunks: list[Document], language: str = "en"):
         None
     """
     # Load the existing database.
-    if language == "de":
-        db = Chroma(
-            persist_directory=CHROMA_PATH_DE,
-            embedding_function=init_embedding_function(),
-        )
-    else:
-        db = Chroma(
-            persist_directory=CHROMA_PATH, embedding_function=init_embedding_function()
-        )
+    db = load_vector_db(language)
 
     # Calculate Page IDs.
     chunks_with_ids = calculate_chunk_ids(chunks)

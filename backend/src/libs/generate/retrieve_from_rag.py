@@ -1,7 +1,4 @@
-import os
-
 from langchain.prompts import ChatPromptTemplate
-from langchain_chroma import Chroma
 from libs.embeddings.init_chroma import init_databases
 from libs.llm.init_llm import init_completion_function
 from libs.llm.prompt_context_retrieval import (
@@ -10,12 +7,6 @@ from libs.llm.prompt_context_retrieval import (
     project_retrieval_prompt_experimental,
 )
 from libs.logger.init_logger import logger
-
-# Get the project root directory (where main.py is located)
-CUR_DIR = os.path.dirname(os.path.abspath(__file__))
-ROOT_DIR = os.path.abspath(os.path.join(CUR_DIR, "..", "..", ".."))
-CHROMA_PATH = os.path.join(ROOT_DIR, "chroma")
-CHROMA_PATH_DE = os.path.join(ROOT_DIR, "chroma_de")
 
 
 def search_docs(job_title: str, keywords: str, language: str = "en"):
@@ -79,13 +70,10 @@ def retrieve_from_rag(
 
     # Get the context from the DB results.
     context_text = get_context(db_results)
-    print("Context text:", context_text)
     # Prompt the LLM.
     response_text = retrieve_rag_response_from_context(
         job_description, context_text, keywords, language
     )
-    print("\n\n\n\n\n\n\n")
-    print("Response text:", response_text)
     # logger.info(f"Retrieving response: {response_text}")
     return response_text
 

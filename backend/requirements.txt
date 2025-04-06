@@ -22,3 +22,5 @@ langdetect
 "unstructured[md]" nltk 
 markdownify
 pdfplumber
+langgraph
+IPython

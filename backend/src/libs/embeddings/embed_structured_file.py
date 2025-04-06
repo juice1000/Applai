@@ -1,14 +1,8 @@
 import json
-from os.path import abspath, dirname, join
 
-from langchain_chroma import Chroma
-from libs.embeddings.init_chroma import clear_database, init_databases
+from libs.embeddings.init_chroma import init_databases
 from libs.logger.init_logger import logger
-
-# Get the project root directory (where main.py is located)
-CUR_DIR = dirname(abspath(__file__))
-ROOT_DIR = abspath(join(CUR_DIR, "..", "..", ".."))
-DATA_PATH = join(ROOT_DIR, "data", "input")
+from libs.utils.load_and_save_file import get_input_file_path
 
 
 def load_document(language: str = "en"):
@@ -19,12 +13,11 @@ def load_document(language: str = "en"):
     Returns:
         dict: The resume document.
     """
-    if language == "de":
-        with open(join(DATA_PATH, "resume.de.json"), "r", encoding="utf-8") as f:
-            resume_data = json.load(f)
-    else:
-        with open(join(DATA_PATH, "resume.en.json"), "r", encoding="utf-8") as f:
-            resume_data = json.load(f)
+    with open(
+        get_input_file_path(f"resume.{language}.json"), "r", encoding="utf-8"
+    ) as f:
+        resume_data = json.load(f)
+
     return resume_data
 
 

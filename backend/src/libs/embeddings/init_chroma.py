@@ -1,17 +1,10 @@
 import shutil
-from os.path import abspath, dirname, exists, join
 
 from custom_types import Collection
 from langchain_chroma import Chroma
 from libs.llm.init_llm import init_embedding_function
 from libs.logger.init_logger import logger
-
-# Get the project root directory (where main.py is located)
-CUR_DIR = dirname(abspath(__file__))
-ROOT_DIR = abspath(join(CUR_DIR, "..", "..", ".."))
-CHROMA_PATH = join(ROOT_DIR, "chroma")
-CHROMA_PATH_DE = join(ROOT_DIR, "chroma_de")
-DATA_PATH = join(ROOT_DIR, "data", "input")
+from libs.utils.load_and_save_file import get_vector_db_path
 
 
 def get_database_by_collection_name(collection_name: Collection, language: str = "en"):
@@ -22,13 +15,12 @@ def get_database_by_collection_name(collection_name: Collection, language: str =
         language (str): The language of the database.
     """
     logger.info("Initializing database...")
-    chroma_path = CHROMA_PATH_DE if language == "de" else CHROMA_PATH
+    chroma_path = get_vector_db_path(language)
     db = Chroma(
         persist_directory=chroma_path,
         embedding_function=init_embedding_function(),
         collection_name=collection_name,
     )
-
     return db
 
 
@@ -40,7 +32,7 @@ def init_databases(language: str = "en"):
     """
     logger.info("Initializing database...")
 
-    chroma_path = CHROMA_PATH_DE if language == "de" else CHROMA_PATH
+    chroma_path = get_vector_db_path(language)
 
     db_projects = Chroma(
         persist_directory=chroma_path,
@@ -61,14 +53,12 @@ def init_databases(language: str = "en"):
     return db_projects, db_technologies, db_personal
 
 
-def clear_database(language: str = "en"):
+def clear_database(language: str):
     """
     Clears the Chroma database.
     Args:
         language (str): The language of the database.
     """
     logger.info("Clearing database...")
-    if language == "de" and exists(CHROMA_PATH_DE):
-        shutil.rmtree(CHROMA_PATH_DE)
-    elif language == "en" and exists(CHROMA_PATH):
-        shutil.rmtree(CHROMA_PATH)
+    chroma_path = get_vector_db_path(language)
+    shutil.rmtree(chroma_path)
