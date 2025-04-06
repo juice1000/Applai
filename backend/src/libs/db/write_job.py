@@ -1,8 +1,7 @@
 from libs.db.get_job import get_job_by_url
 from libs.db.init_db import Job, engine
 from libs.logger.init_logger import logger
-from sqlalchemy import text
-from sqlmodel import Session, select
+from sqlmodel import Session
 
 
 def write_or_update_job(job: Job):
@@ -27,15 +26,13 @@ def write_or_update_job(job: Job):
             return job
 
 
-def update_job(job: Job, **kwargs):
+def update_job(job: Job):
     logger.info(f"Updating job {job.title} in DB with additional fields...")
     if not engine:
         raise Exception("No Engine for DB found")
     with Session(engine) as session:
         if job:
-            for key, value in kwargs.items():
-                setattr(job, key, value)
-            session.add(job)
+            session.merge(job)
             session.commit()
             logger.info("Job record updated.")
             return job
@@ -44,14 +41,14 @@ def update_job(job: Job, **kwargs):
             raise Exception(f"Job {job.id} not found")
 
 
-def update_job_by_id(id: int, **kwargs):
+def update_job_by_id(id: int):
     logger.info(f"Updating job {id} in DB with additional fields...")
     if not engine:
         raise Exception("No Engine for DB found")
     with Session(engine) as session:
         job = session.get(Job, id)
     if job:
-        update_job(job=job, **kwargs)
+        update_job(job=job)
     else:
         logger.error(f"Job {id} not found")
         raise Exception(f"Job {id} not found")

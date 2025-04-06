@@ -1,11 +1,15 @@
 import json
 
 from langchain.prompts import ChatPromptTemplate
-from libs.db.init_db import Job
 from libs.llm.init_llm import init_completion_function
-from libs.llm.prompt_optimize_application import (
-    optimization_prompt_de,
-    optimization_prompt_en,
+from libs.llm.prompt_adjust_tone import (
+    tone_adjustment_prompt_de,
+    tone_adjustment_prompt_en,
+)
+from libs.llm.prompt_cleanup_content import cleanup_prompt_de, cleanup_prompt_en
+from libs.llm.prompt_cleanup_misinformation import (
+    remove_misinformation_prompt_de,
+    remove_misinformation_prompt_en,
 )
 from libs.llm.prompt_write_application import application_prompt, application_prompt_de
 from libs.logger.init_logger import logger
@@ -24,6 +28,62 @@ def load_cover_letters(lang: str) -> list:
     return data["cover_letters"]
 
 
+def generate_application(
+    title: str,
+    description: str,
+    resume_context: str,
+    contact_person: str = None,
+    lang: str = "en",
+) -> str:
+    logger.info(f"Generating application for job: '{title}'...")
+
+    # Prepare the prompt with cover letter template
+    if lang == "de":
+        prompt_template = ChatPromptTemplate.from_template(application_prompt_de)
+    else:
+        prompt_template = ChatPromptTemplate.from_template(application_prompt)
+
+    prompt = prompt_template.format(
+        context=resume_context,
+        description=description,
+        contact_person=contact_person or "",
+    )
+
+    model = init_completion_function()
+    response_text = model.invoke(prompt)
+    logger.info("Application generated.")
+
+    return response_text
+
+
+def remove_misleading_info(
+    application_letter: str, resume_context: str, lang: str
+) -> str:
+    """
+    Deletes misleading information from the application letter.
+    This function is a placeholder for the actual implementation.
+    """
+    # Prepare the prompt with cover letter template
+    if lang == "de":
+        prompt_template = ChatPromptTemplate.from_template(
+            remove_misinformation_prompt_de
+        )
+    else:
+        prompt_template = ChatPromptTemplate.from_template(
+            remove_misinformation_prompt_en
+        )
+
+    prompt = prompt_template.format(
+        application_letter=application_letter, resume_context=resume_context
+    )
+
+    model = init_completion_function()
+    response_text = model.invoke(prompt)
+    logger.info("Filtered out misleading information.")
+
+    return response_text
+
+
 def adjust_tone(application: str, lang: str) -> str:
     """
     Adjusts the tone of the application letter to match the style of the sample letters.
@@ -39,9 +99,9 @@ def adjust_tone(application: str, lang: str) -> str:
     template_letter_3 = cover_letters[2]["letter"]  # Using third letter as template
 
     if lang == "de":
-        prompt_template = ChatPromptTemplate.from_template(optimization_prompt_de)
+        prompt_template = ChatPromptTemplate.from_template(tone_adjustment_prompt_de)
     else:
-        prompt_template = ChatPromptTemplate.from_template(optimization_prompt_en)
+        prompt_template = ChatPromptTemplate.from_template(tone_adjustment_prompt_en)
 
     # Adjust the application letter to match the tone of the template letters
     prompt = prompt_template.format(
@@ -58,29 +118,15 @@ def adjust_tone(application: str, lang: str) -> str:
     return response_text
 
 
-def generate_application(
-    title: str,
-    description: str,
-    resume_context: str,
-    contact_person: str = None,
-    language: str = "en",
-) -> str:
-    logger.info(f"Generating application for job: '{title}'...")
-
-    # Prepare the prompt with cover letter template
-    if language == "de":
-        prompt_template = ChatPromptTemplate.from_template(application_prompt_de)
+def cleanup_application(application: str, lang: str) -> str:
+    if lang == "de":
+        prompt_template = ChatPromptTemplate.from_template(cleanup_prompt_de)
     else:
-        prompt_template = ChatPromptTemplate.from_template(application_prompt)
+        prompt_template = ChatPromptTemplate.from_template(cleanup_prompt_en)
 
-    prompt = prompt_template.format(
-        context=resume_context,
-        description=description,
-        contact_person=contact_person or "",
-    )
-
+    prompt = prompt_template.format(application_letter=application)
     model = init_completion_function()
     response_text = model.invoke(prompt)
-    logger.info("Application generated.")
 
+    logger.info("Application letter finalized")
     return response_text

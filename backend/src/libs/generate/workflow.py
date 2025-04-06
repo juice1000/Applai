@@ -2,7 +2,12 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.state import CompiledStateGraph
 from libs.db.init_db import Job
 from libs.db.write_job import update_job
-from libs.generate.generate_application import adjust_tone, generate_application
+from libs.generate.generate_application import (
+    adjust_tone,
+    cleanup_application,
+    generate_application,
+    remove_misleading_info,
+)
 from libs.generate.retrieve_from_rag import retrieve_from_rag
 from libs.generate.retrieve_language import retrieve_language
 from libs.utils.load_and_save_file import save_file_to_data
@@ -12,9 +17,12 @@ from typing_extensions import TypedDict
 # Graph state
 class WorkflowState(TypedDict):
     job: dict
+    language: str
     rag_retrieval_context: str
     application_letter: str
-    improved_application_letter: str
+    cleaned_misformation_letter: str
+    tone_adjusted_letter: str
+    finalized_letter: str
 
 
 # Wrapper
@@ -36,6 +44,7 @@ def retrieve_job_language(state: WorkflowState):
     # detect the language of the job description
     language = retrieve_language(title, description)
     job["language"] = language
+    state["language"] = language
     return {"language": language}
 
 
@@ -66,14 +75,36 @@ def generate_application_letter(state: WorkflowState):
     return {"application_letter": application_letter}
 
 
+def remove_misinformation(state: WorkflowState):
+    application_letter = state["application_letter"]
+    resume_context = state["rag_retrieval_context"]
+    language = state["language"]
+    # delete misleading information from the application letter
+    application_letter = remove_misleading_info(
+        application_letter, resume_context, language
+    )
+    return {"cleaned_misformation_letter": application_letter}
+
+
 def adjust_application_tone(state: WorkflowState):
     """Gate function to check if the joke has a punchline"""
     # Adjust the tone of the application letter
-    job = state["job"]
-    adjusted_application = adjust_tone(state["application_letter"], job["language"])
-    job["application_letter"] = adjusted_application
+    application_letter = adjust_tone(
+        state["cleaned_misformation_letter"], state["language"]
+    )
 
-    return {"improved_application_letter": adjusted_application}
+    return {"tone_adjusted_letter": application_letter}
+
+
+def cleanup_application_letter(state: WorkflowState):
+    """Gate function to check if the joke has a punchline"""
+    # Adjust the tone of the application letter
+    job = state["job"]
+    application_letter = cleanup_application(
+        state["tone_adjusted_letter"], job["language"]
+    )
+    job["application_letter"] = application_letter
+    return {"finalized_letter": application_letter}
 
 
 def init_application_workflow() -> CompiledStateGraph:
@@ -91,23 +122,29 @@ def init_application_workflow() -> CompiledStateGraph:
         track_and_return("generate_application_letter", generate_application_letter),
     )
     workflow.add_node(
+        "remove_misinformation",
+        track_and_return("remove_misinformation", remove_misinformation),
+    )
+    workflow.add_node(
         "adjust_application_tone",
         track_and_return("adjust_application_tone", adjust_application_tone),
     )
+    workflow.add_node(
+        "cleanup_application_letter",
+        track_and_return("cleanup_application_letter", cleanup_application_letter),
+    )
 
     # Add edges
+    workflow.add_edge(START, "retrieve_job_language")
     workflow.add_edge("retrieve_job_language", "retrieve_job_experience")
     workflow.add_edge("retrieve_job_experience", "generate_application_letter")
-    workflow.add_edge("generate_application_letter", "adjust_application_tone")
-
-    # Add start and end nodes
-    workflow.add_edge(START, "retrieve_job_language")
-    workflow.add_edge("adjust_application_tone", END)
+    workflow.add_edge("generate_application_letter", "remove_misinformation")
+    workflow.add_edge("remove_misinformation", "adjust_application_tone")
+    workflow.add_edge("adjust_application_tone", "cleanup_application_letter")
+    workflow.add_edge("cleanup_application_letter", END)
 
     # Compile
     chain = workflow.compile()
-
-    # TODO: rerun if result contains the notorios "Here is an application letter bla bla"
 
     graph_path = "workflow_graph.png"
     png_graph = chain.get_graph().draw_mermaid_png()
@@ -123,6 +160,5 @@ def run_workflow(job: Job, chain: CompiledStateGraph):
 
     # Save the state to the database
     job = Job(**result["job"])
-    update_job(
-        job
-    )  # TODO: currently doesn't work, we need to use the old job object or create a merge function
+
+    update_job(job)

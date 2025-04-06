@@ -66,7 +66,9 @@ def get_all_jobs_without_application():
     if not engine:
         raise Exception("No Engine for DB found")
     with Session(engine) as session:
-        statement = select(Job).where(Job.date_applied.is_(None))
+        statement = select(Job).where(
+            Job.date_applied.is_(None) & (Job.status.isnot("irrelevant"))
+        )
         jobs = session.exec(statement).all()
         logger.info(f"Number of Jobs retrieved: {len(jobs)}")
         return jobs
