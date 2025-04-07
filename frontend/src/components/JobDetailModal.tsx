@@ -1,4 +1,4 @@
-import { Modal, Box, Typography, IconButton, Button, TextField } from '@mui/material';
+import { Modal, Box, Typography, IconButton, Button, TextField, Link } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import FlagIcon from '@mui/icons-material/Flag';
 import { Job, writeApplication, updateJobStatus, updateApplication } from '../libs/api';
@@ -100,11 +100,16 @@ const JobDetailModal = ({ open, onClose, job, onUpdate, loading, setLoading }: J
             <Typography>{job.contactPerson}</Typography>
           </>
         )}
-        <br />
+
         <Typography variant="h6" gutterBottom>
           Keywords
         </Typography>
         <Typography>{job.keywords}</Typography>
+        <br />
+        <Link href={job.url} target="_blank" rel="noopener noreferrer" underline="hover" color="primary" sx={{ fontWeight: 'bold' }}>
+          Open Job Ad
+        </Link>
+        <br />
         <br />
         <hr />
         <br />

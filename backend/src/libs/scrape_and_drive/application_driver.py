@@ -53,7 +53,8 @@ def apply_from_db():
             logger.info(f"Applied to job: {job.title}")
 
             # Update the job status
-            update_job(job, date_applied=datetime.now().strftime("%Y-%m-%d_%H:%M"))
+            job.date_applied = datetime.now().strftime("%Y-%m-%d_%H:%M")
+            update_job(job)
 
         except Exception as e:
             logger.error(f"Failed to apply to job: {job.title}, error: {e}")

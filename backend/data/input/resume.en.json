@@ -50,9 +50,29 @@
       "title": "Adjunct Lecturer in MLOps",
       "role": "Adjunct Lecturer",
       "company": "Nobleprog",
-      "period": "Jan - Feb 202",
+      "period": "Jan - Feb 2025",
       "description": "Designed and taught a hands-on MLOps seminar covering automated data wrangling, ML lifecycle management, monitoring, and orchestration. Provided real-world case studies and interactive labs.",
-      "technologies": ["Amazon SageMaker", "MLflow", "DVC", "Airflow", "CI/CD", "Docker", "evidently.ai", "AWS", "Python", "Bash", "scikit-learn", "pandas", "SQL"],
+      "technologies": [
+        "AWS",
+        "AWS Cloudformation",
+        "AWS Lambda",
+        "AWS Glue",
+        "AWS EC2",
+        "AWS ECR",
+        "Amazon SageMaker",
+        "MLflow",
+        "DVC",
+        "Airflow",
+        "CI/CD",
+        "Docker",
+        "evidently.ai",
+        "AWS",
+        "Python",
+        "Bash",
+        "scikit-learn",
+        "pandas",
+        "SQL"
+      ],
       "year": 2025
     },
 
@@ -111,6 +131,8 @@
       "technologies": [
         "OpenAI GPT",
         "WhatsApp API",
+        "AWS",
+        "Serverless",
         "AWS Lambda",
         "API Gateway",
         "DynamoDB",
@@ -121,8 +143,7 @@
         "React.js",
         "Node.js",
         "Microservices",
-        "Jest",
-        "nginx"
+        "Jest"
       ],
       "year": 2024
     },

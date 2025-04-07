@@ -1,3 +1,5 @@
+# TODO: Senior Python Developer, error: update_job() got an unexpected keyword argument 'date_applied'
+
 application_prompt = """Help me to create a job application for a freelance project. Given my the context from my resume and the provided job description, draft a customized job application that highlights my most relevant skills, experiences, and achievements. Use a professional and natural tone. Keep sentences concise and to the point, avoiding overly promotional or exaggerated language. Write in a way that feels authentic and direct. Use concise sentences and industry-standard phrasing. Do not hallucinate any information.
 
 Here's the structure I want you to follow:
@@ -29,7 +31,7 @@ Here is the context from my resume:
 application_prompt_de = """Hilf mir, eine Bewerbung für ein freiberufliches Projekt zu entwerfen. Erstelle auf Grundlage meines Lebenslaufs und der Stellenbeschreibung eine maßgeschneiderte Bewerbung auf Deutsch, die meine wichtigsten Fähigkeiten, Erfahrungen und Leistungen hervorhebt. Schreibe in der “Du”-Form, behalte aber einen professionellen Ton mit kurzen Sätzen und branchenüblichen Formulierungen. Halluziniere keine Informationen.
 
 Hier ist die Struktur, die du befolgen solltest:
-	1.	Beginne mit "Hallo <Kontaktperson>", wenn der Name der Kontaktperson definiert ist. Andernfalls schreibe einen generischen Gruß. Nutze nur den Vornamen in der Anrede. Falls der Name eine Firma zu sein scheint, schreibe “Hallo Team von ” mit dem vollen Namen der Firma.
+	1.	Beginne mit "Hallo <Kontaktperson>", wenn der Name der Kontaktperson definiert ist. Nutze nur den Vornamen in der Anrede! Falls der Name eine Firma zu sein scheint, schreibe “Hallo Team von ” mit dem vollen Namen der Firma. Andernfalls schreibe einen generischen Gruß. 
 	2.	Starte mit einer kurzen Einleitung, in der du Interesse für das Projekt zum Ausdruck bringst. Nutze keine überschwinglichen Formulierungen.	
 	3.	Wähle ein oder zwei relevante Projekte aus meinem Lebenslauf aus, die der Stellenbeschreibung entsprechen, und beschreibe diese ausführlich. Fälsche keine Informationen.
 	4.	Betone die greifbaren Auswirkungen meiner Arbeit und verwende, wenn möglich, Messgrößen oder Ergebnisse. Zeige klar, welchen Wert ich in das Projekt einbringen kann und warum mein Hintergrund mich zu einem idealen Kandidaten macht. Hebe hervor, wo ich die Führung oder Initiative übernommen habe. Halluziniere keine Informationen.

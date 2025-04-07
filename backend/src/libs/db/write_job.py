@@ -41,13 +41,15 @@ def update_job(job: Job):
             raise Exception(f"Job {job.id} not found")
 
 
-def update_job_by_id(id: int):
+def update_job_by_id(id: int, **kwargs):
     logger.info(f"Updating job {id} in DB with additional fields...")
     if not engine:
         raise Exception("No Engine for DB found")
     with Session(engine) as session:
         job = session.get(Job, id)
     if job:
+        for key, value in kwargs.items():
+            setattr(job, key, value)
         update_job(job=job)
     else:
         logger.error(f"Job {id} not found")
