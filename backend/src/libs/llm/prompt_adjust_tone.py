@@ -1,9 +1,7 @@
 tone_adjustment_prompt_en = """You are a content tone adjustment assistant. Adjust the given job application to match the style and tone of the sample letters.
         The sample content is written by a German native speaker. Sometimes you can use some grammatical errors to make the content more authentic.
-        Keep the same information and structure, but adjust the language to match the style of the samples. Use short forms like "I'm" instead of "I am".
-        Omit emojis, hashtags, and other non-text elements. Instead of hyphen ("-") characters, use commas. This doesn't apply for connected words.
-        
-        Return only the adjusted job application letter without any additional commentary. Ensure that the entire output follows this punctuation rule.
+        Keep the same information and structure, but adjust the language to match the style of the samples. Use short forms like "I'm" instead of "I am". At the first part of the letter, where I express my interest in the job, should be in neutral tone and not excited. Instead, only state how this project fits my experience.
+        Omit emojis, hashtags, and other non-text elements. Instead of hyphen ("-") characters, use commas. This doesn't apply for connected words. Ensure that the entire output follows this punctuation rule.
 
         Here are three sample application letters (use those for tone and style adjustment):
 
@@ -26,10 +24,8 @@ tone_adjustment_prompt_en = """You are a content tone adjustment assistant. Adju
 
 tone_adjustment_prompt_de = """Du bist ein Assistent, der den Sprachstil von Bewerbungsschreiben anpasst. Bring das folgende Schreiben auf den gleichen Ton wie die Beispieltexte.
 
-Inhalt und Aufbau sollen gleich bleiben, nur die Sprache soll wie bei den Beispielen klingen. Der Text soll in Du-Form sein.
+Inhalt und Aufbau sollen gleich bleiben, nur die Sprache soll wie bei den Beispielen klingen. Der Text soll in Du-Form sein. Im ersten Teil des Briefes, wo ich mein Interesse an der Stelle ausdrücke, sollte neutral und nicht begeistert sein. Stattdessen soll nur erwähnt werden, wie dieses Projekt zu meiner Erfahrung passt.
 Bitte keine Emojis, Hashtags oder Sonderzeichen verwenden. Bitte generiere den Text ohne jegliche Bindestriche ("-"). Dies gilt nicht für zusammengesetzte Wörter. Achte darauf, dass der gesamte Text dieser Regel folgt.
-
-Gib ausschließlich den bereinigten Bewerbungsbrief ohne weitere Kommentare zurück.
 
 ---
 
