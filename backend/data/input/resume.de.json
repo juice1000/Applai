@@ -47,6 +47,33 @@
   },
   "projects": [
     {
+      "title": "Pipeline für industrielle SaaS-Plattform",
+      "role": "MLOps Ingenieur",
+      "company": "SAMGEN",
+      "period": "Mai 2025",
+      "description": "Aufbau und Skalierung eines GCP-Backbones für eine industrielle SaaS-Plattform, Einführung einer datengetriebenen DevOps-Pipeline für planbare Releases und Zusammenarbeit mit dem Data-Science-Team, um das automatische Retraining von Modellen zu automatisieren – verkürzte Deploy-Zeiten und hält ML-Ergebnisse kontinuierlich aktuell.",
+      "technologies": ["MLOps", "React", "Python", "GCP", "Firebase", "Airflow", "mlflow", "Google Vertex AI", "CI/CD", "Docker"],
+      "year": 2025
+    },
+    {
+      "title": "KI-Sprachagent",
+      "role": "AI Engineer",
+      "company": "",
+      "period": "Mär – Apr 2025",
+      "description": "Implementierte einen sprachgesteuerten KI-Concierge auf der Unternehmenswebsite, der Services empfiehlt, Kundenfragen per RAG beantwortet und Termine autonom bucht – steigert Conversions und entlastet den Support.",
+      "technologies": ["Voice Agent", "React", "RAG", "LLM", "FastAPI", "Ollama", "RAG", "LLM", "Langsmith"],
+      "year": 2025
+    },
+    {
+      "title": "KI-Bewerbungsagent",
+      "role": "AI Engineer",
+      "company": "",
+      "period": "Jan – Mär 2025",
+      "description": "Entwickelte einen KI-Assistenten, der passende Stellen findet und personalisierte Anschreiben automatisch erstellt – reduziert die Bewerbungszeit drastisch und erhöht die Zahl hochwertiger Bewerbungen pro Tag.",
+      "technologies": ["Langchain", "Langgraph", "Python", "React", "FastAPI", "Ollama", "RAG", "LLM", "Langsmith"],
+      "year": 2025
+    },
+    {
       "title": "Dozent in MLOps",
       "role": "Dozent",
       "company": "Nobleprog",

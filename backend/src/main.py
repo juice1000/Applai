@@ -45,8 +45,8 @@ def root():
 @app.get("/embed/")
 def embed_sources(clear: bool = False, language: Language = Language.en):
     if clear:
-        clear_database(language)
-    embed_file(language=language)
+        clear_database(language.value)
+    embed_file(language=language.value)
     return {"message": "Document loaded"}
 
 

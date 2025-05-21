@@ -26,7 +26,7 @@ def init_llm_services():
 
 
 def init_completion_function():
-    completion_llm = OllamaLLM(model="llama3.2")
+    completion_llm = OllamaLLM(model="gemma3:12b")
     return completion_llm
 
 

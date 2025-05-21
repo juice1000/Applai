@@ -48,7 +48,7 @@ def get_vector_db_path(language: str = "en") -> str:
     else:
         db_path = CHROMA_PATH
 
-    check_file_exists(db_path)
+    # check_file_exists(db_path)
     return db_path
 
 

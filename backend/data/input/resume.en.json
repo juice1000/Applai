@@ -47,6 +47,33 @@
   },
   "projects": [
     {
+      "title": "Pipeline for Industrial SaaS Platform",
+      "role": "MLOps Engineer",
+      "company": "SAMGEN",
+      "period": "May 2025",
+      "description": "Built and scaled a GCP backbone for an industrial SaaS platform, introduced a data-driven DevOps pipeline for predictable releases, and teamed up with Data Science to automate model retraining—cutting deployment times and keeping ML outputs continuously up-to-date.",
+      "technologies": ["MLOps", "React", "Python", "GCP", "Firebase", "Airflow", "mlflow", "Google Vertex AI", "CI/CD", "Docker"],
+      "year": 2025
+    },
+    {
+      "title": "AI Voice Agent",
+      "role": "AI Engineer",
+      "company": "",
+      "period": "Mar - Apr 2025",
+      "description": "Rolled out a voice-controlled AI concierge on the company’s website that recommends services, answers customer questions via RAG, and books appointments autonomously—boosting conversions while offloading routine support.",
+      "technologies": ["Voice Agent", "React", "RAG", "LLM", "FastAPI", "Ollama", "RAG", "LLM", "Langsmith"],
+      "year": 2025
+    },
+    {
+      "title": "AI Application Agent",
+      "role": "AI Engineer",
+      "company": "",
+      "period": "Jan - Mar 2025",
+      "description": "Created an AI assistant that matches candidates to suitable roles and auto-drafts personalized cover letters, slashing application time and boosting the number of high-quality submissions per day.",
+      "technologies": ["Langchain", "Langgraph", "Python", "React", "FastAPI", "Ollama", "RAG", "LLM", "Langsmith"],
+      "year": 2025
+    },
+    {
       "title": "Adjunct Lecturer in MLOps",
       "role": "Adjunct Lecturer",
       "company": "Nobleprog",
